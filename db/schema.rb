@@ -10,9 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_25_153156) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_25_155755) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amenities", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.float "lat"
+    t.float "long"
+    t.bigint "postcode_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["postcode_id"], name: "index_amenities_on_postcode_id"
+  end
+
+  create_table "postcodes", force: :cascade do |t|
+    t.string "postcode"
+    t.string "borough"
+    t.string "layer_code"
+    t.float "lat"
+    t.float "long"
+    t.float "crime"
+    t.integer "average_rent"
+    t.integer "average_sale_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.text "street_address"
+    t.string "postcode"
+    t.text "description"
+    t.integer "bedrooms"
+    t.integer "bathrooms"
+    t.boolean "garden"
+    t.text "image_urls", default: [], array: true
+    t.string "council_tax"
+    t.string "type"
+    t.float "floor_area"
+    t.bigint "postcode_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["postcode_id"], name: "index_properties_on_postcode_id"
+  end
+
+  create_table "recommendations", force: :cascade do |t|
+    t.string "postcode"
+    t.string "comment"
+    t.bigint "user_id", null: false
+    t.bigint "postcode_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["postcode_id"], name: "index_recommendations_on_postcode_id"
+    t.index ["user_id"], name: "index_recommendations_on_user_id"
+  end
+
+  create_table "saved_properties", force: :cascade do |t|
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "property_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_saved_properties_on_property_id"
+    t.index ["user_id"], name: "index_saved_properties_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +88,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_25_153156) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "amenities", "postcodes"
+  add_foreign_key "properties", "postcodes"
+  add_foreign_key "recommendations", "postcodes"
+  add_foreign_key "recommendations", "users"
+  add_foreign_key "saved_properties", "properties"
+  add_foreign_key "saved_properties", "users"
 end
