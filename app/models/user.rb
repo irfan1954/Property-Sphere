@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :saved_properties
-  has_many :recommendations
+  has_one :recommendation
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
