@@ -4,18 +4,19 @@ class RecommendationsController < ApplicationController
   end
 
   def create
-    @recommendation = Recommendation.new(property_params)
+    @recommendation = Recommendation.new(recommendation_params)
+    @recommendation.user_id = current_user.id
+    postcode = Postcode.find(postcode: @recommendation.postcode)
+    @recommendation.postcode_id = postcode.id
     @recommendation.save!
   end
 
   private
 
-  def property_params
+  def recommendation_params
     params.require(:recommendation).permit(
       :postcode,
-      :comment,
-      :user_id,
-      :postcode_id
+      :comment
     )
   end
 end
