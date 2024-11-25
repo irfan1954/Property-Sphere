@@ -1,27 +1,21 @@
 class RecommendationsController < ApplicationController
-  def New
-    @property = Property.new
+  def new
+    @recommendation = Recommendation.new
   end
 
   def create
-    @property = Property.new(property_params)
-    @property.save!
+    @recommendation = Recommendation.new(property_params)
+    @recommendation.save!
   end
 
   private
 
   def property_params
-    params.require(:property).permit(
-      :street_address,
+    params.require(:recommendation).permit(
       :postcode,
-      :description,
-      :bedrooms,
-      :bathrooms,
-      :garden,
-      :image_urls,
-      :council_tax,
-      :type,
-      :floor_area,
+      :comment,
+      :user_id,
+      :postcode_id
     )
   end
 end
