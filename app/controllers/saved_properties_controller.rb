@@ -1,6 +1,6 @@
 class SavedPropertiesController < ApplicationController
   def index
-    @saved_property = SavedProperty.all
+    @saved_properties = SavedProperty.where(user_id: current_user.id)
   end
 
   # Is new necessary with no form needed?
