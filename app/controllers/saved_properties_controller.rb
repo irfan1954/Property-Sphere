@@ -9,10 +9,6 @@ class SavedPropertiesController < ApplicationController
     @saved_property.save!
   end
 
-  def show
-    @saved_property = current_user.saved_properties.select { |property| property.id == params[:id] }
-  end
-
   def destroy
     @saved_property = SavedProperty.find(params[:id])
     @saved_property.destroy
