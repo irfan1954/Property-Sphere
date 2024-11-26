@@ -19,9 +19,15 @@ namespace :import do
       CSV.foreach("lib/files/#{filename}", headers: true).with_index do |row, index|
 
         if index % 1000 == 0
+<<<<<<< HEAD
           puts "Parsed #{index} postcodes in #{filename} "
           puts "Created #{Postcode.count} postcodes so far"
           puts "-"
+=======
+          puts "-"
+          puts "Parsed #{index} postcodes in #{filename} "
+          puts "Created #{Postcode.count} postcodes so far"
+>>>>>>> 96f0e6fc5f0653ae45e2341c0a1e3aef703fb0c5
         end
 
         next if row["doterm"].present?
@@ -40,6 +46,11 @@ namespace :import do
     end
     import_end_time = Time.now
     puts "=============================="
+<<<<<<< HEAD
     puts "COMPLETE! Imported #{Postcode.count} postcodes in #{(import_end_time - import_start_time)/60} minutes!"
+=======
+    puts "COMPLETE! Imported #{Postcode.count} postcodes in #{(import_start_time - import_end_time)/60} minutes!"
+
+>>>>>>> 96f0e6fc5f0653ae45e2341c0a1e3aef703fb0c5
   end
 end
