@@ -50,6 +50,8 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
+gem "faker"
+
 
 group :development, :test do
   gem "dotenv-rails"
@@ -73,3 +75,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+
+# rails generate scaffold properties street_address postcode description:text bedrooms:integer bathrooms:integer garden:boolean image_urls:text council_tax:string type floor_area:float postcode:reference
+
+# rails generate scaffold postcode postcode borough layer_code lat:float long:float crime:float average_rent:integer average_sale_price:integer
