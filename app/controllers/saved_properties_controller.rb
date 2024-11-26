@@ -3,16 +3,14 @@ class SavedPropertiesController < ApplicationController
     @saved_properties = SavedProperty.where(user_id: current_user.id)
   end
 
-  # Is new necessary with no form needed?
-  # def new
-  # @saved_property = SavedProperty.new
-  # end
-
   def create
-    # Property should be added to saved_properties list
     @saved_property = SavedProperty.new(saved_properties_param)
     @saved_property.user_id = current_user.id
     @saved_property.save!
+  end
+
+  def show
+    @saved_property = current_user.saved_properties.select { |property| property.id == params[:id] }
   end
 
   def destroy
@@ -21,6 +19,7 @@ class SavedPropertiesController < ApplicationController
   end
 
   private
+
   def saved_properties_param
     params.require(:saved_properties).permit(:property_id)
   end
