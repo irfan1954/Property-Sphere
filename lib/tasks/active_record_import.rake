@@ -1,4 +1,7 @@
 require 'csv'
+require 'google/apis/places_v1'
+require "json"
+require "open-uri"
 
 # import single csv file into the database, requires creation of table for import data "ONSData"
 namespace :import do
@@ -11,23 +14,17 @@ namespace :import do
     end_time = Time.now
     puts "Destroyed all postcodes in #{end_time - start_time} seconds"
 
-    csv_dir = "lib/files"
+    postcode_csv_dir = "lib/files/postcodes"
     import_start_time = Time.now
-    Dir.foreach(csv_dir) do |filename|
+    Dir.foreach(postcode_csv_dir) do |filename|
       next unless filename.end_with?(".csv")
       puts "----- Now parsing #{filename} -----"
       CSV.foreach("lib/files/#{filename}", headers: true).with_index do |row, index|
 
         if index % 1000 == 0
-<<<<<<< HEAD
-          puts "Parsed #{index} postcodes in #{filename} "
-          puts "Created #{Postcode.count} postcodes so far"
-          puts "-"
-=======
           puts "-"
           puts "Parsed #{index} postcodes in #{filename} "
           puts "Created #{Postcode.count} postcodes so far"
->>>>>>> 96f0e6fc5f0653ae45e2341c0a1e3aef703fb0c5
         end
 
         next if row["doterm"].present?
@@ -46,11 +43,8 @@ namespace :import do
     end
     import_end_time = Time.now
     puts "=============================="
-<<<<<<< HEAD
     puts "COMPLETE! Imported #{Postcode.count} postcodes in #{(import_end_time - import_start_time)/60} minutes!"
-=======
-    puts "COMPLETE! Imported #{Postcode.count} postcodes in #{(import_start_time - import_end_time)/60} minutes!"
-
->>>>>>> 96f0e6fc5f0653ae45e2341c0a1e3aef703fb0c5
+    puts "=============================="
   end
+
 end
