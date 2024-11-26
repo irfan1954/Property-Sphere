@@ -1,1 +1,15 @@
-<h1>welcome to Property Share</h1>
+<div class="container">
+  <h1>Welcome To Property Sphere</h1>
+
+  <div>
+    <% if @properties.empty? %>
+      <p>No property available</p>
+    <% else %>
+      <ul class="group-list">
+        <% @properties.each do |property| %>
+          <li class="list-item">property.street_address</li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

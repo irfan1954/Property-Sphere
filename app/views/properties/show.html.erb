@@ -1,1 +1,19 @@
-<h1>Property show page</h1>
+<div class="container">
+  <h1>Property View</h1>
+
+  <% if @property.empty? %>
+    <h1>Nothing to show yet</h1>
+  <% else %>
+    <div>
+      <h2 class="item"><%= @property.street_address %></h2>
+      <h3 class="item"><%= @property.description %></h3>
+      <h3 class="item"><%= @property.postcode %></h3>
+      <h3 class="item"><%= @property.bedrooms %></h3>
+      <h3 class="item"><%= @property.bathrooms %></h3>
+      <h3 class="item"><%= @property.garden %></h3>
+      <h3 class="item"><%= @property.floor_area %></h3>
+      <h3 class="item"><%= @property.type %></h3>
+      <h3 class="item"><%= @property.council_tax %></h3>
+    </div>
+  <% end %>
+</div>
