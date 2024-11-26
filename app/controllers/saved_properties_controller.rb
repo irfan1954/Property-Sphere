@@ -4,9 +4,9 @@ class SavedPropertiesController < ApplicationController
   end
 
   # Is new necessary with no form needed?
-        # def new
-        #   @saved_property = SavedProperty.new
-        # end
+  # def new
+  # @saved_property = SavedProperty.new
+  # end
 
   def create
     # Property should be added to saved_properties list
