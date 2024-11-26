@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :properties, only: %i[index show] do
-    resources :saved_properties, only: %i[index show destroy]
+    resources :saved_properties, only: %i[index destroy]
   end
 
   resources :postcodes, only: %i[index]
