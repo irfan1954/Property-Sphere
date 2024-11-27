@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home index show]
+  skip_before_action :authenticate_user!, only: %i[home index show map]
 
   before_action :set_property, only: %i[show]
 
@@ -9,6 +9,16 @@ class PropertiesController < ApplicationController
 
   def index
     @properties = Property.all.order(:created_at).reverse_order
+  end
+
+  def map
+    @properties = Property.all
+    @markers = @properties.geocoded.map do |property|
+      {
+        lat: property.latitude,
+        lng: property.longitude
+      }
+    end
   end
 
   private
