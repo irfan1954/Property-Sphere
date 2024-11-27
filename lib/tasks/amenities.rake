@@ -5,10 +5,12 @@ namespace :amenities do
     puts "Destorying Amenities..."
     Amenity.destroy_all
     puts "Amenities destroyed!"
-     puts "============================="
+    puts "============================="
+
     # list of types -> https://developers.google.com/maps/documentation/places/web-service/supported_types?_gl=1*1501w1b*_up*MQ..*_ga*MTM3MTAyNDEyOC4xNzMyNjQwNjU1*_ga_NRWSTWS78N*MTczMjY0MDY1NS4xLjEuMTczMjY0MDY1NS4wLjAuMA..#table2
     types_array = ["hospital","pharmacy","supermarket","primary_school","secondary_school"]
 
+    #Hammersmith
     london_lat = 51.499998
     london_long = -0.249999
     radius_meters = 15000
