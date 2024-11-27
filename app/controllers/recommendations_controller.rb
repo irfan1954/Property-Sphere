@@ -6,10 +6,10 @@ class RecommendationsController < ApplicationController
   def create
     @recommendation = Recommendation.new(recommendation_params)
     @recommendation.user_id = current_user.id
-    rec_postcode = @recommendation.postcode.split.strip.join.upcase
+    rec_postcode = @recommendation.location.postcode.split.strip.join.upcase
     # pcds transformation in database
-    data_postcode = Postcode.find(pcds: rec_postcode)
-    @recommendation.postcode_id = data_postcode.id
+    data_postcode = Location.find(pcds: rec_postcode)
+    @recommendation.location_id = data_postcode.id
     @recommendation.save!
   end
 
@@ -17,7 +17,6 @@ class RecommendationsController < ApplicationController
 
   def recommendation_params
     params.require(:recommendation).permit(
-      :postcode,
       :comment
     )
   end

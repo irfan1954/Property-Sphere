@@ -1,6 +1,6 @@
 class Recommendation < ApplicationRecord
   belongs_to :user
-  belongs_to :postcode
+  belongs_to :location
 
   # REGEX for user recommendation postcode to match database
 

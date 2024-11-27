@@ -68,8 +68,7 @@ CSV.foreach("lib/addresses.csv", headers: true) do |address|
   end
 
   address_hash = {
-    street_address: address["﻿Address"],
-    postcode_string: address["Postcode"],
+    address: address["﻿Address"],
     description: Faker::Lorem.paragraph,
     bedrooms: rand(1..5),
     bathrooms: rand(1..3),
@@ -78,7 +77,7 @@ CSV.foreach("lib/addresses.csv", headers: true) do |address|
     council_tax: ["A", "B", "C", "D", "E"].sample,
     property_type: types.sample,
     floor_area: rand(45.0...120.0),
-    postcode_id: Postcode.find_by(postcode: address["Postcode"].delete(" ")).id
+    location_id: Location.find_by(postcode: address["Postcode"].delete(" ")).id
   }
   Property.create!(address_hash)
 end

@@ -4,17 +4,17 @@ require "json"
 require "open-uri"
 
 # import single csv file into the database, requires creation of table for import data "ONSData"
-namespace :import do
-  desc "imports data from ONS csv into postgresql database"
-  task :batch_record => :environment do
+namespace :locations do
+  desc "imports locations from ONS data and populates the locations table"
+  task :generate => :environment do
 
     start_time = Time.now
     puts "Starting to destroy postcodes..."
-    Postcode.delete_all
+    Location.delete_all
     end_time = Time.now
     puts "Destroyed all postcodes in #{end_time - start_time} seconds"
 
-    postcode_csv_dir = "lib/files/postcodes"
+    postcode_csv_dir = "lib/files"
     import_start_time = Time.now
     Dir.foreach(postcode_csv_dir) do |filename|
       next unless filename.end_with?(".csv")
@@ -24,7 +24,7 @@ namespace :import do
         if index % 1000 == 0
           puts "-"
           puts "Parsed #{index} postcodes in #{filename} "
-          puts "Created #{Postcode.count} postcodes so far"
+          puts "Created #{Location.count} postcodes so far"
         end
 
         next if row["doterm"].present?
@@ -38,12 +38,12 @@ namespace :import do
             constituency: row["pcon"],
             afluence: row["imd"]
           }
-        Postcode.insert!(row_hash)
+        Location.insert!(row_hash)
       end
     end
     import_end_time = Time.now
     puts "=============================="
-    puts "COMPLETE! Imported #{Postcode.count} postcodes in #{(import_end_time - import_start_time)/60} minutes!"
+    puts "COMPLETE! Imported #{Location.count} postcodes in #{(import_end_time - import_start_time)/60} minutes!"
     puts "=============================="
   end
 

@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_27_131702) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_27_154637) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "amenities", force: :cascade do |t|
-    t.string "amenity_type"
+    t.string "category"
     t.string "name"
     t.float "lat"
     t.float "long"
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_131702) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "postcodes", force: :cascade do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "postcode"
     t.string "borough"
     t.string "layer_code"
@@ -40,8 +40,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_131702) do
   end
 
   create_table "properties", force: :cascade do |t|
-    t.text "street_address"
-    t.string "postcode_string"
+    t.text "address"
     t.text "description"
     t.integer "bedrooms"
     t.integer "bathrooms"
@@ -50,20 +49,19 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_131702) do
     t.string "council_tax"
     t.string "property_type"
     t.float "floor_area"
-    t.bigint "postcode_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["postcode_id"], name: "index_properties_on_postcode_id"
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_properties_on_location_id"
   end
 
   create_table "recommendations", force: :cascade do |t|
-    t.string "postcode"
     t.string "comment"
     t.bigint "user_id", null: false
-    t.bigint "postcode_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["postcode_id"], name: "index_recommendations_on_postcode_id"
+    t.bigint "location_id"
+    t.index ["location_id"], name: "index_recommendations_on_location_id"
     t.index ["user_id"], name: "index_recommendations_on_user_id"
   end
 
@@ -90,8 +88,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_131702) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "properties", "postcodes"
-  add_foreign_key "recommendations", "postcodes"
+  add_foreign_key "properties", "locations"
+  add_foreign_key "recommendations", "locations"
   add_foreign_key "recommendations", "users"
   add_foreign_key "saved_properties", "properties"
   add_foreign_key "saved_properties", "users"

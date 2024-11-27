@@ -1,5 +1,5 @@
 namespace :amenities do
-  desc "TODO"
+  desc "imports local amenities from Google Places API and populates the amenities table"
   task generate: :environment do
 
     puts "Destorying Amenities..."
@@ -8,7 +8,7 @@ namespace :amenities do
     puts "============================="
 
     # list of types -> https://developers.google.com/maps/documentation/places/web-service/supported_types?_gl=1*1501w1b*_up*MQ..*_ga*MTM3MTAyNDEyOC4xNzMyNjQwNjU1*_ga_NRWSTWS78N*MTczMjY0MDY1NS4xLjEuMTczMjY0MDY1NS4wLjAuMA..#table2
-    types_array = ["hospital","pharmacy","supermarket","primary_school","secondary_school"]
+    types_array = ["hospital","pharmacy","supermarket","primary_school","secondary_school","subway_station","train_station"]
 
     #Hammersmith
     london_lat = 51.499998
