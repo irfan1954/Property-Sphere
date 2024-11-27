@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     resources :saved_properties, only: %i[index destroy]
   end
 
-  resources :postcodes, only: %i[index]
+  resources :locations, only: %i[index]
 end

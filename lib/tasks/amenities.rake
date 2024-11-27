@@ -1,5 +1,5 @@
 namespace :amenities do
-  desc "TODO"
+  desc "imports local amenities from Google Places API and populates the amenities table"
   task generate: :environment do
 
     puts "Destorying Amenities..."

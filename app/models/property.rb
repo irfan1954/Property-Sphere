@@ -1,4 +1,4 @@
 class Property < ApplicationRecord
-  belongs_to :postcode
+  belongs_to :location
 
 end
