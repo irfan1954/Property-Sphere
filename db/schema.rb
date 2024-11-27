@@ -47,7 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_163213) do
     t.boolean "garden"
     t.text "image_urls", default: [], array: true
     t.string "council_tax"
-    t.string "property_types"
+    t.string "property_type"
     t.float "floor_area"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
