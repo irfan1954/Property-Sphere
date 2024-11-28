@@ -1,5 +1,7 @@
 <h1>This is where the map goes</h1>
 
+<%= link_to 'List view', properties_path %>
+
 <div style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
