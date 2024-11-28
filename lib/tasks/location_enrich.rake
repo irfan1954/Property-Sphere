@@ -87,7 +87,7 @@ namespace :locations do
       end
 
       if index % 10 == 0
-        puts "Enriched #{index} boroughs with crime and purchase price data "
+        puts "Enriched #{index} boroughs with rent price data "
       end
 
     end
