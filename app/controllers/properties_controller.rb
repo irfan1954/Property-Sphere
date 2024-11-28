@@ -16,7 +16,9 @@ class PropertiesController < ApplicationController
     @markers = @properties.geocoded.map do |property|
       {
         lat: property.latitude,
-        lng: property.longitude
+        lng: property.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { property: property }),
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
