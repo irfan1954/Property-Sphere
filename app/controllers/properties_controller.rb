@@ -18,7 +18,8 @@ class PropertiesController < ApplicationController
         lat: property.latitude,
         lng: property.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: { property: property }),
-        marker_html: render_to_string(partial: "marker")
+        marker_html: render_to_string(partial: "marker"),
+        property_path: property_path(property)
       }
     end
   end
