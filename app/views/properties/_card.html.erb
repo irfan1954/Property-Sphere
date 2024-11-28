@@ -7,7 +7,7 @@
             <img src="<%= property.image_urls.first %>" class="d-block w-100" alt="property image">
           <% end %>
         </div>
-        <%= property.image_urls.drop(1).each do |image| %>
+        <%= property.image_urls.drop(1).each_with_index do |image| %>
           <div class="carousel-item">
             <%= link_to property_path(property) do %>
             <img src="<%= image %>" class="d-block w-100" alt="property image">
@@ -15,17 +15,19 @@
           </div>
         <% end %>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+      <div data-controller="image-count" data-image-count-total-image-value=<%=property.image_urls.count.to_s %>>
+        <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-action="click->image-count#add" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        <% image_total = property.image_urls.count.to_s %>
+          <i class="fa-solid fa-camera" data-image-count-target="imageCount"></i>
+      </div>
     </div>
-
-    <i class="fa-solid fa-camera">1/14</i>
 
     <div class="icon">
       <i class="fa-regular fa-paper-plane"></i>
