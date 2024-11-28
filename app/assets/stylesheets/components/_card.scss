@@ -1,0 +1,215 @@
+.container {
+  width: 100%;
+  border-radius: 5px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.property-img {
+  width: 40vw;
+  position: relative;
+}
+
+.property-details-container {
+  width: 60vw;
+  background-color: white;
+  display: flex;
+}
+
+.icon {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+}
+
+.fa-camera {
+  font-size: 19px;
+  background-color: rgba(19, 18, 18, 0.7);
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.fa-heart {
+  font-size: 25px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.fa-paper-plane {
+  font-size: 25px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.property-details{
+  width: 60%;
+  padding-left: 12px;
+  position: relative;
+}
+
+.property-analytics {
+  width: 40%;
+  margin-left: 5px;
+}
+
+.fa-bell {
+  position: absolute;
+  right: -19px;
+  top: 10px;
+}
+
+.content {
+  margin-bottom: 0;
+}
+.street-address {
+  font-size: 20px;
+  font-weight: 700;
+  padding-top: 6px;
+}
+
+.hr {
+  border-top:2px solid rgb(172, 167, 167);
+}
+
+.property-specification {
+  margin-top: 3px;
+  width: 100%;
+  display: flex;
+}
+
+.hr-bottom {
+  margin-top: 7px;
+  border-top:2px solid rgb(172, 167, 167);
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  padding-top: 3px;
+  padding-left: 10px;
+}
+
+.vl {
+  border-left: 2px solid rgb(172, 167, 167);
+  height: 30px;
+  margin-left: 35px;
+}
+
+.vl-left {
+  border-left: 2px solid rgb(172, 167, 167);
+  height: 30px;
+  margin-left: 25px;
+}
+.amenities-icon {
+  margin-left: 5px;
+}
+.fa-bed {
+  font-size: 18px;
+  padding: 6px;
+  margin-left: 6px;
+  padding-right: 4px;
+}
+
+.fa-bath {
+  font-size: 18px;
+  padding-left: 8px;
+}
+
+.size {
+  font-size: 20px;
+  font-weight: 300;
+  padding-top: 3px;
+  padding-left: 20px;
+}
+
+.highlight {
+  font-size: 18px;
+}
+
+.highlight-button {
+  display: flex;
+}
+
+button {
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(198, 198, 198);
+  color: black;
+  padding-left: 27px;
+  padding-right: 28px;
+}
+
+.x {
+  margin-left: 25px;
+}
+
+.vl-border {
+  border-left: 2px solid rgb(172, 167, 167);
+  height: 80%;
+  margin-left: 35px;
+  margin-top: 32px;
+}
+
+.analytics-header {
+  display: flex;
+  margin-top: 3px;
+  margin-left: 30%;
+}
+
+.fa-chart-simple {
+  font-size: 18px;
+  padding: 6px;
+}
+
+span h3 {
+  font-size: 23px;
+  font-weight: 300;
+  padding-left: 4px;
+}
+
+.analytics-card {
+  height: 56px;
+  margin: 4px 8px 15px 8px;
+  padding: 18px 12px;
+  background-color: white;
+  border-radius: 7px;
+  display: flex;
+}
+
+.fa-location-dot {
+  color: black;
+}
+
+.location-text{
+  color: black;
+  margin-left: 8px;
+}
+
+.vl-border-analytics {
+  border-left: 2px solid #000;
+  height: 80%;
+  margin-left: 6px;
+  margin-top: 1px;
+}
+
+.analytics-text {
+  color: white;
+  background-color: #82ce10;
+  width: 120px;
+  height: 23px;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 15px;
+  margin-left: 15px;
+}
