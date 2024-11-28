@@ -1,22 +1,25 @@
 <div class="container">
   <div class="property-img">
-    <div id="carouselExample" class="carousel slide">
+    <div id="carouselExample<%= property.id %>" class="carousel slide">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://lid.zoocdn.com/u/1024/768/a475f2aef3efcdef0a22e871df8211cbf50f26fc.jpg:p" class="d-block w-100" alt="...">
+          <%= link_to property_path(property) do %>
+            <img src="<%= property.image_urls.first %>" class="d-block w-100" alt="property image">
+          <% end %>
         </div>
-        <div class="carousel-item">
-          <img src="https://lid.zoocdn.com/u/1024/768/a475f2aef3efcdef0a22e871df8211cbf50f26fc.jpg:p" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="https://lid.zoocdn.com/u/1024/768/a475f2aef3efcdef0a22e871df8211cbf50f26fc.jpg:p" class="d-block w-100" alt="...">
-        </div>
+        <%= property.image_urls.drop(1).each do |image| %>
+          <div class="carousel-item">
+            <%= link_to property_path(property) do %>
+            <img src="<%= image %>" class="d-block w-100" alt="property image">
+            <% end %>
+          </div>
+        <% end %>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -32,17 +35,19 @@
   <div class="property-details-container">
     <div class="property-details">
       <i class="fa-regular fa-bell"></i>
-      <h2 class="street-address">137 Brewer Street, London, WUP 2QT</h2>
-      <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro, nihil. Veniam tempora velit at incidunt, aut id assumenda rem necessitatibus atque, libero culpa, praesentium architecto eveniet eum ut sapiente corrupti!</p>
+      <%= link_to property_path(property) do %>
+        <h2 class="street-address"><%= property.address %></h2>
+      <% end %>
+      <p class="content"><%= property.description %></p>
       <hr class="hr">
       <div class="property-specification">
         <h2 class="price">£800,000</h2>
         <div class="vl"></div>
         <div class="amenities-icon">
           <span><i class="fa-solid fa-bed"></i></span>
-          <span>3</span>
+          <span><%= property.bedrooms %></span>
           <span><i class="fa-solid fa-bath"></i></span>
-          <span>2</span>
+          <span><%= property.bathrooms %></span>
         </div>
         <div class="vl-left"></div>
         <h2 class="size">£6,340 / sqm</h2>
