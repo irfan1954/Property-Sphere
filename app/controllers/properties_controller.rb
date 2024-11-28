@@ -23,6 +23,10 @@ class PropertiesController < ApplicationController
     end
   end
 
+  def show
+    @property
+  end
+
   private
 
   def set_property
