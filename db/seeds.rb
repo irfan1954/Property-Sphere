@@ -29,7 +29,7 @@ Property.destroy_all
 puts "Seeding properties DB"
 
 
-CSV.foreach("lib/addresses.csv", headers: true) do |address|
+CSV.foreach("lib/files/addresses.csv", headers: true) do |address|
   types = ["flat","house", "terraced house", "semi-detached house"]
 
   image_urls =
