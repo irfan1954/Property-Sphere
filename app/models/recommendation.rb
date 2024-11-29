@@ -4,7 +4,6 @@ class Recommendation < ApplicationRecord
 
   # REGEX for user recommendation postcode to match database
 
-  validates :postcode, presence: true
   validates :comment, presence: true, length: { minimum: 10 }
 
 end
