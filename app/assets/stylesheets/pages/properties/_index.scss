@@ -1,0 +1,136 @@
+.property-container {
+  margin: 7px;
+  width: 100%;
+  margin: 5px 35px;
+}
+
+.search {
+  width: 335px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-text {
+  width: 200px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 17px 0;
+  text-align: center;
+  border-radius: 23px;
+  color: black;
+  background-color: white;
+}
+
+.map {
+  width: 102px;
+  display: flex;
+  margin-top: 6px;
+  background-color: black;
+  color: white;
+  border-radius: 16px;
+  height: 44px;
+  padding-top: 9px;
+}
+
+.location {
+  background-color: black;
+  font-size: 29px;
+  margin-left: 4px;
+  color: white;
+  border-radius: 50%;
+  padding: 0 2px;
+}
+
+.main-content {
+  width: 95%;
+  display: flex;
+}
+
+.categories {
+  width: 32%;
+  height: 263px;
+  background-color: white;
+  border-radius: 15px;
+  margin: 5px 20px;
+}
+
+.card-section {
+  width: 68%;
+  height: 200px;
+  margin-left: 38px;
+  border-radius: 15px;
+}
+
+.category-title {
+  text-align: center;
+}
+
+.hr-properties {
+  border-top:2px solid rgb(172, 167, 167);
+  margin:3px 10px;
+}
+
+.instruction {
+  padding-left: 9px;
+  margin-top: 2px;
+  color: black;
+}
+
+.filter-cat-container {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 19px;
+
+}
+
+.min-price {
+  width: 100px;
+  display: flex;
+  border-radius: 10px;
+  position: relative;
+}
+
+.max-price {
+  width: 100px;
+  display: flex;
+  border-radius: 10px;
+  margin-left: 75px;
+  position: relative;
+}
+
+.price-input{
+  width: 150px;
+  margin-left: 11px;
+  border-radius: 10px;
+  border: 1px solid grey;
+  text-align: center;
+}
+
+.fa-sterling-sign {
+  position: absolute;
+  top: 4px;
+  left: 14px;
+  margin-left: 10px;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.vl-left-price {
+  position: absolute;
+  border-left: 2px solid #aca7a7;
+  height: 16px;
+  top: 6px;
+  right: -26px;
+  color: black;
+}
+
+.fa-caret-down {
+  position: absolute;
+  top: 6px;
+  right: -49px;
+}
