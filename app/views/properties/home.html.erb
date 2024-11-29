@@ -1,15 +1,25 @@
-<div class="container">
-  <h1>Welcome To Property Sphere</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.architecturaldigest.com/photos/6554f858527022b540b4b657/16:9/w_2560%2Cc_limit/GettyImages-1313325675.jpg);">
+  <div class="container">
+    <h1>Welcome To Property Sphere </h1>
+    <p>Your property search in one place</p>
+    <%= link_to "Begin your search", properties_path, class: "btn btn-flat"%>
+  </div>
+</div>
 
-  <div>
-    <% if @properties.empty? %>
-      <p>No property available</p>
-    <% else %>
-      <ul class="group-list">
-        <% @properties.each do |property| %>
-          <li class="list-item">property.street_address</li>
-        <% end %>
-      </ul>
+
+<div class="container">
+  <h4>Properties near you</h4>
+  <div class="d-flex justify-content-between">
+    <% @properties.take(4).each do |property| %>
+      <div class="card-property w-280 shadow">
+          <%= image_tag property.image_urls.first, style: 'width: 280px;' %>
+        <div>
+          <div class="text-wrap">
+            <p><%= property.address %></p>
+            <p id="index-desc">£<%= property.price %></p>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
