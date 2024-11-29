@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_27_163213) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_28_122821) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,8 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_27_163213) do
     t.float "lat"
     t.float "long"
     t.float "crime"
-    t.integer "average_rent"
-    t.integer "average_sale_price"
+    t.integer "rent_price"
+    t.integer "purchase_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "demographic"

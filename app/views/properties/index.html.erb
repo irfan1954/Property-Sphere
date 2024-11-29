@@ -2,5 +2,8 @@
 
 <%= link_to 'Map view', properties_map_path %>
 
-<%= render "card", properties: @properties %>
-
+<% @properties.each do |property| %>
+  <div class="mt-4">
+    <%= render "card", property: property %>
+  </div>
+<% end %>
