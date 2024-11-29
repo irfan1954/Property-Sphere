@@ -9,9 +9,10 @@
 
 .property-show-infos {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 2fr 1fr;
   padding-left: 16px;
   padding-right: 16px;
+  margin-bottom: 16px;
 }
 
 .property-show-info {
@@ -20,9 +21,14 @@
   flex-grow: 1;
 }
 
-
 .property-show-contact {
-  background-color: rgb(172, 167, 167);
+  background-color: rgba(179, 179, 179, 0.2);
+  margin: 8px;
+  padding: 16px;
+  border-radius: 8px;
+  form {
+    width: 250px;
+  }
 }
 
 .bottom-card {
@@ -40,17 +46,16 @@
 .analytics-dashboard {
   display: flex;
   width: 100%;
-}
-
-.analytics-title {
-  background-color: rgb(31, 31, 31);
-  color: whitesmoke;
-  text-align: center;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
-}
-.show-analytics-card {
-  border-radius: 8px;
-  padding: 8px;
-  font-size: 12px;
+  .analytics-title {
+    background-color: rgb(31, 31, 31);
+    color: whitesmoke;
+    text-align: center;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+  .show-analytics-card {
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 12px;
+  }
 }

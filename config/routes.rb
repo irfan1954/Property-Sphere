@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   resources :recommendations, only: [:new, :create]
 
   resources :locations, only: %i[index]
+
+  resources :contact_form, only: %i[new create]
 end
