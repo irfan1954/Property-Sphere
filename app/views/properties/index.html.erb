@@ -1,18 +1,21 @@
-<div class="property-container">
-  <div class="search">
-    <p class="search-text">Your search: CM1 4ES</p>
-    <div class="map">
-      <span>Map View</span>
-      <span><i class="fa-solid fa-location-dot location"></i></span>
+<div class="property-index-container">
+
+  <div class="search-display">
+    <p class="search-display-text">Your search: CM1 4ES</p>
+    <div class="location-marker-index">
+      <span><%= link_to 'Map view', properties_map_path %></span>
+      <span><i class="fa-solid fa-location-dot"></i></span>
     </div>
   </div>
-  <%= link_to 'Map view', properties_map_path %>
+
   <div class="main-content">
     <div class="categories">
+
       <div class="category-title">
         <span><i class="fa-solid fa-chart-simple"></i></span>
         <span>Your filters</span>
       </div>
+
       <hr class="hr-properties">
       <p class="instruction">Select filters...</p>
 
