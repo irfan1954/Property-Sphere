@@ -10,7 +10,11 @@ class RecommendationsController < ApplicationController
     # pcds transformation in database
     data_postcode = Location.find(pcds: rec_postcode)
     @recommendation.location_id = data_postcode.id
-    @recommendation.save!
+    if @recommendation.save!
+      redirect_to @recommendation, notice: 'Recommendation was successfully created.'
+    else
+      render :new
+    end
   end
 
   private
