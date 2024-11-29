@@ -24,7 +24,12 @@ class PropertiesController < ApplicationController
   end
 
   def show
-    @property
+    @marker =
+      {
+        lat: @property.latitude,
+        lng: @property.longitude,
+        marker_html: render_to_string(partial: "marker")
+      }
   end
 
   private

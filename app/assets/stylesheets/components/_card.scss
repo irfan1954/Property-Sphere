@@ -1,4 +1,4 @@
-.container {
+.property-index {
   width: 100%;
   border-radius: 5px;
   padding: 0;
@@ -68,6 +68,12 @@
 
 .content {
   margin-bottom: 0;
+  display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 6em;
 }
 .street-address {
   font-size: 20px;
@@ -76,7 +82,7 @@
 }
 
 .hr {
-  border-top:2px solid rgb(172, 167, 167);
+  border-top: 1px solid rgb(172, 167, 167);
 }
 
 .property-specification {
@@ -87,7 +93,7 @@
 
 .hr-bottom {
   margin-top: 7px;
-  border-top:2px solid rgb(172, 167, 167);
+  border-top: 1px solid rgb(172, 167, 167);
 }
 
 .price {
@@ -98,13 +104,13 @@
 }
 
 .vl {
-  border-left: 2px solid rgb(172, 167, 167);
+  border-left: 1px solid rgb(172, 167, 167);
   height: 30px;
   margin-left: 35px;
 }
 
 .vl-left {
-  border-left: 2px solid rgb(172, 167, 167);
+  border-left: 1px solid rgb(172, 167, 167);
   height: 30px;
   margin-left: 25px;
 }
@@ -130,18 +136,20 @@
   padding-left: 20px;
 }
 
-.highlight {
-  font-size: 18px;
-}
+// .highlight {
+//   font-size: 18px;
+// }
 
 .highlight-button {
   display: flex;
+  font-size: 8px;
+  border-radius: 25px;
 }
 
 button {
-  font-size: 18px;
+  font-size: 12px;
   border: none;
-  border-radius: 8px;
+  border-radius: 25px;
   background-color: rgb(198, 198, 198);
   color: black;
   padding-left: 27px;
@@ -153,7 +161,7 @@ button {
 }
 
 .vl-border {
-  border-left: 2px solid rgb(172, 167, 167);
+  border-left: 1px solid rgb(172, 167, 167);
   height: 80%;
   margin-left: 35px;
   margin-top: 32px;
@@ -195,7 +203,7 @@ span h3 {
 }
 
 .vl-border-analytics {
-  border-left: 2px solid #000;
+  border-left: 1px solid #000;
   height: 80%;
   margin-left: 6px;
   margin-top: 1px;

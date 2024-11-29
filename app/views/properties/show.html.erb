@@ -1,19 +1,212 @@
 <div class="container">
+
   <h1>Property View</h1>
 
   <%= link_to "Search results", properties_path %>
 
-  <div>
-    <h2 class="item"><%= @property.address %></h2>
-    <h3 class="item"><%= @property.description %></h3>
-    <h3 class="item"><%= @property.location.postcode %></h3>
-    <h3 class="item"><%= @property.bedrooms %></h3>
-    <h3 class="item"><%= @property.bathrooms %></h3>
-    <h3 class="item"><%= @property.garden %></h3>
-    <h3 class="item"><%= @property.floor_area %></h3>
-    <h3 class="item"><%= @property.property_type %></h3>
-    <h3 class="item"><%= @property.council_tax %></h3>
+  <div class="property-img">
+    <div id="carouselExample<%= @property.id %>" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="<%= @property.image_urls.first %>" class="d-block w-100" alt="property image">
+        </div>
+        <%= @property.image_urls.drop(1).each do |image| %>
+          <div class="carousel-item">
+            <img src="<%= image %>" class="d-block w-100" alt="property image">
+          </div>
+        <% end %>
+      </div>
+      <div data-controller="image-count" data-image-count-total-image-value=<%=@property.image_urls.count.to_s %>>
+        <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= @property.id %>" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-action="click->image-count#add" data-bs-target="#carouselExample<%= @property.id %>" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        <% image_total = @property.image_urls.count.to_s %>
+          <i class="fa-solid fa-camera" data-image-count-target="imageCount"></i>
+      </div>
+    </div>
   </div>
 
+  <div>
+    <h2 class="item"><%= @property.address %></h2>
+    <p>Guide Price</p>
+    <h4>£<%= @property.price %></h3>
+  </div>
 
+  <div class="property-show-infos">
+    <div class="property-show-info">
+      <div class="icon-infos">
+        <div>
+          <span>Property Type</span>
+          <div>
+            <span><i class="fa-solid fa-house"></i></span>
+            <span><%= @property.property_type %></span>
+          </div>
+        </div>
+
+        <div>
+          <span>Bedrooms</span>
+          <div>
+            <span><i class="fa-solid fa-bed"></i></span>
+            <span><%= @property.bedrooms %></span>
+          </div>
+        </div>
+
+        <div>
+          <span>Bathooms</span>
+         <div>
+            <span><i class="fa-solid fa-bath"></i></span>
+            <span><%= @property.bathrooms %></span>
+          </div>
+        </div>
+
+        <div>
+          <span>Floor Area</span>
+          <div>
+            <span><i class="fa-solid fa-border-all"></i></span>
+            <span><%= @property.floor_area.round(2) %> sqm</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="analytics-dashboard">
+        <div class="show-analytics-card shadow">
+          <div class="analytics-title">
+            <span><i class="fa-solid fa-map"></i></span>
+            <span>Map</span>
+          </div>
+          <div class="map">
+            <div style="width: 100%; height: 100%;"
+              data-controller="map"
+              data-map-markers-value="<%= @marker.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+          </div>
+        </div>
+
+        <div class="analytics">
+          <div class="analytics-title">
+            <span><i class="fa-solid fa-chart-simple"></i></span>
+            <span>Analytics Dashboard</span>
+          </div>
+          <div>
+            <div class="left-analytics">
+              <div class="show-analytics-card shadow">
+                <div class="analytics-title">
+                  <span><i class="fa-solid fa-money-bill-trend-up"></i></span>
+                  <span>Property</span>
+                </div>
+                <div class="visualisation">
+                  <div class="analytics-card shadow">
+                    <span class="location-text">Value per sqm</span>
+                    <div class="vl-border-analytics"></div>
+                    <h3 class="analytics-text">57%</h3>
+                  </div>
+
+                  <div class="analytics-card shadow">
+                    <span class="location-text">Value per score point</span>
+                    <div class="vl-border-analytics"></div>
+                    <h3 class="analytics-text">93%</h3>
+                  </div>
+                </div>
+              </div>
+
+              <div class="show-analytics-card shadow">
+                <div class="analytics-title">
+                  <span><i class="fa-solid fa-location-pin"></i></span>
+                  <span>Neighbourhood</span>
+                </div>
+                <div class="visualisation">
+                  <div class="analytics-card shadow">
+                    <span class="location-text">Crime</span>
+                    <div class="vl-border-analytics"></div>
+                    <h3 class="analytics-text">93%</h3>
+                  </div>
+                  <div class="analytics-card shadow">
+                    <span class="location-text">Schools</span>
+                    <div class="vl-border-analytics"></div>
+                    <h3 class="analytics-text">57%</h3>
+                  </div>
+
+                  <div class="analytics-card shadow">
+                    <span class="location-text">Green Space</span>
+                    <div class="vl-border-analytics"></div>
+                    <h3 class="analytics-text">81%</h3>
+                  </div>
+                </div>
+              </div>
+              <div class="show-analytics-card shadow">
+                <div class="analytics-title">
+                  <span><i class="fa-solid fa-location-crosshairs"></i></span>
+                  <span>Location</span>
+                </div>
+                <div class="visualisation">
+                  <div class="analytics-card shadow">
+                    <span><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="location-text">Amenities</span>
+                    <div class="vl-border-analytics"></div>
+                    <h3 class="analytics-text">42%</h3>
+                  </div>
+                  <div>
+                    <ul>
+                      <li>Your closest <strong>Supermarket</strong> is <strong>Sainsbury St Helen</strong></li>
+                      <li>Your closest <strong>Hospital</strong> is <strong>Guys Hospital</strong></li>
+                      <li>Your closest <strong>Pharmacy</strong> is <strong>Courts</strong></li>
+                      <li>Your closest <strong>Primary School</strong> is <strong>Ashley Primary</strong></li>
+                      <li>Your closest <strong>Seconday School</strong> is <strong>Latymer Upper</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="right-analytics">
+              <div class="show-analytics-card shadow">
+                <div class="analytics-title">
+                  <span><i class="fa-solid fa-chart-pie"></i></span>
+                  <span>Total Score</span>
+                </div>
+                <div class="analytics-card shadow">
+                  <span><i class="fa-solid fa-location-dot"></i></span>
+                  <span class="location-text">Rating</span>
+                  <div class="vl-border-analytics"></div>
+                  <h3 class="analytics-text">90%</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h4>Description</h4>
+        <p><%= @property.description %></p>
+      </div>
+
+      <div class="bottom-card">
+        <p class="title"><strong>Council Tax</strong></p>
+        <p><%= @property.council_tax %></p>
+      </div>
+
+      <div class="bottom-card">
+        <p class="title"><strong>Freehold</strong></p>
+        <p><%= @property.freehold %></p>
+      </div>
+
+      <div class="bottom-card">
+        <p class="title"><strong>Energy Performance</strong></p>
+        <p>B</p>
+      </div>
+
+    </div>
+
+    <div class="property-show-contact">
+      <%= render "contact_form"%>
+    </div>
+  </div>
 </div>
