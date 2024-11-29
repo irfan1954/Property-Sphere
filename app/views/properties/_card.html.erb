@@ -42,16 +42,16 @@
       <p class="content"><%= property.description %></p>
       <hr class="hr">
       <div class="property-specification">
-        <h2 class="price"><%= property.price %></h2>
+        <h2 class="price">£<%= property.price %></h2>
         <div class="vl"></div>
         <div class="amenities-icon">
-          <span><i class="fa-solid fa-bed"></i></span>
+          <span><i class="fa-solid fa-bed fa-xs"></i></span>
           <span><%= property.bedrooms %></span>
-          <span><i class="fa-solid fa-bath"></i></span>
+          <span><i class="fa-solid fa-bath fa-xs"></i></span>
           <span><%= property.bathrooms %></span>
         </div>
         <div class="vl-left"></div>
-        <h2 class="size">£6,340 / sqm</h2>
+        <h2 class="size">£<%= (property.price/property.floor_area).round %> / sqm</h2>
       </div>
       <hr class="hr-bottom">
       <div class="highlight">
@@ -75,25 +75,25 @@
       </div>
       <div class="analytics-card shadow">
         <span><i class="fa-solid fa-location-dot"></i></span>
-        <span class="location-text">Location</span>
+        <span class="location-text"><h2>Property</h2></span>
         <div class="vl-border-analytics"></div>
         <h3 class="analytics-text">93%</h3>
       </div>
       <div class="analytics-card shadow">
         <span><i class="fa-solid fa-location-dot"></i></span>
-        <span class="location-text">Value</span>
+        <span class="location-text"><h2>Neighbourhood</h2></span>
         <div class="vl-border-analytics"></div>
         <h3 class="analytics-text">57%</h3>
       </div>
       <div class="analytics-card shadow">
         <span><i class="fa-solid fa-location-dot"></i></span>
-        <span class="location-text">Amenities</span>
+        <span class="location-text"><h2>Location</h2></span>
         <div class="vl-border-analytics"></div>
         <h3 class="analytics-text">42%</h3>
       </div>
       <div class="analytics-card shadow">
         <span><i class="fa-solid fa-location-dot"></i></span>
-        <span class="location-text">Rating</span>
+        <span class="location-text">Overall</span>
         <div class="vl-border-analytics"></div>
         <h3 class="analytics-text">90%</h3>
       </div>

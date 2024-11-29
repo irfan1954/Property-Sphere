@@ -3,6 +3,12 @@
   border-radius: 5px;
   padding: 0;
   display: flex;
+  p {
+    font-size: 12px;
+  };
+  h2 {
+    font-size: 16px;
+  }
 }
 
 .property-img {
@@ -92,6 +98,9 @@
   margin-top: 3px;
   width: 100%;
   display: flex;
+  i {
+    font-size: 0.7rem
+  };
 }
 
 .hr-bottom {
@@ -100,8 +109,6 @@
 }
 
 .price {
-  font-size: 20px;
-  font-weight: 700;
   padding-top: 3px;
   padding-left: 10px;
 }
@@ -182,15 +189,15 @@ button {
 }
 
 span h3 {
-  font-size: 23px;
+  font-size: 16px;
   font-weight: 300;
   padding-left: 4px;
 }
 
 .analytics-card {
-  height: 56px;
+  height: 40px;
   margin: 4px 8px 15px 8px;
-  padding: 18px 12px;
+  padding: 12px 12px;
   background-color: white;
   border-radius: 7px;
   display: flex;
@@ -203,6 +210,9 @@ span h3 {
 .location-text{
   color: black;
   margin-left: 8px;
+  span {
+    font-size: 16px;
+  }
 }
 
 .vl-border-analytics {
