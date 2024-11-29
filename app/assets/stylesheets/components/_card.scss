@@ -3,20 +3,21 @@
   border-radius: 5px;
   padding: 0;
   display: flex;
-  flex-direction: row;
-  overflow: visible;
-  margin-inline: 10px;
 }
 
 .property-img {
-  width: 40vw;
+  width: 23vw;
   position: relative;
 }
 
 .property-details-container {
-  width: 60vw;
+  width: 50vw;
   background-color: white;
   display: flex;
+}
+
+.carousel {
+  position: relative;
 }
 
 .icon {

@@ -14,6 +14,10 @@
             <% end %>
           </div>
         <% end %>
+        <div class="icon">
+      <i class="fa-regular fa-paper-plane"></i>
+      <i class="fa-regular fa-heart"></i>
+    </div>
       </div>
       <div data-controller="image-count" data-image-count-total-image-value=<%=property.image_urls.count.to_s %>>
         <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="prev">
@@ -28,11 +32,6 @@
           <i class="fa-solid fa-camera" data-image-count-target="imageCount"></i>
       </div>
     </div>
-
-    <div class="icon">
-      <i class="fa-regular fa-paper-plane"></i>
-      <i class="fa-regular fa-heart"></i>
-    </div>
   </div>
   <div class="property-details-container">
     <div class="property-details">
@@ -43,7 +42,7 @@
       <p class="content"><%= property.description %></p>
       <hr class="hr">
       <div class="property-specification">
-        <h2 class="price">£800,000</h2>
+        <h2 class="price"><%= property.price %></h2>
         <div class="vl"></div>
         <div class="amenities-icon">
           <span><i class="fa-solid fa-bed"></i></span>
