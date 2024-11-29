@@ -1,0 +1,56 @@
+.icon-infos {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid rgb(172, 167, 167);
+  border-bottom: 1px solid rgb(172, 167, 167);
+  margin: 10px;
+}
+
+.property-show-infos {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.property-show-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+
+.property-show-contact {
+  background-color: rgb(172, 167, 167);
+}
+
+.bottom-card {
+  display: flex;
+  border: 1px solid rgb(172, 167, 167);
+  padding: 16px;
+  margin-left: px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  .title {
+    flex-grow: 1;
+  }
+}
+
+.analytics-dashboard {
+  display: flex;
+  width: 100%;
+}
+
+.analytics-title {
+  background-color: rgb(31, 31, 31);
+  color: whitesmoke;
+  text-align: center;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.show-analytics-card {
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+}
