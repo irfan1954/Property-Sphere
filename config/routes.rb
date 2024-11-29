@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     resources :saved_properties, only: %i[index destroy]
   end
 
+  resources :recommendations, only: [:new, :create]
+
   resources :locations, only: %i[index]
 end

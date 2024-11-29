@@ -38,6 +38,10 @@ export default class extends Controller {
         popup.setLngLat([marker.lng, marker.lat]);
       });
 
+      customMarker.addEventListener("click", () => {
+        window.location.href = marker.property_path;
+      });
+
       // // Hide popup on mouseleave
       customMarker.addEventListener("mouseleave", () => {
         popup.remove();
