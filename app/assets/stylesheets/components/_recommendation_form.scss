@@ -1,0 +1,26 @@
+#recommendation {
+      .form-fields {
+        display: grid;
+        grid-template-areas:
+                'postcode'
+                'comment'
+                'button';
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .postcode {
+        grid-area: postcode;
+
+      }
+
+      .comment {
+        grid-area: comment;
+
+      }
+
+      .btn-primary {
+        grid-area: button;
+
+      }
+}

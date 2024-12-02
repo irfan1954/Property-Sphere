@@ -1,7 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #4D7494;
-  height: 8vh;
+  background: $primary-blue;
+  height: 7vh;
 }
 
 .nav-item{
@@ -11,6 +11,7 @@
   a {
     text-decoration: none;
   }
+
 }
 
 .navbar-lewagon .navbar-collapse {
