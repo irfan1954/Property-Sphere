@@ -1,12 +1,17 @@
 class SavedPropertiesController < ApplicationController
   def index
-    @saved_properties = SavedProperty.where(user_id: current_user.id)
+    @bookmarks = SavedProperty.where(user_id: current_user.id)
   end
 
   def create
-    @saved_property = SavedProperty.new(saved_properties_param)
+    @saved_property = SavedProperty.new
     @saved_property.user_id = current_user.id
-    @saved_property.save!
+    @saved_property.property_id = params[:property_id]
+    if @saved_property.save!
+      flash[:notice] = 'Added to wishlist'
+    else
+      flash[:alert] = 'There was an error'
+    end
   end
 
   def destroy

@@ -1,1 +1,16 @@
 <h1>Saved Properties index page</h1>
+<% @bookmarks.each do |bookmark| %>
+<%= bookmark.property.address %>
+<% end %>
+
+<% @bookmarks.each do |bookmark| %>
+<%= bookmark.property.address %>
+<% end %>
+
+<div class="card-section">
+  <% @bookmarks.each do |bookmark| %>
+    <div class="mt-4">
+      <%= render "properties/card", property: bookmark.property %>
+    </div>
+  <% end %>
+</div>

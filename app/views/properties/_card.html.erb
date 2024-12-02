@@ -16,7 +16,9 @@
         <% end %>
         <div class="icon">
       <i class="fa-regular fa-paper-plane"></i>
-      <i class="fa-regular fa-heart"></i>
+      <%= button_to saved_properties_path, remote: true, method: :post, params: { property_id: property.id } do %>
+        <i class="fa-regular fa-heart" ></i>
+      <% end %>
     </div>
       </div>
       <div data-controller="image-count" data-image-count-total-image-value=<%=property.image_urls.count.to_s %>>
