@@ -39,10 +39,9 @@
       <%= link_to property_path(property) do %>
         <h2 class="street-address"><%= property.address %></h2>
       <% end %>
-      <p class="content"><%= property.description %></p>
       <hr class="hr">
       <div class="property-specification">
-        <h2 class="price">£<%= property.price %></h2>
+        <h2 class="price">£<%= number_with_delimiter(property.price, :delimiter => ',') %></h2>
         <div class="vl"></div>
         <div class="amenities-icon">
           <span><i class="fa-solid fa-bed fa-xs"></i></span>
@@ -51,7 +50,7 @@
           <span><%= property.bathrooms %></span>
         </div>
         <div class="vl-left"></div>
-        <h2 class="size">£<%= (property.price/property.floor_area).round %> / sqm</h2>
+        <h2 class="size">£<%= number_with_delimiter((property.price/property.floor_area).round, :delimiter => ',') %> / sqm</h2>
       </div>
       <hr class="hr-bottom">
       <div class="highlight">
