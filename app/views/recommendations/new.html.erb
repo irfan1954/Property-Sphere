@@ -1,4 +1,4 @@
-<%= form_with(model: @recommendation, local: true) do |form| %>
+<%= simple_form_for @recommendation do |form| %>
   <% if @recommendation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(recommendation.errors.count, "error") %> prohibited this recommendation from being saved:</h2>
@@ -10,17 +10,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :postcode %>
-    <%= form.text_field :postcode %>
-  </div>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
+  <section id="recommendation" class="text-center py-3">
+    <div class="container">
+      <h2 class="section-title"> Recommendation </h2>
+      <div class="border-bottom"></div>
+      <p class="lead"> Your Recommendation is very valuable for us...</p>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <form class="form-fields">
+        <%= form.association :location, collection: Location.all.pluck(:postcode, :id) %>
+
+        <%= form.input :comment %>
+
+
+        <div class="button btn-primary">
+          <%= form.submit %>
+        </div>
+      </form>
+    </div>
+  </section>
 <% end %>

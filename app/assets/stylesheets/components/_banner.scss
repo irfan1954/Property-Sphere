@@ -25,3 +25,15 @@
   padding: 16px;
   border-radius: 8px;
 }
+
+.btn-gradient {
+  color: white;
+  padding: 2px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  background: linear-gradient(#167FFB, #0F60C4);
+  transition: background 0.3s ease;
+  border: 1px solid #0F60C4;
+  width: 700px;
+  margin-left: 200px;
+}

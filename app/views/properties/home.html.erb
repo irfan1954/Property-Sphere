@@ -1,8 +1,9 @@
+
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.architecturaldigest.com/photos/6554f858527022b540b4b657/16:9/w_2560%2Cc_limit/GettyImages-1313325675.jpg);">
   <div class="container">
     <h1>Welcome To Property Sphere </h1>
     <p>Your property search in one place</p>
-    <%= link_to "Begin your search", properties_path, class: "btn btn-flat"%>
+    <%= link_to "Search for your dream area...", properties_path, class: "btn btn-gradient" %>
   </div>
 </div>
 
@@ -11,14 +12,44 @@
   <h4>Properties near you</h4>
   <div class="d-flex justify-content-between">
     <% @properties.take(4).each do |property| %>
-      <div class="card-property w-280 shadow">
-          <%= image_tag property.image_urls.first, style: 'width: 280px;' %>
+      <div class="card-property shadow">
+          <%= image_tag property.image_urls.first, style: 'width: 280px' %>
         <div>
           <div class="text-wrap">
             <p><%= property.address %></p>
             <p id="index-desc">£<%= property.price %></p>
           </div>
         </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="container">
+  <h4>Properties near you</h4>
+  <div class="d-flex justify-content-between">
+    <% @properties.take(3).each do |property| %>
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="https://lid.zoocdn.com/u/1024/768/c10d3f64366af901e0a047bf4bd89f45788a62be.jpg:p" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://lid.zoocdn.com/u/1024/768/e6d71cd019aeedaccf77030414f0858ad74330b4.jpg:p" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://lid.zoocdn.com/u/1024/768/8905ab08eaf780a0001fbe6cce3765a687154f58.jpg:p" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     <% end %>
   </div>
