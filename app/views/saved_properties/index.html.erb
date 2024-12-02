@@ -7,10 +7,9 @@
 <%= bookmark.property.address %>
 <% end %>
 
-<div class="card-section">
+
+<div class="bookmarks-index">
   <% @bookmarks.each do |bookmark| %>
-    <div class="mt-4">
-      <%= render "properties/card", property: bookmark.property %>
-    </div>
+      <%= render "bookmark_card", bookmark: bookmark %>
   <% end %>
 </div>
