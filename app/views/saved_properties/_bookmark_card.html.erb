@@ -1,24 +1,27 @@
-<div class="bookmark-card <%= bookmark.contacted == true ? 'contacted' : 'not-contacted' %>">
-  <div class="card-header">
+<div class="bookmark-card">
 
-    <div class="property-img">
+  <div class="status-bar <%= bookmark.contacted == true ? 'contacted' : 'not-contacted' %>">
+    <p class="status-text"> <%= bookmark.contacted? ? 'Contacted' : 'Not contacted' %> </p>
+  </div>
+
+    <div class="card-header">
       <div id="carouselExample<%= bookmark.property.id %>" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <%= link_to property_path(bookmark.property) do %>
-              <img src="<%= bookmark.property.image_urls.first %>" class="d-block w-100" alt="property image">
+              <img src="<%= bookmark.property.image_urls.first %>" class="property-image" alt="property image">
             <% end %>
           </div>
-          <%= bookmark.property.image_urls.drop(1).each do |image| %>
+          <% bookmark.property.image_urls.drop(1).each do |image| %>
             <div class="carousel-item">
               <%= link_to property_path(bookmark.property) do %>
-              <img src="<%= image %>" class="d-block w-100" alt="property image">
+                <img src="<%= image %>" class="property-image" alt="property image">
               <% end %>
-          </div>
+            </div>
           <% end %>
         </div>
 
-        <div data-controller="image-count" data-image-count-total-image-value=<%=bookmark.property.image_urls.count.to_s %>>
+        <div data-controller="image-count" data-image-count-total-image-value="<%= bookmark.property.image_urls.count.to_s %>">
           <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= bookmark.property.id %>" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -27,29 +30,26 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
-          <% image_total = bookmark.property.image_urls.count.to_s %>
-            <i class="fa-solid fa-camera" data-image-count-target="imageCount"></i>
+          <i class="fa-solid fa-camera" data-image-count-target="imageCount"></i>
+        </div>
       </div>
     </div>
 
-    <% if bookmark.contacted? %>
-      <span class="contact-status contacted">Contacted</span>
-    <% else %>
-      <span class="contact-status not-contacted">Not Contacted</span>
-    <% end %>
-  </div>
-
-  <div class="card-content">
-    <h2 class="price">£<%= bookmark.property.price %></h2>
-    <p class="property-details">
-      <%= bookmark.property.bedrooms %> beds · <%= bookmark.property.bathrooms %> baths
-    </p>
-    <p class="description">
-      <%= truncate(bookmark.property.description, length: 100) %>
-      <%= link_to 'Read more', property_path(bookmark.property) %>
-    </p>
-
-    <%= link_to "Contact", property_path(bookmark.property), class: "contact-button" %>
-    <%= link_to "Delete bookmark", saved_property_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this bookmark?" } %>
-  </div>
+    <div class="card-content">
+      <div class="main-info">
+        <p class="price">£<%= number_with_delimiter(bookmark.property.price, delimiter: ',') %></p>
+        <div>
+          <span><i class="fa-solid fa-bed fa-xs"></i></span>
+          <span><%= bookmark.property.bedrooms %></span>
+          <span><i class="fa-solid fa-bath fa-xs"></i></span>
+          <span><%= bookmark.property.bathrooms %></span>
+        </div>
+      </div>
+      <p class="description">
+        <%= truncate(bookmark.property.description, length: 100) %>
+        <%= link_to 'Read more', property_path(bookmark.property) %>
+      </p>
+      <%= link_to "Contact", property_path(bookmark.property), class: "contact-button" %>
+      <%= link_to "Delete bookmark", saved_property_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this bookmark?" }, class: "delete-button" %>
+    </div>
 </div>

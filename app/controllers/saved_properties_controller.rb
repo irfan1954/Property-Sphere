@@ -16,7 +16,7 @@ class SavedPropertiesController < ApplicationController
 
   def destroy
     @saved_property = SavedProperty.find(params[:id])
-    @saved_property.destroy
+    redirect_to saved_properties_path if @saved_property.destroy
   end
 
   private
