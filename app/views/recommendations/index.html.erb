@@ -1,0 +1,5 @@
+<% @recommendations.each do |recommendation|%>
+  <h5><%= recommendation.comment%></h5>
+  <h5><%= recommendation.location.postcode %></h5>
+  <%= link_to "Delete", recommendation_path(recommendation), data: { turbo_method: :delete, turbo_confirm: "Do you want to Delete this comment?"} %>
+<% end %>
