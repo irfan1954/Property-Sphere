@@ -1,0 +1,21 @@
+<%= link_to "Recommendation results", recommendation_path %>
+
+<div class="container">
+
+  <div class="user">
+    <h1 class="item"><%= @recommendation.user_id %></h1>
+    <p>Username</p>
+  </div>
+
+  <div class="postcode">
+    <h2 class="item"><%= @recommendation.location_id %></h2>
+    <p>Postcode</p>
+  </div>
+
+  <div class="comment ">
+    <h2 class="item"><%= @recommendation.comment %></h2>
+    <p>Comment</p>
+    <h4><%= @recommendation.comment %></h3>
+  </div>
+
+</div>
