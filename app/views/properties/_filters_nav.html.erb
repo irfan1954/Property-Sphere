@@ -4,61 +4,65 @@
     <span>Your filters</span>
   </div>
   <hr class="hr-properties">
-  <p class="instruction">Select filters...</p>
-  <div class="filter-cat-container">
-    <div class="min-price">
-      <input class="price-input" type="text" placeholder="Min"></span>
-      <i class="fa-solid fa-sterling-sign"></i>
-      <div class="vl-left-price"></div>
-      <i class="fa-solid fa-caret-down"></i>
-    </div>
-    <div class="max-price">
-      <input class="price-input" type="text" placeholder="Max"></span>
-      <i class="fa-solid fa-sterling-sign"></i>
-      <div class="vl-left-price"></div>
-      <i class="fa-solid fa-caret-down"></i>
-    </div>
+  <div class="filters">
+  <p class="instruction">Property filters</p>
+    <%= form_with(url: properties_path, method: :get, local: true, class: "filter-form") do |f|   %>
+      <div class="filter-columns">
+        <div class="filter-dropdown">
+          <i class="fa-solid fa-money-bill fa-sm"></i>
+          <%= f.select :min_price, ["Min", 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000], selected: params[:min_price] %>
+        </div>
+        <div class="filter-dropdown">
+          <i class="fa-solid fa-money-bill fa-sm"></i>
+          <%= f.select :max_price, ["Max", 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000], selected: params[:max_price]  %>
+        </div>
+      </div>
+      <div class="filter-columns">
+        <div class="filter-dropdown">
+          <i class="fa-solid fa-bed fa-sm"></i>
+          <%= f.select :min_bedrooms, ["Min",1,2,3,4,5,6,7,8], selected: params[:min_bedrooms]  %>
+        </div>
+        <div class="filter-dropdown">
+          <i class="fa-solid fa-bath fa-sm"></i>
+          <%= f.select :min_bathrooms, ["Min",1,2,3,4,5,6,7,8], selected: params[:min_bathrooms]   %>
+        </div>
+      </div>
+      <div class="filter-dropdown">
+        <i class="fa-solid fa-house fa-sm"></i>
+        <%= f.select :property_type, ["Type","flat","house", "terraced house", "semi-detached house"], selected: params[:property_type]  %>
+      </div>
+      <div class="filter-dropdown">
+        <i class="fa-solid fa-table-cells-large"></i>
+        <%= f.select :floor_area, ["Min sqm", 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140], selected: params[:floor_area]  %>
+      </div>
+      <%= f.submit "Apply filters"%>
+    <% end %>
   </div>
-  <div class="filter-cat-container">
-    <div class="min-price">
-      <input class="price-input" type="text" placeholder="Min"></span>
-      <i class="fa-solid fa-sterling-sign"></i>
-      <div class="vl-left-price"></div>
-      <i class="fa-solid fa-caret-down"></i>
-    </div>
-    <div class="max-price">
-      <input class="price-input" type="text" placeholder="Max"></span>
-      <i class="fa-solid fa-sterling-sign"></i>
-      <div class="vl-left-price"></div>
-      <i class="fa-solid fa-caret-down"></i>
-    </div>
-  </div>
-  <div class="filter-cat-container">
-    <div class="min-price">
-      <input class="price-input" type="text" placeholder="Min"></span>
-      <i class="fa-solid fa-sterling-sign"></i>
-      <div class="vl-left-price"></div>
-      <i class="fa-solid fa-caret-down"></i>
-    </div>
-    <div class="max-price">
-      <input class="price-input" type="text" placeholder="Max"></span>
-      <i class="fa-solid fa-sterling-sign"></i>
-      <div class="vl-left-price"></div>
-      <i class="fa-solid fa-caret-down"></i>
-    </div>
-  </div>
-  <div class="filter-cat-container">
-    <div class="min-price">
-      <input class="price-input" type="text" placeholder="Min"></span>
-      <i class="fa-solid fa-sterling-sign"></i>
-      <div class="vl-left-price"></div>
-      <i class="fa-solid fa-caret-down"></i>
-    </div>
-    <div class="max-price">
-      <input class="price-input" type="text" placeholder="Max"></span>
-      <i class="fa-solid fa-sterling-sign"></i>
-      <div class="vl-left-price"></div>
-      <i class="fa-solid fa-caret-down"></i>
-    </div>
+  <div class="priorities">
+  <p class="instruction">Area priorities</p>
+      <%= form_with(url: properties_path, method: :get, local: true) do |f|   %>
+        <div class="priorty-dropdown">
+          <%= f.label :crime_level %>
+          <%= f.select :crime_level, ["low", "medium", "high"], {include_blank: true} %>
+        </div>
+        <div class="priorty-dropdown">
+          <%= f.label :school_quality %>
+          <%= f.select :school_quality, ["low", "medium", "high"], {include_blank: true} %>
+        </div>
+        <div class="priorty-dropdown">
+          <%= f.label :property_prices %>
+          <%= f.select :property_prices, ["low", "medium", "high"], {include_blank: true} %>
+        </div>
+         <div class="priorty-dropdown">
+          <%= f.label :amentities %>
+          <%= f.select :amentities, ["low", "medium", "high"], {include_blank: true} %>
+        </div>
+        <div class="priorty-dropdown">
+          <%= f.label :transport %>
+          <%= f.select :transport, ["low", "medium", "high"], {include_blank: true} %>
+        </div>
+
+        <%= f.submit "Apply priorities"%>
+      <% end %>
   </div>
 </div>
