@@ -11,6 +11,7 @@
           data: { class: 'search-bar', controller: "tom-select", tom_select_options_value: {},
           }
         %>
+        <%= f.submit %>
         <button class="search-icon">
           <i class="fa fa-search"></i>
         </button>
@@ -25,7 +26,7 @@
   <div class="container">
     <h2 class="section-title text-center"> Properties </h2>
     <div class="border-bottom"></div>
-    <p class="lead text-center"> some of the most populer properties here...</p>
+    <p class="lead text-center"> some of the most popular properties here...</p>
     <div class="references" style='width: 88dvw;'>
       <div style="display: flex; overflow-x: scroll;">
         <% @properties.each do |property| %>
