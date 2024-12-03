@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home index show map search new]
+  skip_before_action :authenticate_user!, only: %i[home index show map search]
 
   before_action :set_property, only: %i[show]
 
@@ -89,21 +89,9 @@ class PropertiesController < ApplicationController
     @postcodes = fetch_postcodes
   end
 
-  def new
-    Property.new
-  end
-
-  def contact_agent
-    message = Booking.new(booking_params)
-  end
-
   private
 
   def set_property
     @property = Property.find(params[:id])
-  end
-
-  def form_params
-    params.require(:property).permit(:message)
   end
 end

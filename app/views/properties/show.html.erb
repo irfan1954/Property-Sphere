@@ -13,7 +13,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= form_with scope: :contact_form, url: contact_form_index_path, method: :post, local: true do |form| %>
+        <%= form_with scope: :contact_form, url:  property_saved_properties_path(@property), method: :post, local: true do |form| %>
           <div class="form-group ">
             <%= form.text_area :message, class: "form-control form-text-area" %>
           </div>

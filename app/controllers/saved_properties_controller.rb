@@ -6,9 +6,14 @@ class SavedPropertiesController < ApplicationController
   def create
     @saved_property = SavedProperty.new
     @saved_property.user_id = current_user.id
-    @saved_property.property_id = params[:property_id]
+    @saved_property.property_id = saved_properties_param[:property_id]
     if @saved_property.save!
       flash[:notice] = 'Added to wishlist'
+
+      AgentMailer.with(user: current_user).send_email(@saved_property, saved_properties_param[:message])
+
+      format.html { redirect_to saved_properties_path, notice: "Email was sent successfully" }
+
     else
       flash[:alert] = 'There was an error'
     end
@@ -22,6 +27,6 @@ class SavedPropertiesController < ApplicationController
   private
 
   def saved_properties_param
-    params.require(:saved_properties).permit(:property_id)
+    params.require(:saved_properties).permit(:property_id, :message, :comment)
   end
 end
