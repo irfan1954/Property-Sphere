@@ -19,6 +19,20 @@ class SavedPropertiesController < ApplicationController
     end
   end
 
+  def update
+    @saved_property = SavedProperty.find(params[:id])
+    if @saved_property.update(comment_param)
+      respond_to do |format|
+        format.turbo_stream # For Turbo updates
+        format.html { redirect_to bookmarks_path, notice: "Comment updated successfully." }
+      end
+    else
+      respond_to do |format|
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @saved_property = SavedProperty.find(params[:id])
     redirect_to saved_properties_path, notice: "Bookmark deleted." if @saved_property.destroy
@@ -27,6 +41,10 @@ class SavedPropertiesController < ApplicationController
   private
 
   def saved_properties_param
-    params.require(:saved_properties).permit(:property_id, :message, :comment)
+    params.require(:saved_property).permit(:property_id, :message, :comment)
+  end
+
+  def comment_param
+    params.require(:saved_property).permit(:comment)
   end
 end
