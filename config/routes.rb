@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get "properties/map" => "properties#map", as: 'properties_map'
 
   resources :properties, only: %i[index show] do
+    collection do
+      get :search
+    end
     resources :saved_properties, only: %i[index destroy]
   end
 
