@@ -1,30 +1,30 @@
 <%= link_to "Search results", properties_path %>
 <div class="container">
 
-  <div class="property-img">
-    <div id="carouselExample<%= @property.id %>" class="carousel slide">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="<%= @property.image_urls.first %>" class="d-block w-100" alt="property image">
+
+  <div id="carouselExample<%= @property.id %>" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="<%= @property.image_urls.first %>" class="d-block w-65" alt="property image">
+      </div>
+      <%= @property.image_urls.drop(1).each do |image| %>
+        <div class="carousel-item">
+          <img src="<%= image %>" class="d-block w-65" alt="property image">
         </div>
-        <%= @property.image_urls.drop(1).each do |image| %>
-          <div class="carousel-item">
-            <img src="<%= image %>" class="d-block w-200" alt="property image">
-          </div>
-        <% end %>
-      </div>
-      <div data-controller="image-count" data-image-count-total-image-value=<%=@property.image_urls.count.to_s %>>
-        <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= @property.id %>" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-action="click->image-count#add" data-bs-target="#carouselExample<%= @property.id %>" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+      <% end %>
+    </div>
+    <div data-controller="image-count" data-image-count-total-image-value=<%=@property.image_urls.count.to_s %>>
+      <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= @property.id %>" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-action="click->image-count#add" data-bs-target="#carouselExample<%= @property.id %>" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
   </div>
+
 
   <div>
     <h2 class="item"><%= @property.address %></h2>
@@ -136,7 +136,7 @@
                       <hr>
                       <div class="d-flex justify-content-between">
                         <p>Majority demographic</p>
-                        <%= @property.location.demographic %>
+                        <%= @demo[@property.location.demographic.to_s] %>
                       </div>
                     </div>
                   </div>
@@ -155,28 +155,32 @@
                       <hr>
                       <div class="d-flex justify-content-between">
                         <p>Supermarket </p>
-                        <%= @amenities.where(category: "supermarket").first.name%>
+                        <%= @closest_supmarket.name%>
+                        (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_supmarket.lat,@closest_supmarket.long])).round(2), "km") %>)
                       </div>
-
                       <p class="text-center lh-sm"><strong>Medical</strong></p>
                       <hr>
                       <div class="d-flex justify-content-between">
                         <p>Hospital</p>
-                        <%= @amenities.where(category: "hospital").first.name%>
+                        <%= @closest_hospital.name%>
+                        (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_hospital.lat,@closest_hospital.long])).round(2), "km") %>)
                       </div>
                       <div class="d-flex justify-content-between">
                         <p>Pharmacy</p>
-                        <%= @amenities.where(category: "pharmacy").first.name%>
+                        <%= @closest_pharmacy.name%>
+                        (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_pharmacy.lat,@closest_pharmacy.long])).round(2), "km") %>)
                       </div>
                       <p class="text-center lh-sm"><strong>Schools</strong></p>
                       <hr>
                       <div class="d-flex justify-content-between">
                         <p>Primary</p>
-                        <%= @amenities.where(category: "primary_school").first.name%>
+                        <%= @closest_primary.name%>
+                        (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_primary.lat,@closest_primary.long])).round(2), "km") %>)
                       </div>
                       <div class="d-flex justify-content-between">
-                        <p>Scondary</p>
-                        <%= @amenities.where(category: "secondary_school").first.name%>
+                        <p>Secondary</p>
+                        <%= @closest_secondary.name%>
+                        (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_secondary.lat,@closest_secondary.long])).round(2), "km") %>)
                       </div>
                     </div>
                   </div>

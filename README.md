@@ -6,6 +6,7 @@ Locations first as propertys require a location reference (dependent)
   2. rake locations:enrich - adds additional data
 Once locations generated and enriched
   3. rails db:seed - created properties
+  4. rake amenities:generate
 
 Locations
 - generated from Office of National Statistics "ONS Postcode Directory (February 2023) for the UK (V2)" (https://geoportal.statistics.gov.uk/datasets a2f8c9c5778a452bbf640d98c166657c/about)

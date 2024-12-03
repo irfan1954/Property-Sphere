@@ -3,6 +3,8 @@ class PropertiesController < ApplicationController
 
   before_action :set_property, only: %i[show]
 
+  require "csv"
+
   def home
     @postcodes = Location.all_postcodes
     @properties = Property.order("RANDOM()").take(10)
@@ -59,7 +61,7 @@ class PropertiesController < ApplicationController
         lat: property.latitude,
         lng: property.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: { property: property }),
-        marker_html: render_to_string(partial: "marker", icon: nil),
+        marker_html: render_to_string(partial: "marker", locals: { icon: nil }),
         property_path: property_path(property)
       }
     end
@@ -76,6 +78,18 @@ class PropertiesController < ApplicationController
         @markers = [{}]
     end
     @amenities = Amenity.geocoded.near([@property.latitude, @property.longitude], 10)
+
+    @closest_supmarket = @amenities.where(category: "supermarket").first
+    @closest_hospital = @amenities.where(category: "hospital").first
+    @closest_pharmacy = @amenities.where(category: "pharmacy").first
+    @closest_primary = @amenities.where(category: "primary_school").first
+    @closest_secondary = @amenities.where(category: "secondary_school").first
+
+    @demo = {}
+    CSV.foreach("lib/files/portrait_classifications_2011.csv", headers: true) do |row|
+      @demo[row["subgroup_code"].to_s] = row["subgroup"]
+    end
+
     @amenities.map do |amenity|
       @markers << { lat: amenity.lat,
         lng: amenity.long,
