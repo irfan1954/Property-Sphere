@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+#home-card {
+
+  .references {
+
+
+    .property-details {
+      list-style: none;
+      margin-top: .7rem;
+      display: grid;
+      align-items: center;
+    }
+
+    .property-img {
+      border-radius: 5px;
+      padding: .5rem;
+      margin: 8px;
+    }
+
+  }
+}

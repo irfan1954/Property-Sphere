@@ -8,19 +8,25 @@
 </div>
 
 
-<div class="container">
-  <h4>Properties near you</h4>
-  <div class="d-flex justify-content-between">
-    <% @properties.take(4).each do |property| %>
-      <div class="card-property shadow">
-          <%= image_tag property.image_urls.first, style: 'width: 280px' %>
-        <div>
-          <div class="text-wrap">
-            <p><%= property.address %></p>
-            <p id="index-desc">£<%= property.price %></p>
+<section id="home-card" class="py-2">
+  <div class="container">
+    <h2 class="section-title text-center"> Properties </h2>
+    <div class="border-bottom"></div>
+    <p class="lead text-center"> some of the most populer properties here...</p>
+    <div class="references" style='width: 88dvw;'>
+      <div style="display: flex; overflow-x: scroll;">
+        <% @properties.each do |property| %>
+          <div class="property-img card-property shadow">
+              <%= image_tag property.image_urls.sample, style: 'width: 280px' %>
+            <div style="display: grid;">
+              <div class="property-details text-wrap">
+                <p><%= property.address %></p>
+                <p id="index-desc">£<%= number_with_delimiter(property.price, delimiter: ',') %></p>
+              </div>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-</div>
+</section>
