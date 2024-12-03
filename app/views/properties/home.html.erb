@@ -3,10 +3,22 @@
   <div class="container">
     <h1>Welcome To Property Sphere </h1>
     <p>Your property search in one place</p>
+    <div class="search-container">
+      <%= form_with url: search_properties_path, method: :get do |f| %>
+        <%= f.select :postcode,
+          options_for_select(@postcodes),
+          { include_blank: "Search a Postcode" },
+          data: { class: 'search-bar', controller: "tom-select", tom_select_options_value: {},
+          }
+        %>
+        <button class="search-icon">
+          <i class="fa fa-search"></i>
+        </button>
+      <% end %>
+    </div>
     <%= link_to "Search for your dream area...", properties_path, class: "btn btn-gradient" %>
   </div>
 </div>
-
 
 <div class="container">
   <h4>Properties near you</h4>

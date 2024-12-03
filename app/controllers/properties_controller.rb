@@ -1,14 +1,17 @@
 class PropertiesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home index show map]
+  skip_before_action :authenticate_user!, only: %i[home index show map search]
 
   before_action :set_property, only: %i[show]
 
   def home
+    @postcodes = Location.all_postcodes
     @properties = Property.order("RANDOM()").take(10)
   end
 
   def index
-    @properties = Property.all
+    @postcodes = Location.all_postcodes
+    @properties = Property.all.order(:created_at).reverse_order
+
     if params[:min_price].present? && params[:min_price] != "Min"
       @properties = Property.where("price > ?", params[:min_price])
     end
@@ -27,6 +30,26 @@ class PropertiesController < ApplicationController
     if params[:floor_area].present? && params[:floor_area] != "Min sqm"
       @properties = Property.where("floor_area > ?", params[:floor_area])
     end
+
+    @data = { "properties" => @properties }
+  end
+
+  def search
+    postcode = Location.find_by(raw_postcode: params[:postcode])
+
+    nearby_location_ids = Location.geocoded.near([postcode.lat, postcode.long], 5.0).map { |loc| loc.id}
+
+    @properties = Property.where(location_id: nearby_location_ids)
+
+    # recommendations_location_ids = Recommendation.order("RANDOM()").take(10).map { |recommendation| recommendation.location_id}
+
+    # @recommended_properties = Property.where(location_id: recommendations_location_ids)
+
+    @recommended_properties = Property.order("RANDOM()").take(10)
+
+    @data = { "properties" => @properties, "recommended_properties" => @recommended_properties }
+
+    render :index
   end
 
   def map
@@ -49,6 +72,10 @@ class PropertiesController < ApplicationController
         lng: @property.longitude,
         marker_html: render_to_string(partial: "marker")
       }
+  end
+
+  def postcodes
+    @postcodes = fetch_postcodes
   end
 
   private
