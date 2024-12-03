@@ -14,12 +14,16 @@
             <% end %>
           </div>
         <% end %>
+
         <div class="icon">
-          <i class="fa-regular fa-paper-plane"></i>
-          <%= button_to saved_properties_path, remote: true, method: :post, params: { property_id: property.id } do %>
-            <i class="fa-regular fa-heart" ></i>
-          <% end %>
+          <div class="d-flex">
+            <i class="fa-regular fa-paper-plane"></i>
+            <%= button_to saved_properties_path, class:"button-none", remote: true, method: :post, params: { property_id: property.id } do %>
+              <i class="fa-regular fa-heart" ></i>
+            <% end %>
+          </div>
         </div>
+
       </div>
       <div data-controller="image-count" data-image-count-total-image-value=<%=property.image_urls.count.to_s %>>
         <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="prev">

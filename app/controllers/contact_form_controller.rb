@@ -10,10 +10,10 @@ class ContactFormController < ApplicationController
     # Perform any necessary actions with the form data
     flash[:success] = "Your message has been sent successfully."
     redirect_to property_path(@property)
-
   end
 
   private
+
   def set_property
     @property = Property.find(params[:id])
   end

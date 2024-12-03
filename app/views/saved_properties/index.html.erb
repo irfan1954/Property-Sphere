@@ -1,7 +1,14 @@
-<h1>Saved Properties index page</h1>
 
-<div class="bookmarks-index-grid">
-  <% @bookmarks.each do |bookmark| %>
-    <%= render "bookmark_card", bookmark: bookmark %>
-  <% end %>
+<div class="property-index-container">
+
+  <div class="main-content">
+   <%= render "properties/filters_nav" %>
+    <div class="card-section">
+      <div class="bookmarks-index-grid">
+        <% @bookmarks.each do |bookmark| %>
+          <%= render "bookmark_card", bookmark: bookmark %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

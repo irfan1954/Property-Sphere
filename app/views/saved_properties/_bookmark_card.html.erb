@@ -4,6 +4,12 @@
     <p class="status-text"> <%= bookmark.contacted? ? 'Contacted' : 'Not contacted' %> </p>
   </div>
 
+  <div class="delete-icon">
+    <%= link_to saved_property_path(bookmark.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this from your bookmarks?" }, class:"button-none"  do %>
+      <i class="fa-regular fa-trash-can" style="color: #ff0000;"></i>
+    <% end %>
+  </div>
+
     <div class="card-header">
       <div id="carouselExample<%= bookmark.property.id %>" class="carousel slide">
         <div class="carousel-inner">
@@ -36,6 +42,10 @@
     </div>
 
     <div class="card-content">
+      <%= link_to property_path(bookmark.property) do %>
+        <h2 class="bookmark-address"><%= bookmark.property.address %></h2>
+      <% end %>
+      <hr>
       <div class="main-info">
         <p class="price">£<%= number_with_delimiter(bookmark.property.price, delimiter: ',') %></p>
         <div>
@@ -45,11 +55,13 @@
           <span><%= bookmark.property.bathrooms %></span>
         </div>
       </div>
+      <hr>
       <p class="description">
         <%= truncate(bookmark.property.description, length: 100) %>
         <%= link_to 'Read more', property_path(bookmark.property) %>
       </p>
+
       <%= link_to "Contact", property_path(bookmark.property), class: "contact-button" %>
-      <%= link_to "Delete bookmark", saved_property_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this bookmark?" }, class: "delete-button" %>
     </div>
+
 </div>
