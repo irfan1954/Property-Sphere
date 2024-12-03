@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   get "properties/map" => "properties#map", as: 'properties_map'
 
-  resources :properties, only: %i[index show] do
+  resources :properties, only: %i[index show new] do
+    post :contact, on: :member
     collection do
       get :search
     end

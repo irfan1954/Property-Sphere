@@ -1,5 +1,11 @@
 class ContactFormController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[new]
+
   before_action :set_property, only: %i[create]
+
+  def new
+    Property.new
+  end
 
   def create
     @name = params[:contact_form][:name]
