@@ -11,16 +11,17 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   get "properties/map" => "properties#map", as: 'properties_map'
-
-  resources :saved_properties, only: %i[index destroy create update]
-
-  resources :recommendations, only: %i[new index create show destroy]
-
   resources :properties, only: %i[index show] do
     collection do
       get :search
     end
+    post :contact, on: :member
+    resources :saved_properties, only: %i[create destroy]
   end
+
+  resources :saved_properties, only: %i[index destroy create update]
+
+  resources :recommendations, only: %i[new index create show destroy]
 
   resources :locations, only: %i[index]
 

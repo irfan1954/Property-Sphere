@@ -1,6 +1,36 @@
 <%= link_to "Search results", properties_path %>
-<div class="container">
 
+<button type="button" class="btn btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Contact Agent
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Agent</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with scope: :contact_form, url:  property_saved_properties_path(@property), method: :post, local: true do |form| %>
+          <div class="form-group ">
+            <%= form.text_area :message, class: "form-control form-text-area" %>
+          </div>
+          <%= form.submit "Submit", class: "btn btn-primary btn-contact-form" %>
+
+          <% flash.each do |key, value| %>
+            <div class="alert alert-<%= key %>">
+              <%= value %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
   <div class="property-img">
     <div id="carouselExample<%= @property.id %>" class="carousel slide">
       <div class="carousel-inner">
@@ -12,7 +42,9 @@
             <img src="<%= image %>" class="d-block w-200" alt="property image">
           </div>
         <% end %>
+
       </div>
+
       <div data-controller="image-count" data-image-count-total-image-value=<%=@property.image_urls.count.to_s %>>
         <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= @property.id %>" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
