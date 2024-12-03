@@ -19,3 +19,46 @@
 
   }
 }
+/* Styling the search container */
+.search-container {
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  padding: 5px 10px;
+  background-color: #f9f9f9;
+  margin: 0 auto;
+}
+
+/* Styling the search input */
+.search-bar {
+  height: 17px;
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 25px;
+  background: transparent;
+}
+
+/* Styling the search button */
+.search-icon {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Optional: Hover effect for the button */
+.search-icon:hover {
+  color: #007bff; /* Change to a primary color */
+}
+
+/* Ensure proper alignment */
+.search-container input::placeholder {
+  color: #aaa;
+}
