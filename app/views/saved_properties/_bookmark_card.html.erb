@@ -1,0 +1,67 @@
+<div class="bookmark-card">
+
+  <div class="status-bar <%= bookmark.contacted == true ? 'contacted' : 'not-contacted' %>">
+    <p class="status-text"> <%= bookmark.contacted? ? 'Contacted' : 'Not contacted' %> </p>
+  </div>
+
+  <div class="delete-icon">
+    <%= link_to saved_property_path(bookmark.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this from your bookmarks?" }, class:"button-none"  do %>
+      <i class="fa-regular fa-trash-can" style="color: #ff0000;"></i>
+    <% end %>
+  </div>
+
+    <div class="card-header">
+      <div id="carouselExample<%= bookmark.property.id %>" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <%= link_to property_path(bookmark.property) do %>
+              <img src="<%= bookmark.property.image_urls.first %>" class="property-image" alt="property image">
+            <% end %>
+          </div>
+          <% bookmark.property.image_urls.drop(1).each do |image| %>
+            <div class="carousel-item">
+              <%= link_to property_path(bookmark.property) do %>
+                <img src="<%= image %>" class="property-image" alt="property image">
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <div data-controller="image-count" data-image-count-total-image-value="<%= bookmark.property.image_urls.count.to_s %>">
+          <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= bookmark.property.id %>" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-action="click->image-count#add" data-bs-target="#carouselExample<%= bookmark.property.id %>" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+          <i class="fa-solid fa-camera" data-image-count-target="imageCount"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-content">
+      <%= link_to property_path(bookmark.property) do %>
+        <h2 class="bookmark-address"><%= bookmark.property.address %></h2>
+      <% end %>
+      <hr>
+      <div class="main-info">
+        <p class="price">£<%= number_with_delimiter(bookmark.property.price, delimiter: ',') %></p>
+        <div>
+          <span><i class="fa-solid fa-bed fa-xs"></i></span>
+          <span><%= bookmark.property.bedrooms %></span>
+          <span><i class="fa-solid fa-bath fa-xs"></i></span>
+          <span><%= bookmark.property.bathrooms %></span>
+        </div>
+      </div>
+      <hr>
+      <p class="description">
+        <%= truncate(bookmark.property.description, length: 100) %>
+        <%= link_to 'Read more', property_path(bookmark.property) %>
+      </p>
+
+      <%= link_to "Contact", property_path(bookmark.property), class: "contact-button" %>
+    </div>
+
+</div>
