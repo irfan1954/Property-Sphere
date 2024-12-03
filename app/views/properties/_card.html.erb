@@ -43,7 +43,7 @@
     <div class="property-details">
       <i class="fa-regular fa-bell"></i>
       <%= link_to property_path(property) do %>
-        <h2 class="street-address"><%= property.address %></h2>
+        <h2 class="street-address"><%= property.address %>, <%= property.location.raw_postcode %></h2>
       <% end %>
       <p class="content"> <%= property.description %> </p>
       <hr class="hr">

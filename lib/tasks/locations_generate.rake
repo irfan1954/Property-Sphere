@@ -31,6 +31,7 @@ namespace :locations do
 
         next if row["doterm"].present?
         row_hash = {
+            raw_postcode: row["pcds"],
             postcode: row["pcds"].delete(" "),
             lat: row["lat"].to_f,
             long: row["long"].to_f,

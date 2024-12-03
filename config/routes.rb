@@ -12,11 +12,15 @@ Rails.application.routes.draw do
 
   get "properties/map" => "properties#map", as: 'properties_map'
 
-  resources :properties, only: %i[index show]
-
   resources :saved_properties, only: %i[index destroy create]
 
   resources :recommendations, only: %i[new index create show destroy]
+
+  resources :properties, only: %i[index show] do
+    collection do
+      get :search
+    end
+  end
 
   resources :locations, only: %i[index]
 
