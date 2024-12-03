@@ -59,19 +59,30 @@ class PropertiesController < ApplicationController
         lat: property.latitude,
         lng: property.longitude,
         info_window_html: render_to_string(partial: "info_window", locals: { property: property }),
-        marker_html: render_to_string(partial: "marker"),
+        marker_html: render_to_string(partial: "marker", icon: nil),
         property_path: property_path(property)
       }
     end
   end
 
   def show
-    @marker =
-      {
-        lat: @property.latitude,
-        lng: @property.longitude,
-        marker_html: render_to_string(partial: "marker")
+    if @property.geocoded?
+      @markers = [{
+          lat: @property.latitude,
+          lng: @property.longitude,
+          marker_html: render_to_string(partial: "marker", locals: { icon: nil })
+        }]
+    else
+        @markers = [{}]
+    end
+    @amenities = Amenity.geocoded.near([@property.latitude, @property.longitude], 10)
+    @amenities.map do |amenity|
+      @markers << { lat: amenity.lat,
+        lng: amenity.long,
+        marker_html: render_to_string(partial: "marker", locals: { icon: amenity.icon }),
+        info_window_html: render_to_string(partial: "amenity_info_window", locals: { amenity: amenity })
       }
+    end
   end
 
   def postcodes
