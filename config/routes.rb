@@ -14,13 +14,15 @@ Rails.application.routes.draw do
 
   resources :properties, only: %i[index show new] do
     post :contact, on: :member
+  resources :saved_properties, only: %i[index destroy create]
+
+  resources :recommendations, only: %i[new index create show destroy]
+
+  resources :properties, only: %i[index show] do
     collection do
       get :search
     end
-    resources :saved_properties, only: %i[index destroy]
   end
-
-  resources :recommendations, only: %i[new index create show destroy ]
 
   resources :locations, only: %i[index]
 

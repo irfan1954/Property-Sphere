@@ -1,1 +1,5 @@
-<%= image_tag "home_icon.png", height: 20, width: 20, alt: "Logo" %>
+<% if icon.present? %>
+  <%= icon %>
+<% else %>
+  <%= image_tag "home_icon.png", height: 20, width: 20, alt: "Logo" %>
+<% end %>

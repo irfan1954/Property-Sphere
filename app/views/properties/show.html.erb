@@ -39,7 +39,7 @@
         </div>
         <%= @property.image_urls.drop(1).each do |image| %>
           <div class="carousel-item">
-            <img src="<%= image %>" class="d-block w-100" alt="property image">
+            <img src="<%= image %>" class="d-block w-200" alt="property image">
           </div>
         <% end %>
 
@@ -54,8 +54,6 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-        <% image_total = @property.image_urls.count.to_s %>
-          <i class="fa-solid fa-camera" data-image-count-target="imageCount"></i>
       </div>
     </div>
   </div>
@@ -104,15 +102,15 @@
 
 
       <div class="analytics-dashboard">
-        <div class="show-analytics-card shadow">
+        <div class="show-analytics-card">
           <div class="analytics-title">
             <span><i class="fa-solid fa-map"></i></span>
             <span>Map</span>
           </div>
           <div class="map">
-            <div style="width: 100%; height: 100%;"
+            <div style="width: 100%; height: 425px;"
               data-controller="map"
-              data-map-markers-value="<%= @marker.to_json %>"
+              data-map-markers-value="<%= @markers.to_json %>"
               data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
             </div>
           </div>
@@ -125,82 +123,106 @@
           </div>
           <div>
             <div class="left-analytics d-flex">
-              <div class="show-analytics-card shadow">
+              <div class="show-analytics-card">
                 <div class="analytics-title">
                   <span><i class="fa-solid fa-money-bill-trend-up"></i></span>
                   <span>Property</span>
                 </div>
-                <div class="visualisation">
-                  <div class="analytics-card shadow">
-                    <span class="location-text">Value per sqm</span>
-                    <div class="vl-border-analytics"></div>
-                    <h3 class="analytics-text">57%</h3>
+                <div class="show-analytics-card-content">
+                  <p class="text-center lh-sm"><strong>Value</strong></p>
+                  <hr>
+                  <div class="d-flex justify-content-between">
+                    <p>Sqm value</p>
+                    <p>£<%= number_with_delimiter((@property.price/@property.floor_area)*1000, :delimiter => ',').to_i %> per sqm</p>
                   </div>
-
-                  <div class="analytics-card shadow">
-                    <span class="location-text">Value per score point</span>
-                    <div class="vl-border-analytics"></div>
-                    <h3 class="analytics-text">93%</h3>
+                  <div class="d-flex justify-content-between">
+                    <p>Area average rent value</p>
+                    <p>£<%= number_with_delimiter((@property.location.rent_price/12), :delimiter => ',') %> per month</p>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <p>Area average purchase value</p>
+                    <p>£<%= number_with_delimiter((@property.location.purchase_price), :delimiter => ',') %></p>
                   </div>
                 </div>
               </div>
 
-              <div class="show-analytics-card shadow">
+              <div class="show-analytics-card">
                 <div class="analytics-title">
                   <span><i class="fa-solid fa-location-pin"></i></span>
                   <span>Neighbourhood</span>
                 </div>
-                <div class="visualisation">
-                  <div class="analytics-card shadow">
-                    <span class="location-text">Crime</span>
-                    <div class="vl-border-analytics"></div>
-                    <h3 class="analytics-text">93%</h3>
-                  </div>
-                  <div class="analytics-card shadow">
-                    <span class="location-text">Schools</span>
-                    <div class="vl-border-analytics"></div>
-                    <h3 class="analytics-text">57%</h3>
-                  </div>
-
-                  <div class="analytics-card shadow">
-                    <span class="location-text">Green Space</span>
-                    <div class="vl-border-analytics"></div>
-                    <h3 class="analytics-text">81%</h3>
+                <div class="show-analytics-card-content">
+                  <div class="visualisation">
+                    <div  class="dashboard-text">
+                      <p class="text-center lh-sm"><strong>Safety</strong></p>
+                      <hr>
+                      <div class="d-flex justify-content-between">
+                        <% if @property.location.crime < 1000%>
+                          <p>Low crime</p>
+                        <% else %>
+                          <p>Medium crime</p>
+                        <% end %>
+                          <p><%= @property.location.crime.to_i %> total crimes in 2023</p>
+                      </div>
+                      <p class="text-center lh-sm"><strong>People</strong></p>
+                      <hr>
+                      <div class="d-flex justify-content-between">
+                        <p>Majority demographic</p>
+                        <%= @property.location.demographic %>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="show-analytics-card shadow">
+              <div class="show-analytics-card">
                 <div class="analytics-title">
                   <span><i class="fa-solid fa-location-crosshairs"></i></span>
                   <span>Location</span>
                 </div>
-                <div class="visualisation">
-                  <div class="analytics-card shadow">
-                    <span><i class="fa-solid fa-location-dot"></i></span>
-                    <span class="location-text">Amenities</span>
-                    <div class="vl-border-analytics"></div>
-                    <h3 class="analytics-text">42%</h3>
-                  </div>
-                  <div>
-                    <ul>
-                      <li>Your closest <strong>Supermarket</strong> is <strong>Sainsbury St Helen</strong></li>
-                      <li>Your closest <strong>Hospital</strong> is <strong>Guys Hospital</strong></li>
-                      <li>Your closest <strong>Pharmacy</strong> is <strong>Courts</strong></li>
-                      <li>Your closest <strong>Primary School</strong> is <strong>Ashley Primary</strong></li>
-                      <li>Your closest <strong>Seconday School</strong> is <strong>Latymer Upper</strong></li>
-                    </ul>
+                <div class="show-analytics-card-content">
+                  <div class="visualisation">
+
+                    <div class="dashboard-text">
+                      <p class="text-center lh-sm"><strong>Supermarket</strong></p>
+                      <hr>
+                      <div class="d-flex justify-content-between">
+                        <p>Supermarket </p>
+                        <%= @amenities.where(category: "supermarket").first.name%>
+                      </div>
+
+                      <p class="text-center lh-sm"><strong>Medical</strong></p>
+                      <hr>
+                      <div class="d-flex justify-content-between">
+                        <p>Hospital</p>
+                        <%= @amenities.where(category: "hospital").first.name%>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <p>Pharmacy</p>
+                        <%= @amenities.where(category: "pharmacy").first.name%>
+                      </div>
+                      <p class="text-center lh-sm"><strong>Schools</strong></p>
+                      <hr>
+                      <div class="d-flex justify-content-between">
+                        <p>Primary</p>
+                        <%= @amenities.where(category: "primary_school").first.name%>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <p>Scondary</p>
+                        <%= @amenities.where(category: "secondary_school").first.name%>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
             <div class="right-analytics">
-              <div class="show-analytics-card shadow">
+              <div class="show-analytics-card">
                 <div class="analytics-title">
                   <span><i class="fa-solid fa-chart-pie"></i></span>
                   <span>Total Score</span>
                 </div>
-                <div class="analytics-card shadow">
+                <div class="analytics-card">
                   <span><i class="fa-solid fa-location-dot"></i></span>
                   <span class="location-text">Rating</span>
                   <div class="vl-border-analytics"></div>
@@ -232,10 +254,6 @@
         <p>B</p>
       </div>
 
-    </div>
-
-    <div class="property-show-contact">
-      <%= render "contact_form"%>
     </div>
   </div>
 </div>
