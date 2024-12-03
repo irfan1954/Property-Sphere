@@ -1,7 +1,17 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #4D7494;
+  background: $primary-blue;
   height: 7vh;
+}
+
+.nav-item{
+  color: white;
+  display: flex;
+  align-items: center;
+  a {
+    text-decoration: none;
+  }
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -17,9 +27,17 @@
 }
 
 .nav-project-links {
-  text-decoration: underline;
   color: white;
-  width: 284px
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  h4 {
+    line-height: 18px;
+    margin: 0px;
+  }
+  i {
+    text-align: right;
+  }
 }
 
 .navbar-brand {
@@ -31,13 +49,6 @@
   background-color: white;
   padding: 10px;
   border-radius: 50% !important;
-}
-
-.fa-envelope {
-  font-size: 18px;
-  background-color: white;
-  padding: 10px;
-  border-radius: 50%;
 }
 
 .search-bar {

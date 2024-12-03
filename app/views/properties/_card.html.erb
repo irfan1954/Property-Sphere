@@ -39,10 +39,10 @@
       <%= link_to property_path(property) do %>
         <h2 class="street-address"><%= property.address %>, <%= property.location.raw_postcode %></h2>
       <% end %>
-      <p class="content"><%= property.description %></p>
+      <p class="content"> <%= property.description %> </p>
       <hr class="hr">
       <div class="property-specification">
-        <h2 class="price">£<%= property.price %></h2>
+        <h2 class="price">£<%= number_with_delimiter(property.price, :delimiter => ',') %></h2>
         <div class="vl"></div>
         <div class="amenities-icon">
           <span><i class="fa-solid fa-bed fa-xs"></i></span>
@@ -51,56 +51,47 @@
           <span><%= property.bathrooms %></span>
         </div>
         <div class="vl-left"></div>
-        <h2 class="size">£<%= (property.price/property.floor_area).round %> / sqm</h2>
+        <h2 class="size">£<%= number_with_delimiter((property.price/property.floor_area).round, :delimiter => ',') %> / sqm</h2>
       </div>
-      <hr class="hr-bottom">
+    </div>
+    <hr class="hr-bottom">
+    <div class="property-analytics">
       <div class="highlight">
         <span><i class="fa-regular fa-star"></i></span>
         <span>Highlights</span>
       </div>
-      <div class="highlight-button my-2">
-        <button>  Good School  </button>
-        <button class="x">Excellent p/sqm</button>
-      </div>
-      <div class="highlight-button">
-        <button>Low Crime</button>
-        <button class="x">20 minutes commute</button>
-      </div>
-    </div>
-     <div class="vl-border"></div>
-    <div class="property-analytics">
-      <div class="analytics-header">
-        <span><i class="fa-solid fa-chart-simple"></i></span>
-        <span><h3>Analytics</h3></span>
-      </div>
-      <div class="analytics-card shadow">
-        <span><i class="fa-solid fa-location-dot"></i></span>
-        <span class="location-text"><h2>Property</h2></span>
-        <div class="vl-border-analytics"></div>
-        <h3 class="analytics-text">93%</h3>
-      </div>
-      <div class="analytics-card shadow">
-        <span><i class="fa-solid fa-location-dot"></i></span>
-        <span class="location-text"><h2>Neighbourhood</h2></span>
-        <div class="vl-border-analytics"></div>
-        <h3 class="analytics-text">57%</h3>
-      </div>
-      <div class="analytics-card shadow">
-        <span><i class="fa-solid fa-location-dot"></i></span>
-        <span class="location-text"><h2>Location</h2></span>
-        <div class="vl-border-analytics"></div>
-        <h3 class="analytics-text">42%</h3>
-      </div>
-      <div class="analytics-card shadow">
-        <span><i class="fa-solid fa-location-dot"></i></span>
-        <span class="location-text">Overall</span>
-        <div class="vl-border-analytics"></div>
-        <h3 class="analytics-text">90%</h3>
-      </div>
-      <div class="helpful d-flex justify-content-between">
-        <i class="fa-regular fa-thumbs-up"></i>
-        <p> was this helpful?</p>
-        <i class="fa-regular fa-thumbs-down"></i>
+      <div class="highlights-grid">
+        <% if property.location.crime < 350 %>
+          <div class="highlight-button">
+            <button> Low Crime </button>
+          </div>
+        <% end %>
+        <% if property.location.rent_price > 2000 %>
+          <div class="highlight-button">
+            <button> Rental price </button>
+          </div>
+        <% end %>
+        <%# <% if Amenity.where(type: :hospital).geodcode.near(property.location.lat, property.location.long) %>
+          <%# <div class="highlight-button"> %>
+            <%# <button>Hospital nearby</button> %>
+          <%# </div> %>
+        <%# <% end %>
+        <%# <% if Amenity.where(type: :subway_station).geodcoded.near(property.location.lat, property.location.long) %>
+          <%# <div class="highlight-button"> %>
+            <%# <button>Underground connected</button> %>
+          <%# </div> %>
+        <%# <% end %>
+        <%# <% if Amenity.where(type: :subway_station).geodcoded.near(property.location.lat, property.location.long) %>
+          <%# <div class="highlight-button"> %>
+            <%# <button>Train transport</button> %>
+          <%# </div> %>
+        <%# <% end %>
+        <% if (property.price/property.floor_area) < 8000 %>
+          <div class="highlight-button">
+            <button>Value per sqm </button>
+          </div>
+        <% end %>
+
       </div>
     </div>
   </div>

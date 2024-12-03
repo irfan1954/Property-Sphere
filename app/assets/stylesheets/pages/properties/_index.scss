@@ -37,7 +37,7 @@
 
     .categories {
       width: 25%;
-      height: 263px;
+      height: 80vh;
       background-color: white;
       border-radius: 15px;
 
@@ -56,12 +56,11 @@
         color: black;
       }
 
-      .filter-cat-container {
-        width: 200px;
+      .filter-columns {
+        width: 300px;
         display: flex;
         justify-content: space-between;
         margin-bottom: 19px;
-
       }
 
       .min-price {
@@ -86,33 +85,6 @@
         border: 1px solid grey;
         text-align: center;
       }
-
-      .fa-sterling-sign {
-        position: absolute;
-        top: 4px;
-        left: 14px;
-        margin-left: 10px;
-        border: 1px solid black;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        text-align: center;
-      }
-
-      .vl-left-price {
-        position: absolute;
-        border-left: 2px solid #aca7a7;
-        height: 16px;
-        top: 6px;
-        right: -26px;
-        color: black;
-      }
-
-      .fa-caret-down {
-        position: absolute;
-        top: 6px;
-        right: -49px;
-      }
     }
 
     .card-section {
@@ -121,7 +93,5 @@
       margin-left: 38px;
       border-radius: 15px;
     }
-
   }
-
 }

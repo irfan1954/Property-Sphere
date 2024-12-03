@@ -93,35 +93,29 @@ puts "========= password: 123456 ========="
 
 
 
+
+
 # image urls
 
-# inside property
-
-
-
-
-# property image
-# https://lid.zoocdn.com/u/1024/768/ce3cb4c0253c3d3a1311bd35335dfc89aa33153c.jpg:p
-# https://lid.zoocdn.com/u/1024/768/bb0b34cfd8be5b4ef3e1a63e994c80a7b76d649e.jpg:p
-# https://lid.zoocdn.com/u/1024/768/755a0dd84852c7e1efbb3e0f54e134e94c4b15e5.jpg:p
-# https://lid.zoocdn.com/u/1024/768/08c838ff29577a8865340b5542fd16074e4d8463.jpg:p
-# https://lid.zoocdn.com/u/1024/768/5e1f67579afbd7822e49f1af9adfd268bf48de33.jpg:p
-# https://lid.zoocdn.com/u/1024/768/42760a7d69f22ea802e95810f9517f2dafc18bd2.jpg:p
-# https://lid.zoocdn.com/u/1024/768/7e7e361e9a35c73c772d0d82882f0ac7eea3bf0b.jpg:p
-# https://lid.zoocdn.com/u/1024/768/dac7482a2aad96bc4e389c13e40afd71260a18e4.jpg:p
-# https://lid.zoocdn.com/u/1024/768/7f8667edcf008badc136a3d50525e78421eebf2c.jpg:p
-# https://lid.zoocdn.com/u/1024/768/e6d71cd019aeedaccf77030414f0858ad74330b4.jpg:p
-# https://lid.zoocdn.com/u/1024/768/b052ab5e346aa1a987175f1188a513c5b960fe05.jpg:p
-# https://lid.zoocdn.com/u/1024/768/96055036fb9d75812a7cf4b78adc73b69305bc33.jpg:p
-# https://lid.zoocdn.com/u/1024/768/97cc85e8656ab7599526dd37c29a1a546e51d718.jpg:p
-# https://lid.zoocdn.com/u/1024/768/c10d3f64366af901e0a047bf4bd89f45788a62be.jpg:p
-# https://lid.zoocdn.com/u/1024/768/5402632f1bcbb339c99e4572fb3b3ef5532c132d.jpg:p
-# https://lid.zoocdn.com/u/1024/768/d5cf4a27a829ce57eda32655a3c0a49fe96279e2.jpg:p
-# https://lid.zoocdn.com/u/1024/768/a11ea73300e15d37670fd4f348bd3fdd0968441a.jpg:p
-# https://lid.zoocdn.com/u/1024/768/057343023dcd00f9ced00d32a73fc31e9b3d8068.jpg:p
-# https://lid.zoocdn.com/u/1024/768/a35b56531efe46ac931a731f6705010bf8970243.jpg:p
-# https://lid.zoocdn.com/u/1024/768/eba141c689dc11082ee9cb495a8ac48b021146f3.jpg:p
-# https://lid.zoocdn.com/u/1024/768/5a98b4aab8eb6b6f3043f18db5c49fac5e8a503c.jpg:p
-# https://lid.zoocdn.com/u/1024/768/8905ab08eaf780a0001fbe6cce3765a687154f58.jpg:p
-# https://lid.zoocdn.com/u/1024/768/4f8bbfd9f0b259dcd9104f2ed46250e67e94d378.jpg:p
-# https://lid.zoocdn.com/u/1024/768/5e7317fa9de1bd470297a1111648e4166247ca42.jpg:p
+# "https://lid.zoocdn.com/u/1024/768/ce3cb4c0253c3d3a1311bd35335dfc89aa33153c.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/bb0b34cfd8be5b4ef3e1a63e994c80a7b76d649e.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/755a0dd84852c7e1efbb3e0f54e134e94c4b15e5.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/5e1f67579afbd7822e49f1af9adfd268bf48de33.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/42760a7d69f22ea802e95810f9517f2dafc18bd2.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/7e7e361e9a35c73c772d0d82882f0ac7eea3bf0b.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/dac7482a2aad96bc4e389c13e40afd71260a18e4.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/7f8667edcf008badc136a3d50525e78421eebf2c.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/e6d71cd019aeedaccf77030414f0858ad74330b4.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/b052ab5e346aa1a987175f1188a513c5b960fe05.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/96055036fb9d75812a7cf4b78adc73b69305bc33.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/97cc85e8656ab7599526dd37c29a1a546e51d718.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/c10d3f64366af901e0a047bf4bd89f45788a62be.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/5402632f1bcbb339c99e4572fb3b3ef5532c132d.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/a11ea73300e15d37670fd4f348bd3fdd0968441a.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/057343023dcd00f9ced00d32a73fc31e9b3d8068.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/a35b56531efe46ac931a731f6705010bf8970243.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/eba141c689dc11082ee9cb495a8ac48b021146f3.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/5a98b4aab8eb6b6f3043f18db5c49fac5e8a503c.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/8905ab08eaf780a0001fbe6cce3765a687154f58.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/4f8bbfd9f0b259dcd9104f2ed46250e67e94d378.jpg:p"
+# "https://lid.zoocdn.com/u/1024/768/5e7317fa9de1bd470297a1111648e4166247ca42.jpg:p"

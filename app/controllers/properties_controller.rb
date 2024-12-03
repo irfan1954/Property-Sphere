@@ -11,12 +11,33 @@ class PropertiesController < ApplicationController
   def index
     @postcodes = Location.all_postcodes
     @properties = Property.all.order(:created_at).reverse_order
+
+    if params[:min_price].present? && params[:min_price] != "Min"
+      @properties = Property.where("price > ?", params[:min_price])
+    end
+    if params[:max_price].present? && params[:max_price] != "Max"
+      @properties = Property.where("price < ?", params[:max_price])
+    end
+    if params[:min_bedrooms].present? && params[:min_bedrooms] != "Min"
+      @properties = Property.where("bedrooms > ?", params[:min_bedrooms])
+    end
+    if params[:min_bathrooms].present? && params[:min_bathrooms] != "Min"
+      @properties = Property.where("bathrooms > ?", params[:min_bathrooms])
+    end
+    if params[:property_type].present? && params[:property_type] != "Type"
+      @properties = Property.where("property_type = ?", params[:property_type])
+    end
+    if params[:floor_area].present? && params[:floor_area] != "Min sqm"
+      @properties = Property.where("floor_area > ?", params[:floor_area])
+    end
+
+    @data = { "properties" => @properties }
   end
 
   def search
     postcode = Location.find_by(raw_postcode: params[:postcode])
 
-    nearby_location_ids = Location.geocoded.near([postcode.lat, postcode.long], 0.5).map { |loc| loc.id}
+    nearby_location_ids = Location.geocoded.near([postcode.lat, postcode.long], 5.0).map { |loc| loc.id}
 
     @properties = Property.where(location_id: nearby_location_ids)
 
