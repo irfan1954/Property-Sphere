@@ -10,17 +10,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :postcode %>
-    <%= form.text_field :postcode %>
-  </div>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
+  <section id="recommendation" class="text-center py-3">
+    <div class="container">
+      <h2 class="section-title"> Recommendation </h2>
+      <div class="border-bottom"></div>
+      <p class="lead"> Your Recommendation is very valuable for us...</p>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+      <form class="form-fields">
+        <div class="field">
+          <%= form.label :postcode %>
+          <%= form.text_field :postcode %>
+        </div>
+
+        <div class="field">
+          <%= form.label :comment %>
+          <%= form.text_area :comment %>
+        </div>
+
+        <div class="button btn-primary">
+          <%= form.submit %>
+        </div>
+      </form>
+    </div>
+  </section>
 <% end %>

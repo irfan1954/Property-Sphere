@@ -1,84 +1,14 @@
 <div class="property-index-container">
 
   <div class="search-display">
-    <p class="search-display-text">Your search: CM1 4ES</p>
+    <p class="search-display-text">Your search: <%= params[:search]%></p>
     <div class="location-marker-index">
       <span><%= link_to 'Map view', properties_map_path %></span>
       <span><i class="fa-solid fa-location-dot"></i></span>
     </div>
   </div>
-
   <div class="main-content">
-    <div class="categories">
-
-      <div class="category-title">
-        <span><i class="fa-solid fa-chart-simple"></i></span>
-        <span>Your filters</span>
-      </div>
-
-      <hr class="hr-properties">
-      <p class="instruction">Select filters...</p>
-
-      <div class="filter-cat-container">
-        <div class="min-price">
-          <input class="price-input" type="text" placeholder="Min"></span>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <div class="vl-left-price"></div>
-          <i class="fa-solid fa-caret-down"></i>
-        </div>
-        <div class="max-price">
-          <input class="price-input" type="text" placeholder="Max"></span>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <div class="vl-left-price"></div>
-          <i class="fa-solid fa-caret-down"></i>
-        </div>
-      </div>
-      <div class="filter-cat-container">
-        <div class="min-price">
-          <input class="price-input" type="text" placeholder="Min"></span>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <div class="vl-left-price"></div>
-          <i class="fa-solid fa-caret-down"></i>
-        </div>
-
-        <div class="max-price">
-          <input class="price-input" type="text" placeholder="Max"></span>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <div class="vl-left-price"></div>
-          <i class="fa-solid fa-caret-down"></i>
-        </div>
-      </div>
-      <div class="filter-cat-container">
-        <div class="min-price">
-          <input class="price-input" type="text" placeholder="Min"></span>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <div class="vl-left-price"></div>
-          <i class="fa-solid fa-caret-down"></i>
-        </div>
-
-        <div class="max-price">
-          <input class="price-input" type="text" placeholder="Max"></span>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <div class="vl-left-price"></div>
-          <i class="fa-solid fa-caret-down"></i>
-        </div>
-      </div>
-      <div class="filter-cat-container">
-        <div class="min-price">
-          <input class="price-input" type="text" placeholder="Min"></span>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <div class="vl-left-price"></div>
-          <i class="fa-solid fa-caret-down"></i>
-        </div>
-
-        <div class="max-price">
-          <input class="price-input" type="text" placeholder="Max"></span>
-          <i class="fa-solid fa-sterling-sign"></i>
-          <div class="vl-left-price"></div>
-          <i class="fa-solid fa-caret-down"></i>
-        </div>
-      </div>
-    </div>
+    <%= render "filters_nav" %>
     <div class="card-section">
       <% @properties.each do |property| %>
         <div class="mt-4">
