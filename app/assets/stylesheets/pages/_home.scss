@@ -42,6 +42,11 @@
   background: transparent;
 }
 
+.search {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+}
+
 /* Styling the search button */
 .search-icon {
   background: none;
