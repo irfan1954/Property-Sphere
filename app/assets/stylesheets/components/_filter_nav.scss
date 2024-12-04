@@ -21,7 +21,10 @@
       margin-left: 8px;
     };
     i {
-      width: 30%;
+      align-self: center;
+      margin-left: 4px;
+      margin-right: 4px;
+      font-size: 16px;
     };
     .filter-columns {
       display: flex;
@@ -38,10 +41,12 @@ input {
   border: none;
   font-size: 12px;
   padding: 8px;
+  width: 150px;
   border-radius: 16px;
   background-color: $primary-blue;
   color: white;
   display: flex;
+  align-self: center;
 }
 
 

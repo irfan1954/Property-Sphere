@@ -79,7 +79,7 @@ CSV.foreach("lib/files/addresses.csv", headers: true) do |address|
     property_type: types.sample,
     floor_area: rand(45.0...120.0),
     location_id: Location.find_by(postcode: address["Postcode"].delete(" ")).id,
-    price: rand(400000..1450000),
+    price: rand(400000..999000),
     freehold: ["freehold", "leasehold"].sample
   }
   Property.create!(address_hash)

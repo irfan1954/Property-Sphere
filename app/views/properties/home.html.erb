@@ -5,19 +5,17 @@
     <p>Your property search in one place</p>
     <div class="search-container">
       <%= form_with url: search_properties_path, method: :get do |f| %>
+      <div class="search">
         <%= f.select :postcode,
           options_for_select(@postcodes),
           { include_blank: "Search a Postcode" },
           data: { class: 'search-bar', controller: "tom-select", tom_select_options_value: {},
           }
         %>
-        <%= f.submit %>
-        <button class="search-icon">
-          <i class="fa fa-search"></i>
-        </button>
+        <%= f.submit :Search%>
+      </div>
       <% end %>
     </div>
-    <%= link_to "Search for your dream area...", properties_path, class: "btn btn-gradient" %>
   </div>
 </div>
 
