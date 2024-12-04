@@ -131,6 +131,12 @@
                 <div class="show-analytics-card-content">
                   <p class="text-center lh-sm"><strong>Value</strong></p>
                   <hr>
+                  <div>
+                    <%= column_chart({"Property" => @house_sqm_price, "Nearby Properties" => @avg_sqm_price})%>
+                    <p> £/sqm value: <%= (@house_sqm_value > 0) ? "#{@house_sqm_value}% more expensive than average" : "#{@house_sqm_value.abs}% cheaper than average" %></p>
+
+
+                  </div>
                   <div class="d-flex justify-content-between">
                     <p>Sqm value</p>
                     <p>£<%= number_with_delimiter((@property.price/@property.floor_area)*1000, :delimiter => ',').to_i %> per sqm</p>

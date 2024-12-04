@@ -84,14 +84,19 @@ class PropertiesController < ApplicationController
       }
     end
     @house_sqm_price = house_sqm_price(@property)
-    begin
+
+    nearby_location_ids = Location.geocoded.near([@property.latitude, @property.longitude], 1.0).map { |loc| loc.id}
+
+    if nearby_location_ids.count > 3
       @avg_price_nearby = nearest_avg_price(@property)
-    rescue
+      @avg_sqm_price = nearest_avg_sqm_price(@property)
+      @house_sqm_value = house_sqm_value_nearby(@property)
+    else
       @avg_price_nearby = london_avg_price
+      @avg_sqm_price = london_avg_sqm_price
+      @house_sqm_value = house_sqm_value_london(@property)
+      raise
     end
-    @london_avg_sqm_price = london_avg_sqm_price
-    @house_sqm_value = house_sqm_value(@property)
-    raise
   end
 
   def postcodes
@@ -100,8 +105,20 @@ class PropertiesController < ApplicationController
 
   private
 
+  def house_sqm_value_nearby(property)
+    return (((house_sqm_price(property) / nearest_avg_sqm_price(property)) * 100).round(2) - 100).round(2)
+  end
+
+  def house_sqm_value_london(property)
+    return ((house_sqm_price(property) / london_avg_sqm_price) * 100).round(2)
+  end
+
   def house_sqm_price(property)
-    property.price / property.floor_area.to_f
+    return (property.price / property.floor_area.to_f).round
+  end
+
+  def nearest_avg_sqm_price(property)
+    return (nearest_avg_price(property) / nearest_avg_sqm(property)).round(2)
   end
 
   def london_avg_price
@@ -113,7 +130,7 @@ class PropertiesController < ApplicationController
   end
 
   def london_avg_sqm_price
-    (london_avg_price / london_avg_sqm).round
+    return (london_avg_price / london_avg_sqm).round
   end
 
   def nearest_avg_price(property)
@@ -122,8 +139,10 @@ class PropertiesController < ApplicationController
     return (nearby_property_prices.sum.to_f / nearby_property_prices.count).round(2)
   end
 
-  def house_sqm_value(property)
-    return ((house_sqm_price(property) / london_avg_sqm_price) * 100).round(2)
+  def nearest_avg_sqm(property)
+    nearby_location_ids = Location.geocoded.near([property.latitude, property.longitude], 1.0).map { |loc| loc.id}
+    nearby_property_floor_area = Property.where(location_id: nearby_location_ids).pluck(:floor_area)
+    return (nearby_property_floor_area.sum.to_f / nearby_property_floor_area.count).round(2)
   end
 
   def set_property
