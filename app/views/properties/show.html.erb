@@ -133,7 +133,7 @@
                   <hr>
                   <div>
                     <%= column_chart({"Property" => @house_sqm_price, "Nearby Properties" => @avg_sqm_price})%>
-                    <p> £/sqm value: <%= (@house_sqm_value > 0) ? "#{@house_sqm_value}% more expensive than average" : "#{@house_sqm_value.abs}% cheaper than average" %></p>
+                    <p> £/sqm value: <%= (@house_sqm_value > 0) ? "#{@house_sqm_value}% more expensive than properties in your area" : "#{@house_sqm_value.abs}% cheaper than properties in your area" %></p>
 
 
                   </div>
