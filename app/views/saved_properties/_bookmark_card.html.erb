@@ -1,6 +1,6 @@
 <div class="bookmark-card">
 
-  <div class="status-bar <%= bookmark.contacted == true ? 'contacted' : 'not-contacted' %>">
+  <div class="status-bar <%= bookmark.contacted? ? 'contacted' : 'not-contacted' %>">
     <p class="status-text"> <%= bookmark.contacted? ? 'Contacted' : 'Not contacted' %> </p>
   </div>
 
@@ -56,12 +56,31 @@
         </div>
       </div>
       <hr>
-      <p class="description">
-        <%= truncate(bookmark.property.description, length: 100) %>
-        <%= link_to 'Read more', property_path(bookmark.property) %>
-      </p>
 
-      <%= link_to "Contact", property_path(bookmark.property), class: "contact-button" %>
+        <div class="comment-section" data-controller="comment-form">
+          <!-- Comment Display Section -->
+          <div data-comment-form-target="display">
+            <p data-comment-form-target="comment"><%= bookmark.comment || '' %></p>
+            <% if bookmark.comment.present? %>
+              <button type="button" data-action="click->comment-form#edit" class="edit-button">Edit</button>
+            <% end %>
+          </div>
+
+          <!-- Comment Form Section -->
+          <div data-comment-form-target="form" class="<%= 'hidden' if bookmark.comment.present? %>">
+            <%= simple_form_for bookmark, url: saved_property_path(bookmark), method: :patch, remote: true do |f| %>
+              <%= f.input_field :comment, placeholder: "What's on your mind...", class: "comment-field", data: { comment_form_target: "textarea" } %>
+              <%= f.button :submit, '📝 Save comment', class: "comment-button", data: { action: "click->comment-form#save" } %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="contact-section d-flex">
+          <%= link_to property_path(bookmark.property), class: "button-none" do %>
+            <i class="fa-regular fa-paper-plane"></i>
+            <p>Contact</p>
+          <% end %>
+        </div>
+
     </div>
-
 </div>
