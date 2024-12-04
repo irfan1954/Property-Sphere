@@ -36,7 +36,7 @@ class SavedPropertiesController < ApplicationController
     @saved_property = SavedProperty.find(params[:id])
     if @saved_property.update(comment_param)
       respond_to do |format|
-        format.turbo_stream # For Turbo updates
+        format.json # For Turbo updates
         format.html { redirect_to bookmarks_path, notice: "Comment updated successfully." }
       end
     else
@@ -48,7 +48,7 @@ class SavedPropertiesController < ApplicationController
 
   def destroy
     @saved_property = SavedProperty.find(params[:id])
-    redirect_to saved_properties_path, notice: "Bookmark deleted." if @saved_property.destroy
+    redirect_to saved_properties_path, notice: "Bookmark removed" if @saved_property.destroy
   end
 
   private

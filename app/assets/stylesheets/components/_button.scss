@@ -1,3 +1,20 @@
 .button-none {
   all: unset;
 }
+
+.button-edit {
+  background-color: #32414c;
+  color: white;
+  border-radius: 8px;
+  padding: 4px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: grab;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover{
+    background-color: #e6e6fa; /* Light lavender */
+    color: #32414c;
+  }
+
+}
