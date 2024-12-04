@@ -15,13 +15,11 @@
           </div>
         <% end %>
 
-        <div class="icon">
-          <div class="d-flex">
-            <i class="fa-regular fa-paper-plane"></i>
-            <%= button_to saved_properties_path, class:"button-none", remote: true, method: :post, params: { property_id: property.id } do %>
-              <i class="fa-regular fa-heart" ></i>
-            <% end %>
-          </div>
+        <div class="icon d-flex">
+          <i class="fa-regular fa-paper-plane"></i>
+          <%= button_to saved_properties_path, class:"button-none", remote: true, method: :post, params: { property_id: property.id } do %>
+            <i class="fa-regular fa-heart" ></i>
+          <% end %>
         </div>
 
       </div>
@@ -34,7 +32,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-        <% image_total = property.image_urls.count.to_s %>
+        <p><% image_total = property.image_urls.count.to_s %> </p>
           <i class="fa-solid fa-camera" data-image-count-target="imageCount"></i>
       </div>
     </div>
@@ -57,7 +55,7 @@
           <span><%= property.bathrooms %></span>
         </div>
         <div class="vl-left"></div>
-        <h2 class="size">£<%= number_with_delimiter((property.price/property.floor_area).round, :delimiter => ',') %> / sqm</h2>
+        <h2 class="size"><%= property.floor_area.round %> sqm</h2>
       </div>
     </div>
     <hr class="hr-bottom">
