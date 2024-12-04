@@ -63,6 +63,9 @@
   width: 60%;
   padding-left: 12px;
   position: relative;
+  a {
+  color: black;
+  }
 }
 
 .property-analytics {
@@ -169,7 +172,7 @@ button {
   font-size: 12px;
   border: none;
   border-radius: 25px;
-  background-color: $primary-blue;
+  background-color: $secondary-color;
   color: white;
   padding-left: 27px;
   padding-right: 28px;

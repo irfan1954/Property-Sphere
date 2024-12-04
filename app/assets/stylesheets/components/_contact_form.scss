@@ -7,23 +7,21 @@
 }
 
 .btn-contact {
-  position: absolute;
-  top: 64px;
-  right: 27px;
-  background-color: #82ce10 !important;
-  border-color: #7dc511 !important;
+  background-color: $secondary-color !important;
+  border-color: $secondary-color !important;
   color: white;
   width: 145px;
   height: 44px;
   border-radius: 4px;
   text-align: center;
   padding-top: 10px;
+  align-self: center;
 }
 
 .btn-contact-form {
   position: absolute;
-  background-color: #82ce10 !important;
-  border-color: #7dc511 !important;
+  background-color: $secondary-color !important;
+  border-color: $secondary-color !important;
   color: white;
   width: 145px;
   height: 44px;

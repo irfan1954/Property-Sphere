@@ -1,11 +1,11 @@
 <div class="categories">
   <div class="category-title">
     <span><i class="fa-solid fa-chart-simple"></i></span>
-    <span>Your filters</span>
+    <span><h5>Your filters</h5></span>
   </div>
   <hr class="hr-properties">
   <div class="filters">
-  <p class="instruction text-center">Property filters</p>
+  <h6 class="instruction text-center">Requirements</h6>
     <%= form_with(url: properties_path, method: :get, local: true, class: "filter-form") do |f|   %>
       <div class="filter-columns">
         <div class="filter-dropdown">
@@ -35,34 +35,40 @@
         <i class="fa-solid fa-table-cells-large"></i>
         <%= f.select :floor_area, ["Min sqm", 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140], selected: params[:floor_area]  %>
       </div>
-      <div class="d-flex justify-content-center">
-        <%= f.submit "Apply filters"%>
-      </div>
     <% end %>
   </div>
   <div class="priorities">
-  <p class="instruction text-center mb-0">Priorities</p>
+  <h6 class="instruction text-center mb-0">Priorities</h6>
+      <div class="d-flex justify-content-between">
+        <p>low</p>
+        <p>medium</p>
+        <p>high</p>
+      </div>
+
       <%= form_with(url: properties_path, method: :get, local: true) do |f|   %>
         <p>Property</p>
-        <p style="font-size: 10px;">Value, rental value, floor area</p>
+        <p style="font-size: 12px;">Value, rental value, floor area</p>
         <div class="priorty-dropdown">
-          <%= f.label :priority %>
-          <%= f.select :property, ["low", "medium", "high"], {include_blank: true} %>
+          <%= f.radio_button :property, "low" %>
+          <%= f.radio_button :property, "medium" %>
+          <%= f.radio_button :property, "high" %>
         </div>
         <p>Neighbourhood</p>
-        <p style="font-size: 10px;">Crime, demographics, school quality</p>
+        <p style="font-size: 12px;">Crime, demographics, school quality</p>
         <div class="priorty-dropdown">
-          <%= f.label :priority %>
-          <%= f.select :neighborhood, ["low", "medium", "high"], {include_blank: true} %>
+          <%= f.radio_button :property, "low" %>
+          <%= f.radio_button :property, "medium" %>
+          <%= f.radio_button :property, "high" %>
         </div>
         <p>Location</p>
-        <p style="font-size: 10px;">Transport, nearby amenitites</p>
+        <p style="font-size: 12px;">Transport, nearby amenitites</p>
         <div class="priorty-dropdown">
-          <%= f.label :priority %>
-          <%= f.select :location, ["low", "medium", "high"], {include_blank: true} %>
+          <%= f.radio_button :property, "low" %>
+          <%= f.radio_button :property, "medium" %>
+          <%= f.radio_button :property, "high" %>
         </div>
         <div class="d-flex justify-content-center">
-          <%= f.submit "Apply priorities"%>
+          <%= f.submit "Apply filters"%>
         </div>
       <% end %>
   </div>

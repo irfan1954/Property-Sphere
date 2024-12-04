@@ -33,6 +33,18 @@ class PropertiesController < ApplicationController
       @properties = Property.where("floor_area > ?", params[:floor_area])
     end
 
+    @markers = @properties.geocoded.map do |property|
+      {
+        lat: property.latitude,
+        lng: property.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { property: property }),
+
+        marker_html: render_to_string(partial: "marker", locals: { icon: nil }),
+
+        property_path: property_path(property)
+      }
+    end
+
     @data = { "properties" => @properties }
   end
 
@@ -54,6 +66,18 @@ class PropertiesController < ApplicationController
     @recommended_properties = Property.order("RANDOM()").take(10)
 
     @data = { "properties" => @properties, "recommended_properties" => @recommended_properties }
+
+    @markers = @properties.geocoded.map do |property|
+      {
+        lat: property.latitude,
+        lng: property.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { property: property }),
+
+        marker_html: render_to_string(partial: "marker", locals: { icon: nil }),
+
+        property_path: property_path(property)
+      }
+    end
 
     render :index
   end
@@ -115,7 +139,6 @@ class PropertiesController < ApplicationController
       @avg_price_nearby = london_avg_price
       @avg_sqm_price = london_avg_sqm_price
       @house_sqm_value = house_sqm_value_london(@property)
-      raise
     end
   end
 

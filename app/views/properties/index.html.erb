@@ -1,34 +1,48 @@
-<div class="search-display">
-  <div class="search-display-link">
-    <span><i class="fa-solid fa-location-dot"></i></span>
-    <span><%= link_to 'Map view', properties_map_path %></span>
-  </div>
-  <div class="search-display-text">
-    <p> Your search for <%= params[:postcode] %> yielded <%= pluralize(@properties.length, "result") %> </p>
-  </div>
-</div>
-
 <div class="property-index-container">
   <div class="main-content">
-    <% if @data["properties"].empty? %>
-      <%= render "filters_nav" %>
-      <div class="card-section">
-        <h3>Recommended Properties</h3>
-        <% @data["recommended_properties"].each do |property| %>
-          <div class="mt-4">
-            <%= render "card", property: property %>
-          </div>
-        <% end %>
+    <%= render "filters_nav" %>
+    <div>
+      <div class="search-display">
+        <div class="search-display-text">
+          <p> Your search for <%= params[:postcode] %> yielded <%= pluralize(@properties.length, "result") %> </p>
+        </div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+                <span><i class="fa-solid fa-list"></i></span>
+                <span>List view</span>
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+                <span><i class="fa-solid fa-location-dot"></i></span>
+                <span>Map view</span>
+              </button>
+            </li>
+          </ul>
       </div>
-    <% else %>
-      <%= render "filters_nav" %>
-      <div class="card-section">
-        <% @data["properties"].each do |property| %>
-          <div class="mt-4">
-            <%= render "card", property: property %>
-          </div>
-        <% end %>
+      <div class="tab-content" id="myTabContent">
+
+        <div class="card-section tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+          <% if @data["properties"].empty? %>
+            <h3>Recommended Properties</h3>
+            <% @data["recommended_properties"].each do |property| %>
+              <div class="mt-4">
+                <%= render "card", property: property %>
+              </div>
+            <% end %>
+          <% else %>
+            <% @data["properties"].each do |property| %>
+              <div class="mt-4">
+                <%= render "card", property: property %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="card-section tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+          <%= render "map" %>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
