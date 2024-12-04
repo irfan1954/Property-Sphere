@@ -37,7 +37,11 @@ class PropertiesController < ApplicationController
   end
 
   def search
-    postcode = Location.find_by(raw_postcode: params[:postcode])
+    search_param = params[:postcode].present? ? params[:postcode] : "W10 4AD"
+
+    postcode = Location.find_by(raw_postcode: search_param)
+
+    puts postcode
 
     nearby_location_ids = Location.geocoded.near([postcode.lat, postcode.long], 5.0).map { |loc| loc.id}
 

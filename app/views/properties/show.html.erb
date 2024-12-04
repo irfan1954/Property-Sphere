@@ -56,7 +56,7 @@
         </button>
 
       </div>
-      <%= @property.image_urls.drop(1).each do |image| %>
+      <% @property.image_urls.drop(1).each do |image| %>
         <div class="carousel-item">
           <img src="<%= image %>" class="d-block w-65" alt="property image">
         </div>
