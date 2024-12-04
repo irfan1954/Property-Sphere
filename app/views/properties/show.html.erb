@@ -1,15 +1,14 @@
 <%= link_to "Search results", properties_path %>
 <div class="container">
-
-  <div class="property-img">
-    <div id="carouselExample<%= @property.id %>" class="carousel slide">
+  <div class="top-card" style="display: flex; width: 800px; height: 415px;">
+    <div id="carouselExample<%= @property.id %>" class="carousel slide w-75  width: 100%;">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img src="<%= @property.image_urls.first %>" class="d-block w-100" alt="property image">
         </div>
         <%= @property.image_urls.drop(1).each do |image| %>
           <div class="carousel-item">
-            <img src="<%= image %>" class="d-block w-200" alt="property image">
+            <img src="<%= image %>" class="d-block w-100" alt="property image">
           </div>
         <% end %>
       </div>
@@ -22,6 +21,21 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
+      </div>
+    </div>
+    <div class="analytics-dashboard-map w-25">
+      <div class="show-analytics-map">
+        <div class="analytics-title">
+          <span><i class="fa-solid fa-map"></i></span>
+          <span>Map</span>
+        </div>
+        <div class="map">
+          <div style="width: 380px; height: 378px; "
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -155,28 +169,28 @@
                       <hr>
                       <div class="d-flex justify-content-between">
                         <p>Supermarket </p>
-                        <%= @amenities.where(category: "supermarket").first.name%>
+                        <%= @amenities.where(category: "supermarket").first&.name %>
                       </div>
 
                       <p class="text-center lh-sm"><strong>Medical</strong></p>
                       <hr>
                       <div class="d-flex justify-content-between">
                         <p>Hospital</p>
-                        <%= @amenities.where(category: "hospital").first.name%>
+                        <%= @amenities.where(category: "hospital").first&.name %>
                       </div>
                       <div class="d-flex justify-content-between">
                         <p>Pharmacy</p>
-                        <%= @amenities.where(category: "pharmacy").first.name%>
+                        <%= @amenities.where(category: "pharmacy").first&.name %>
                       </div>
                       <p class="text-center lh-sm"><strong>Schools</strong></p>
                       <hr>
                       <div class="d-flex justify-content-between">
                         <p>Primary</p>
-                        <%= @amenities.where(category: "primary_school").first.name%>
+                        <%= @amenities.where(category: "primary_school")&.first&.name %>
                       </div>
                       <div class="d-flex justify-content-between">
-                        <p>Scondary</p>
-                        <%= @amenities.where(category: "secondary_school").first.name%>
+                        <p>Secondary</p>
+                        <%= @amenities.where(category: "secondary_school")&.first&.name %>
                       </div>
                     </div>
                   </div>

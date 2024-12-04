@@ -7,6 +7,25 @@
   margin: 10px;
 }
 
+.top-card {
+  padding: 5px;
+}
+
+.analytics-dashboard-map {
+
+  .show-analytics-map {
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    width: 380px;
+    height: 380px;
+    margin-left: 10px;
+    background-color: white;
+    display: grid;
+  }
+}
+
+
 .property-show-infos {
   padding-left: 16px;
   padding-right: 16px;
@@ -22,8 +41,10 @@
 .bottom-card {
   display: flex;
   border: 1px solid rgb(172, 167, 167);
+  border-radius: 12px;
   padding: 16px;
   margin-left: px;
+  align-content: center;
   margin-right: 8px;
   margin-bottom: 8px;
   .title {
