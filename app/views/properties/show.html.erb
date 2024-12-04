@@ -148,12 +148,20 @@
                 <div class="show-analytics-card-content">
                   <p class="text-center lh-sm"><strong>Value</strong></p>
                   <hr>
+
                   <div>
-                    <%= column_chart({"Property" => @house_sqm_price, "Nearby Properties" => @avg_sqm_price})%>
-                    <p> £/sqm value: <%= (@house_sqm_value > 0) ? "#{@house_sqm_value}% more expensive than average" : "#{@house_sqm_value.abs}% cheaper than average" %></p>
-
-
+                    <% @house_sqm_value < 0 ? color = "#32e420" : color = "#f7600e" %>
+                    <% (@house_sqm_value > 0) ? message = "📈 #{@house_sqm_value.abs}%" : message = "📉 #{@house_sqm_value.abs}%" %>
+                    <%= column_chart({"Property" => @house_sqm_price, "Average" => @avg_sqm_price}, colors: ["#{color}", "#666"], label: "£/sqm")%>
+                    <p> <strong> £/sqm: </strong> <%= message %></p>
                   </div>
+
+                  <div>
+                    <% @property_yield > @properties_average_yield ? color = "#32e420" : color = "#f7600e" %>
+                    <%= column_chart({"Property" => @property_yield, "Average" => @properties_average_yield}, colors: ["#{color}", "#666"], label: "%")%>
+                    <p> <strong>Total rent:</strong>  £<%= number_with_delimiter((@total_rent), :delimiter => ',')%></p>
+                  </div>
+
                   <div class="d-flex justify-content-between">
                     <p>Sqm value</p>
                     <p>£<%= number_with_delimiter((@property.price/@property.floor_area)*1000, :delimiter => ',').to_i %> per sqm</p>
