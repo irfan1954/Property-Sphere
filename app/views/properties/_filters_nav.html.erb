@@ -5,7 +5,7 @@
   </div>
   <hr class="hr-properties">
   <div class="filters">
-  <p class="instruction">Property filters</p>
+  <p class="instruction text-center">Property filters</p>
     <%= form_with(url: properties_path, method: :get, local: true, class: "filter-form") do |f|   %>
       <div class="filter-columns">
         <div class="filter-dropdown">
@@ -39,29 +39,26 @@
     <% end %>
   </div>
   <div class="priorities">
-  <p class="instruction">Area priorities</p>
+  <p class="instruction text-center mb-0">Priorities</p>
       <%= form_with(url: properties_path, method: :get, local: true) do |f|   %>
+        <p>Property</p>
+        <p style="font-size: 10px;">Value, rental value, floor area</p>
         <div class="priorty-dropdown">
-          <%= f.label :crime_level %>
+          <%= f.label :priority %>
           <%= f.select :crime_level, ["low", "medium", "high"], {include_blank: true} %>
         </div>
+        <p>Neighbourhood</p>
+        <p style="font-size: 10px;">Crime, demographics, school quality</p>
         <div class="priorty-dropdown">
-          <%= f.label :school_quality %>
+          <%= f.label :priority %>
           <%= f.select :school_quality, ["low", "medium", "high"], {include_blank: true} %>
         </div>
+        <p>Location</p>
+        <p style="font-size: 10px;">Transport, nearby amenitites</p>
         <div class="priorty-dropdown">
-          <%= f.label :property_prices %>
+          <%= f.label :priority %>
           <%= f.select :property_prices, ["low", "medium", "high"], {include_blank: true} %>
         </div>
-         <div class="priorty-dropdown">
-          <%= f.label :amentities %>
-          <%= f.select :amentities, ["low", "medium", "high"], {include_blank: true} %>
-        </div>
-        <div class="priorty-dropdown">
-          <%= f.label :transport %>
-          <%= f.select :transport, ["low", "medium", "high"], {include_blank: true} %>
-        </div>
-
         <%= f.submit "Apply priorities"%>
       <% end %>
   </div>

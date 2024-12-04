@@ -33,7 +33,7 @@ namespace :amenities do
 
       token = results["next_page_token"]
       if token.present?
-        until Amenity.where(category: type).count >= 100
+        until Amenity.where(category: type).count >= 250
           next_url = url + "&#next_page_token=#{token}"
 
           next_results_string =  URI.parse(next_url).read
