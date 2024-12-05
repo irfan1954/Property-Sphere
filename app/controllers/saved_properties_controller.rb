@@ -9,7 +9,6 @@ class SavedPropertiesController < ApplicationController
 
     if @saved_property.new_record?
       # If it's a new record, assign the additional attributes and save
-      @saved_property.contacted = true
       if @saved_property.save
         flash[:notice] = 'Sent and added to wishlist'
         redirect_to request.referrer
@@ -20,7 +19,6 @@ class SavedPropertiesController < ApplicationController
       end
     else
       # If the record exists, update the `contacted` status
-      @saved_property.contacted = true
       @saved_property.save
       redirect_to request.referrer
       flash[:notice] = 'Message sent'
@@ -34,7 +32,7 @@ class SavedPropertiesController < ApplicationController
     if @saved_property.update(comment_param)
       respond_to do |format|
         format.json # For Turbo updates
-        format.html { redirect_to bookmarks_path, notice: "Comment updated successfully." }
+        format.html { redirect_to saved_properties_path, notice: "Agent Contacted successfully." }
       end
     else
       respond_to do |format|
@@ -50,11 +48,11 @@ class SavedPropertiesController < ApplicationController
 
   private
 
-  def saved_properties_param
-    params.require(:saved_property).permit(:property_id)
+  def saved_properties_params
+    params.require(:saved_property).permit(:property_id, :message)
   end
 
   def comment_param
-    params.require(:saved_property).permit(:comment)
+    params.require(:saved_property).permit(:comment, :message, :contacted)
   end
 end

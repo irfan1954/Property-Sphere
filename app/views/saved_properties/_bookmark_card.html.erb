@@ -75,11 +75,31 @@
           </div>
         </div>
 
-        <div class="contact-section">
-          <%= link_to property_path(bookmark.property), class: "button-contact" do %>
-              <p class="mb-0">Contact</p>
-          <% end %>
+
+        <div class="contact-section" data-bs-toggle="modal" data-bs-target="#exampleModal" data->
+              <p class="mb-0 contact-button">Contact</p>
         </div>
+
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Agent</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for bookmark do |form| %>
+                <div class="form-group">
+                  <%= form.input :message, as: :text %>
+                  <%= form.input :contacted, as: :hidden, value: true %>
+                </div>
+                <%= form.submit "Submit", class: "btn btn-primary btn-contact-form" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 </div>

@@ -1,4 +1,5 @@
 class SavedProperty < ApplicationRecord
+  attr_accessor :message
   belongs_to :user
   belongs_to :property
 
