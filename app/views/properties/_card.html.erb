@@ -39,7 +39,6 @@
   </div>
   <div class="property-details-container">
     <div class="property-details">
-      <i class="fa-regular fa-bell"></i>
       <%= link_to property_path(property) do %>
         <h2 class="street-address"><%= property.address %>, <%= property.location.raw_postcode %></h2>
       <% end %>
@@ -61,38 +60,32 @@
     <hr class="hr-bottom">
     <div class="property-analytics">
       <div class="highlight">
-        <span><i class="fa-regular fa-star"></i></span>
         <span>Highlights</span>
       </div>
       <div class="highlights-grid">
         <% if property.location.crime < 350 %>
           <div class="highlight-button">
-            <button> Low Crime </button>
+            <p> Low Crime </p>
           </div>
         <% end %>
-        <% if property.location.rent_price > 2000 %>
+        <% if property.location.rent_price > 24000 %>
           <div class="highlight-button">
-            <button> Rental price </button>
+            <p> Rental price </p>
           </div>
         <% end %>
         <%# <% if Amenity.where(type: :hospital).geodcode.near(property.location.lat, property.location.long) %>
           <%# <div class="highlight-button"> %>
-            <%# <button>Hospital nearby</button> %>
+            <%# <p>Hospital nearby</p> %>
           <%# </div> %>
         <%# <% end %>
         <%# <% if Amenity.where(type: :subway_station).geodcoded.near(property.location.lat, property.location.long) %>
           <%# <div class="highlight-button"> %>
-            <%# <button>Underground connected</button> %>
-          <%# </div> %>
-        <%# <% end %>
-        <%# <% if Amenity.where(type: :subway_station).geodcoded.near(property.location.lat, property.location.long) %>
-          <%# <div class="highlight-button"> %>
-            <%# <button>Train transport</button> %>
+            <%# <p>Train transport</p> %>
           <%# </div> %>
         <%# <% end %>
         <% if (property.price/property.floor_area) < 8000 %>
           <div class="highlight-button">
-            <button>Value per sqm </button>
+            <p>Value per sqm </p>
           </div>
         <% end %>
 

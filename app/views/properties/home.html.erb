@@ -7,7 +7,7 @@
       <%= form_with url: search_properties_path, method: :get do |f| %>
       <div class="search">
         <%= f.select :postcode,
-          options_for_select(@postcodes),
+          options_for_select(@postcodes_for_search),
           { include_blank: "Search a Postcode" },
           data: { class: 'search-bar', controller: "tom-select", tom_select_options_value: {},
           }
