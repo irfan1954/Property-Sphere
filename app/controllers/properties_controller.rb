@@ -152,16 +152,21 @@ class PropertiesController < ApplicationController
     @house_sqm_price = house_sqm_price(@property)
 
     nearby_location_ids = Location.geocoded.near([@property.latitude, @property.longitude], 1.0).map { |loc| loc.id}
+    nearby_properties = Property.where(location_id: nearby_location_ids)
 
-    if nearby_location_ids.count > 3
+    if nearby_properties.count > 3
       @avg_price_nearby = nearest_avg_price(@property)
       @avg_sqm_price = nearest_avg_sqm_price(@property)
-      @house_sqm_value = house_sqm_value_nearby(@property)
+      @house_sqm_value = house_sqm_value_nearby(@property, @avg_sqm_price)
     else
       @avg_price_nearby = london_avg_price
       @avg_sqm_price = london_avg_sqm_price
       @house_sqm_value = house_sqm_value_london(@property)
     end
+
+    @property_yield = property_yield(@property)
+    @properties_average_yield = london_avg_bedroom_yield
+    @total_rent = total_rent(@property)
   end
 
   def postcodes
@@ -170,12 +175,12 @@ class PropertiesController < ApplicationController
 
   private
 
-  def house_sqm_value_nearby(property)
-    return (((house_sqm_price(property) / nearest_avg_sqm_price(property)) * 100).round(2) - 100).round(2)
+  def house_sqm_value_nearby(property, avg_sqm_price)
+    return (((house_sqm_price(property).to_f / avg_sqm_price) * 100).round(2) - 100).round(2)
   end
 
   def house_sqm_value_london(property)
-    return ((house_sqm_price(property) / london_avg_sqm_price) * 100).round(2)
+    return (((house_sqm_price(property).to_f / london_avg_sqm_price) * 100).round(2) - 100).round(2)
   end
 
   def house_sqm_price(property)
@@ -183,7 +188,11 @@ class PropertiesController < ApplicationController
   end
 
   def nearest_avg_sqm_price(property)
-    return (nearest_avg_price(property) / nearest_avg_sqm(property)).round(2)
+    return (nearest_avg_price(property) / nearest_avg_sqm(property)).round
+  end
+
+  def london_avg_sqm_price
+    return (london_avg_price / london_avg_sqm).round
   end
 
   def london_avg_price
@@ -192,10 +201,6 @@ class PropertiesController < ApplicationController
 
   def london_avg_sqm
     Property.all.pluck(:floor_area).sum.to_f / Property.count
-  end
-
-  def london_avg_sqm_price
-    return (london_avg_price / london_avg_sqm).round
   end
 
   def nearest_avg_price(property)
@@ -208,6 +213,29 @@ class PropertiesController < ApplicationController
     nearby_location_ids = Location.geocoded.near([property.latitude, property.longitude], 1.0).map { |loc| loc.id}
     nearby_property_floor_area = Property.where(location_id: nearby_location_ids).pluck(:floor_area)
     return (nearby_property_floor_area.sum.to_f / nearby_property_floor_area.count).round(2)
+  end
+
+  def property_yield(property)
+    (((property.location.rent_price.to_f * property.bedrooms) / property.price) * 100).round(2)
+  end
+
+  # I need to figure out the average £/bedroom
+  # Divide that price by the london average rent to figure out the yield.
+
+  def london_avg_bedroom_rent
+    Location.all.pluck(:rent_price).sum.to_f / Location.count
+  end
+
+  def london_avg_price_per_room
+    (Property.all.pluck(:price).sum / Property.all.pluck(:bedrooms).sum.to_f)
+  end
+
+  def total_rent(property)
+    (property.bedrooms * property.location.rent_price)
+  end
+
+  def london_avg_bedroom_yield
+    ((london_avg_bedroom_rent / london_avg_price_per_room) * 100).round(2)
   end
 
   def set_property
