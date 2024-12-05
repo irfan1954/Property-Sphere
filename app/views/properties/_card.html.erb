@@ -63,7 +63,7 @@
         <span>Highlights</span>
       </div>
       <div class="highlights-grid">
-        <% if property.location.crime < 350 %>
+        <% if property.location.crime && property.location.crime < 350 %>
           <div class="highlight-button">
             <p> Low Crime </p>
           </div>
