@@ -1,13 +1,13 @@
 <div class="card-container">
   <div class="property-img">
-    <div id="carouselExample<%= property.id %>" class="carousel slide">
+    <div id="carouselExample<%= property.id %>" class="carousel slide ">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <%= link_to property_path(property) do %>
             <img src="<%= property.image_urls.first %>" class="d-block w-100" alt="property image">
           <% end %>
         </div>
-        <%= property.image_urls.drop(1).each do |image| %>
+        <% property.image_urls.drop(1).each do |image| %>
           <div class="carousel-item">
             <%= link_to property_path(property) do %>
             <img src="<%= image %>" class="d-block w-100" alt="property image">
@@ -15,8 +15,7 @@
           </div>
         <% end %>
 
-        <div class="icon d-flex">
-          <i class="fa-regular fa-paper-plane"></i>
+        <div class="icon">
           <%= button_to property_saved_properties_path(property), class:"button-none", remote: true, method: :post do %>
             <i class="fa-regular fa-heart" ></i>
           <% end %>
