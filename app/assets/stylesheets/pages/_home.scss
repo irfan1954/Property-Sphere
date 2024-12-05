@@ -118,8 +118,8 @@
 
       p {
         height: 100%;
-        display: flex;
         color: black;
+        display: flex;
         align-items: center;
         justify-content: center;
         font-weight: bold;
@@ -143,6 +143,9 @@
 
       p {
         padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
