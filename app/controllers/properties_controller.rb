@@ -121,6 +121,12 @@ class PropertiesController < ApplicationController
     @property_yield = property_yield(@property)
     @properties_average_yield = london_avg_bedroom_yield
     @total_rent = total_rent(@property)
+
+    if current_user.saved_properties.find_by(property_id: @property.id).nil?
+      @bookmark = SavedProperty.new
+    else
+      @bookmark = current_user.saved_properties.find_by(property_id: @property.id)
+    end
   end
 
   def postcodes

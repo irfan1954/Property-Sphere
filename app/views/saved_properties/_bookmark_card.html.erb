@@ -1,5 +1,4 @@
 <div class="bookmark-card">
-
   <div class="status-bar <%= bookmark.contacted? ? 'contacted' : 'not-contacted' %>">
     <p class="status-text"> <%= bookmark.contacted? ? 'Contacted' : 'Not contacted' %> </p>
   </div>
@@ -76,23 +75,23 @@
         </div>
 
 
-        <div class="contact-section" data-bs-toggle="modal" data-bs-target="#exampleModal" data->
-              <p class="mb-0 contact-button">Contact</p>
+        <div class="contact-section button-contact" data-bs-toggle="modal" data-bs-target="#contact_<%= bookmark.id %>">
+              <p class="mb-0">Contact</p>
         </div>
 
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="contact_<%= bookmark.id %>" tabindex="-1" aria-labelledby="contact_<%= bookmark.id %>Label" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Contact Agent</h1>
+              <h1 class="modal-title fs-5" id="contact_<%= bookmark.id %>Label">Contact Agent for <%= bookmark.property.address %></h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <%= simple_form_for bookmark do |form| %>
                 <div class="form-group">
                   <%= form.input :message, as: :text %>
-                  <%= form.input :contacted, as: :hidden, value: true %>
+                  <%= form.input :contacted, as: :hidden, input_html: {value: true} %>
                 </div>
                 <%= form.submit "Submit", class: "btn btn-primary btn-contact-form" %>
               <% end %>
