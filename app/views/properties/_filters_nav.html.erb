@@ -4,7 +4,7 @@
       <div class="search">
         <%= f.select :postcode,
           options_for_select(@postcodes_for_search),
-          { include_blank: "Search a Postcode" },
+          { include_blank: params[:postcode] },
           data: { class: 'search-bar', controller: "tom-select", tom_select_options_value: {},
           }
         %>
@@ -31,11 +31,11 @@
       <div class="filter-columns">
         <div class="filter-dropdown">
           <i class="fa-solid fa-bed"></i>
-          <%= f.select :min_bedrooms, [["Min", "Min"],["1 +", 1],["2 +", 2],["3 +", 3],[4, "4 +"],[5, 5],[6, 6],[7, 7],[8, 8]], selected: params[:min_bedrooms]  %>
+          <%= f.select :min_bedrooms, [["Min", "Min"],["1+", 1],["2+", 2],["3+", 3],["4+", 4],["5+", 5],["6+", 6],["7+", 7],["8+", 8]], selected: params[:min_bedrooms]  %>
         </div>
         <div class="filter-dropdown">
           <i class="fa-solid fa-bath"></i>
-          <%= f.select :min_bathrooms, ["Min",1,2,3,4,5,6,7,8], selected: params[:min_bathrooms]   %>
+          <%= f.select :min_bathrooms, [["Min", "Min"],["1+", 1],["2+", 2],["3+", 3],["4+", 4],["5+", 5],["6+", 6],["7+", 7],["8+", 8]], selected: params[:min_bathrooms]   %>
         </div>
       </div>
       <div class="filter-dropdown">
@@ -44,11 +44,11 @@
       </div>
       <div class="filter-dropdown">
         <i class="fa-solid fa-table-cells-large"></i>
-        <%= f.select :floor_area, ["Min sqm", 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140], selected: params[:floor_area]  %>
+        <%= f.select :floor_area, [["Min sqm", "Min sqm"], ["40+", 40], ["50+", 50], ["60+", 60], ["70+", 70], ["80+", 80], ["90+", 90], ["100+", 100], ["110+", 110], ["120+", 120]], selected: params[:floor_area]  %>
       </div>
     </div>
     <div class="priorities">
-    <h6 class="instruction text-center mb-0">Priorities</h6>
+    <h6 class="instruction text-center mb-4">Priorities</h6>
         <div class="d-flex justify-content-between">
           <p>low</p>
           <p>medium</p>
@@ -63,14 +63,14 @@
             <%= f.radio_button :property, "high" %>
           </div>
           <p>Neighbourhood</p>
-          <p style="font-size: 12px;">e.g. crime level, school quality</p>
+          <p style="font-size: 12px;">e.g. low crime, school quality</p>
           <div class="priorty-dropdown">
             <%= f.radio_button :neighbourhood, "low" %>
             <%= f.radio_button :neighbourhood, "medium" %>
             <%= f.radio_button :neighbourhood, "high" %>
           </div>
           <p>Location</p>
-          <p style="font-size: 12px;">e.g.transport, nearby amenitites</p>
+          <p style="font-size: 12px;">e.g. transport, nearby amenitites</p>
           <div class="priorty-dropdown">
             <%= f.radio_button :location, "low" %>
             <%= f.radio_button :location, "medium" %>
