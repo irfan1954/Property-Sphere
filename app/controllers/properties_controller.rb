@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
   require "csv"
 
   def home
-    @postcodes = Location.all_postcodes
+    @postcodes_for_search = Location.all_postcodes
     @properties = Property.order("RANDOM()").take(10)
   end
 
@@ -70,6 +70,7 @@ class PropertiesController < ApplicationController
   end
 
   def search
+    @postcodes_for_search = Location.all_postcodes
     search_param = params[:postcode].present? ? params[:postcode] : "W10 4AD"
 
     postcode = Location.find_by(raw_postcode: search_param)
