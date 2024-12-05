@@ -38,7 +38,10 @@
 
 .analytics-dashboard {
   display: flex;
-  width: 100vw;
+  // padding: 10px;
+  width: 100%;
+  justify-content: space-between;
+
   .analytics-title {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -47,20 +50,46 @@
     border-top-left-radius: 8px;
     font-size: 16px;
   }
+
+  .show-analytics-left-div {
+    width: 40%;
+    height: 100%;
+  }
+
+  .show-analytics-right-div{
+    width: 60%;
+
+    .show-map-container{
+      margin: 8px;
+      border-radius: 16px;
+    }
+
+    .show-right-analytics-container{
+      display: flex;
+      // grid-template-columns: repeat(2, 1fr); // 3 columns per row
+      // gap: 20px; // Spacing between cards
+      justify-content: space-between;
+      // flex: 1;
+      // width: 96%;
+    }
+  }
+
   .show-analytics-card {
+
+    border-radius: 8px;
+    font-size: 12px;
+    margin: 8px;
+    background-color: white;
+
     .show-analytics-card-content {
       padding: 16px;
     };
+
     .location-show-analytics-card-content {
       padding: 16px;
       display: flex;
     };
 
-    border-radius: 8px;
-    font-size: 12px;
-    width: 300px;
-    margin: 8px;
-    background-color: white;
   }
 }
 
