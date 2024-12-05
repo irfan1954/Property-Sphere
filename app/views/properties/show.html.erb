@@ -124,141 +124,141 @@
 
 
       <div class="analytics-dashboard">
-        <div class="show-analytics-card">
-          <div class="analytics-title">
-            <span><i class="fa-solid fa-money-bill-trend-up"></i></span>
-            <span>Property</span>
-            <hr>
-          </div>
-          <div class="show-analytics-card-content">
-            <p class="text-center lh-sm"><strong>Value</strong></p>
-            <hr>
-            <div>
-              <%= column_chart({"Property" => @house_sqm_price, "Nearby Properties" => @avg_sqm_price})%>
-              <p> £/sqm value: <%= (@house_sqm_value > 0) ? "#{@house_sqm_value}% more expensive than average" : "#{@house_sqm_value.abs}% cheaper than average" %></p>
+
+        <div class="show-analytics-left-div">
+          <div class="show-analytics-card">
+            <div class="analytics-title">
+              <span><i class="fa-solid fa-money-bill-trend-up"></i></span>
+              <span>Property</span>
+              <hr>
             </div>
-            <div class="d-flex justify-content-between">
-              <p>Sqm value</p>
-              <p>£<%= number_with_delimiter((@property.price/@property.floor_area)*1000, :delimiter => ',').to_i %> per sqm</p>
-            </div>
-            <div class="d-flex justify-content-between">
-              <p>Area average rent value</p>
-              <p>£<%= number_with_delimiter((@property.location.rent_price/12), :delimiter => ',') %> per month</p>
-            </div>
-            <div class="d-flex justify-content-between">
-              <p>Area average purchase value</p>
-              <p>£<%= number_with_delimiter((@property.location.purchase_price), :delimiter => ',') %></p>
-            </div>
-          </div>
-        </div>
-        <div class="show-analytics-card">
-          <div class="analytics-title">
-            <span><i class="fa-solid fa-location-pin"></i></span>
-            <span>Neighbourhood</span>
-            <hr>
-          </div>
-          <div class="show-analytics-card-content">
-            <div class="visualisation">
-              <div  class="dashboard-text">
-                <p class="text-center lh-sm"><strong>Safety</strong></p>
-                <hr>
-                <div class="d-flex justify-content-between">
-                  <% if @property.location.crime && @property.location.crime < 1000%>
-                    <span><p>Crime</p></span>
-                    <span><p><%= @property.location.crime.to_i %> total crimes in 2023</p></span>
-                  <% end %>
-                </div>
-                <p class="text-center lh-sm"><strong>People</strong></p>
-                <hr>
-                <div class="d-flex justify-content-between">
-                  <p>Majority demographic</p>
-                  <%= @demo[@property.location.demographic.to_s] %>
-                </div>
-                <div class="show-analytics-card-content">
-                  <p class="text-center lh-sm"><strong>Value</strong></p>
+            <div class="show-analytics-card-content">
+
+
+                  <div>
+                    <h5 class="text-center">£/sqm</h5>
+                    <% @house_sqm_value < 0 ? color = "#32e420" : color = "#f7600e" %>
+                    <% (@house_sqm_value > 0) ? message = "🔺 #{@house_sqm_value.abs}%" : message = "📉 #{@house_sqm_value.abs}%" %>
+                    <%= column_chart({"Property" => @house_sqm_price, "Average" => @avg_sqm_price}, colors: ["#{color}", "#666"], label: "£/sqm")%>
+                  </div>
+
                   <hr>
 
                   <div>
-                    <% @house_sqm_value < 0 ? color = "#32e420" : color = "#f7600e" %>
-                    <% (@house_sqm_value > 0) ? message = "📈 #{@house_sqm_value.abs}%" : message = "📉 #{@house_sqm_value.abs}%" %>
-                    <%= column_chart({"Property" => @house_sqm_price, "Average" => @avg_sqm_price}, colors: ["#{color}", "#666"], label: "£/sqm")%>
-                    <p> <strong> £/sqm: </strong> <%= message %></p>
-                  </div>
-
-                  <div>
+                    <h5 class="text-center">% yield</h5>
                     <% @property_yield > @properties_average_yield ? color = "#32e420" : color = "#f7600e" %>
                     <%= column_chart({"Property" => @property_yield, "Average" => @properties_average_yield}, colors: ["#{color}", "#666"], label: "%")%>
                     <p> <strong>Total rent:</strong>  £<%= number_with_delimiter((@total_rent), :delimiter => ',')%></p>
                   </div>
 
+            </div>
+          </div>
+        </div>
+
+      <div class="show-analytics-right-div">
+        <div class="show-right-analytics-container">
+
+          <div class="show-analytics-card w-50">
+            <div class="analytics-title">
+              <span><i class="fa-solid fa-location-pin"></i></span>
+              <span>Neighbourhood</span>
+              <hr>
+            </div>
+            <div class="show-analytics-card-content">
+              <div class="visualisation">
+                <div  class="dashboard-text">
+                  <p class="text-center lh-sm"><strong>Safety</strong></p>
+                  <hr>
                   <div class="d-flex justify-content-between">
-                    <p>Sqm value</p>
-                    <p>£<%= number_with_delimiter((@property.price/@property.floor_area)*1000, :delimiter => ',').to_i %> per sqm</p>
+                    <% if @property.location.crime && @property.location.crime < 1000%>
+                      <span><p>Crime</p></span>
+                      <span><p><%= @property.location.crime.to_i %> total crimes in 2023</p></span>
+                    <% end %>
+                  </div>
+                  <p class="text-center lh-sm"><strong>People</strong></p>
+                  <hr>
+                  <div class="d-flex justify-content-between">
+                    <p>Majority demographic</p>
+                    <%= @demo[@property.location.demographic.to_s] %>
+                  </div>
+
+                  <p class="text-center lh-sm"><strong>Value</strong></p>
+                                <hr>
+                   <div class="d-flex justify-content-between">
+                      <p>Sqm value</p>
+                      <p>£<%= number_with_delimiter(@house_sqm_price) %> per sqm</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Area average rent value</p>
+                      <p>£<%= number_with_delimiter((@property.location.rent_price/12), :delimiter => ',') %> per month</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <p>Area average purchase value</p>
+                      <p>£<%= number_with_delimiter((@property.location.purchase_price), :delimiter => ',') %></p>
+                    </div>
+                  <hr>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="show-analytics-card w-50">
+            <div class="analytics-title ">
+              <span><i class="fa-solid fa-location-crosshairs"></i></span>
+              <span>Location</span>
+              <hr>
+            </div>
+            <div class="location-show-analytics-card-content">
+              <div class="visualisation">
+                <div class="dashboard-text">
+                  <p class="text-center lh-sm"><strong>Supermarket</strong></p>
+                  <hr>
+                  <div class="d-flex justify-content-between">
+                    <p>Supermarket </p>
+                    <%= @closest_supmarket.name%>
+                    (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_supmarket.lat,@closest_supmarket.long])).round(2), "km") %>)
+                  </div>
+                  <p class="text-center lh-sm"><strong>Medical</strong></p>
+                  <hr>
+                  <div class="d-flex justify-content-between">
+                    <p>Hospital</p>
+                    <%= @closest_hospital.name%>
+                    (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_hospital.lat,@closest_hospital.long])).round(2), "km") %>)
                   </div>
                   <div class="d-flex justify-content-between">
-                    <p>Area average rent value</p>
-                    <p>£<%= number_with_delimiter((@property.location.rent_price/12), :delimiter => ',') %> per month</p>
+                    <p>Pharmacy</p>
+                    <%= @closest_pharmacy.name%>
+                    (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_pharmacy.lat,@closest_pharmacy.long])).round(2), "km") %>)
+                  </div>
+                  <p class="text-center lh-sm"><strong>Schools</strong></p>
+                  <hr>
+                  <div class="d-flex justify-content-between">
+                    <p>Primary</p>
+                    <%= @closest_primary.name%>
+                    (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_primary.lat,@closest_primary.long])).round(2), "km") %>)
                   </div>
                   <div class="d-flex justify-content-between">
-                    <p>Area average purchase value</p>
-                    <p>£<%= number_with_delimiter((@property.location.purchase_price), :delimiter => ',') %></p>
+                    <p>Secondary</p>
+                    <%= @closest_secondary.name%>
+                    (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_secondary.lat,@closest_secondary.long])).round(2), "km") %>)
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="show-analytics-card">
-          <div class="analytics-title ">
-            <span><i class="fa-solid fa-location-crosshairs"></i></span>
-            <span>Location</span>
-            <hr>
-          </div>
-          <div class="location-show-analytics-card-content">
-            <div class="visualisation">
-              <div class="dashboard-text">
-                <p class="text-center lh-sm"><strong>Supermarket</strong></p>
-                <hr>
-                <div class="d-flex justify-content-between">
-                  <p>Supermarket </p>
-                  <%= @closest_supmarket.name%>
-                  (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_supmarket.lat,@closest_supmarket.long])).round(2), "km") %>)
-                </div>
-                <p class="text-center lh-sm"><strong>Medical</strong></p>
-                <hr>
-                <div class="d-flex justify-content-between">
-                  <p>Hospital</p>
-                  <%= @closest_hospital.name%>
-                  (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_hospital.lat,@closest_hospital.long])).round(2), "km") %>)
-                </div>
-                <div class="d-flex justify-content-between">
-                  <p>Pharmacy</p>
-                  <%= @closest_pharmacy.name%>
-                  (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_pharmacy.lat,@closest_pharmacy.long])).round(2), "km") %>)
-                </div>
-                <p class="text-center lh-sm"><strong>Schools</strong></p>
-                <hr>
-                <div class="d-flex justify-content-between">
-                  <p>Primary</p>
-                  <%= @closest_primary.name%>
-                  (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_primary.lat,@closest_primary.long])).round(2), "km") %>)
-                </div>
-                <div class="d-flex justify-content-between">
-                  <p>Secondary</p>
-                  <%= @closest_secondary.name%>
-                  (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_secondary.lat,@closest_secondary.long])).round(2), "km") %>)
+
+            <div class="show-map-container">
+              <div class="map">
+                <div style="width: 100%; height: 425px;"
+                  data-controller="map"
+                  data-map-markers-value="<%= @markers.to_json %>"
+                  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
                 </div>
               </div>
             </div>
-            <div class="map">
-              <div style="width: 100%; height: 425px;"
-                data-controller="map"
-                data-map-markers-value="<%= @markers.to_json %>"
-                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
