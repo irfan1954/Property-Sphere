@@ -20,15 +20,17 @@
   }
 }
 /* Styling the search container */
-.search-container {
-  width: 900px;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid #ccc;
-  border-radius: 25px;
-  padding: 5px 10px;
-  background-color: #f9f9f9;
-  margin: 7px auto;
+.banner {
+  .search-container {
+    width: 900px;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+    margin: 7px auto;
+  }
 }
 
 /* Styling the search input */
@@ -98,10 +100,10 @@
 .summary-card {
   perspective: 1500px;
   position: relative;
-  height: 400px;
+  height: 200px;
 
   &__side {
-    height: 400px;
+    height: 200px;
     width: 320px;
     transition: all 1.0s ease;
     border-radius: 3px;
@@ -114,11 +116,11 @@
     box-shadow: 0 10px 15px rgba($color: #000000, $alpha: .15);
 
     &-front {
-      background-color: white;
+      background-color: $primary-blue;
 
-      p {
+      h4 {
         height: 100%;
-        color: black;
+        color: white;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -130,15 +132,15 @@
       transform: rotateY(180deg);
 
       &-1 {
-        background-image: linear-gradient(to right bottom, #a6f326, #0aa30d);
+        background-image: linear-gradient(to right bottom, $secondary-color, $primary-blue);
       }
 
       &-2 {
-        background-image: linear-gradient(to right bottom, #f9bc6a, #ad6b0e);
+        background-image: linear-gradient(to right bottom, $secondary-color, $primary-blue);
       }
 
       &-3 {
-        background-image: linear-gradient(to right bottom, #62b5f7, #01589a);
+        background-image: linear-gradient(to right bottom, $secondary-color, $primary-blue);
       }
 
       p {
@@ -146,6 +148,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        text-align: center;
       }
     }
   }

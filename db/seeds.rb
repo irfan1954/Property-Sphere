@@ -69,8 +69,6 @@ CSV.foreach("lib/files/addresses.csv", headers: true) do |address|
     "https://lid.zoocdn.com/u/1024/768/dac7482a2aad96bc4e389c13e40afd71260a18e4.jpg:p",
     "https://lid.zoocdn.com/u/1024/768/7f8667edcf008badc136a3d50525e78421eebf2c.jpg:p",
     "https://lid.zoocdn.com/u/1024/768/e6d71cd019aeedaccf77030414f0858ad74330b4.jpg:p",
-    "https://lid.zoocdn.com/u/1024/768/b052ab5e346aa1a987175f1188a513c5b960fe05.jpg:p",
-    "https://lid.zoocdn.com/u/1024/768/96055036fb9d75812a7cf4b78adc73b69305bc33.jpg:p",
     "https://lid.zoocdn.com/u/1024/768/97cc85e8656ab7599526dd37c29a1a546e51d718.jpg:p",
     "https://lid.zoocdn.com/u/1024/768/c10d3f64366af901e0a047bf4bd89f45788a62be.jpg:p",
     "https://lid.zoocdn.com/u/1024/768/5402632f1bcbb339c99e4572fb3b3ef5532c132d.jpg:p",

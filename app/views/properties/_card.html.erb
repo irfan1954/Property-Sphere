@@ -73,22 +73,21 @@
             <p> Rental price </p>
           </div>
         <% end %>
-        <%# <% if Amenity.where(type: :hospital).geodcode.near(property.location.lat, property.location.long) %>
-          <%# <div class="highlight-button"> %>
-            <%# <p>Hospital nearby</p> %>
-          <%# </div> %>
-        <%# <% end %>
-        <%# <% if Amenity.where(type: :subway_station).geodcoded.near(property.location.lat, property.location.long) %>
-          <%# <div class="highlight-button"> %>
-            <%# <p>Train transport</p> %>
-          <%# </div> %>
-        <%# <% end %>
         <% if (property.price/property.floor_area) < 8000 %>
           <div class="highlight-button">
             <p>Value per sqm </p>
           </div>
         <% end %>
-
+        <% if (property.price/property.floor_area) < 6000 %>
+          <div class="highlight-button">
+            <p>Transport links </p>
+          </div>
+        <% end %>
+        <% if property.location.rent_price < 24000 %>
+          <div class="highlight-button">
+            <p>Local amenities </p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
