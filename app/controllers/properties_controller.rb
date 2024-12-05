@@ -6,37 +6,71 @@ class PropertiesController < ApplicationController
   require "csv"
 
   def home
-    @postcodes = Location.all_postcodes
+    @postcodes_for_search = Location.all_postcodes
     @properties = Property.order("RANDOM()").take(10)
   end
 
   def index
-    @postcodes = Location.all_postcodes
-    @properties = Property.all.order(:created_at).reverse_order
+    @postcodes_for_search = Location.all_postcodes
+
+    if params[:postcode].present?
+      postcode = Location.find_by(raw_postcode: params[:postcode])
+      location_ids = Location.geocoded.near([postcode.lat, postcode.long], 5.0).map { |loc| loc.id}
+      @locations = Location.where(id: location_ids)
+    else
+      @locations = Location.all
+    end
+    if params[:property].present?
+      @locations = @locations.where('rent_price > ?', 24000)
+    end
+    if params[:neighbourhood].present?
+      @locations = @locations.where('crime < ?', 350)
+    end
+    # if params[:property].present?
+      # @locations = @locations.where('rent_price > ?', 2000)
+    # end
+
+    # @properties = Property.all.order(:created_at).reverse_order
+    @properties = Property.where(location_id: @locations.pluck(:id))
 
     if params[:min_price].present? && params[:min_price] != "Min"
-      @properties = Property.where("price > ?", params[:min_price])
+      @properties = @properties.where("price > ?", params[:min_price])
     end
     if params[:max_price].present? && params[:max_price] != "Max"
-      @properties = Property.where("price < ?", params[:max_price])
+      @properties = @properties.where("price < ?", params[:max_price])
     end
     if params[:min_bedrooms].present? && params[:min_bedrooms] != "Min"
-      @properties = Property.where("bedrooms > ?", params[:min_bedrooms])
+      @properties = @properties.where("bedrooms > ?", params[:min_bedrooms])
     end
     if params[:min_bathrooms].present? && params[:min_bathrooms] != "Min"
-      @properties = Property.where("bathrooms > ?", params[:min_bathrooms])
+      @properties = @properties.where("bathrooms > ?", params[:min_bathrooms])
     end
     if params[:property_type].present? && params[:property_type] != "Type"
-      @properties = Property.where("property_type = ?", params[:property_type])
+      @properties = @properties.where("property_type = ?", params[:property_type])
     end
     if params[:floor_area].present? && params[:floor_area] != "Min sqm"
-      @properties = Property.where("floor_area > ?", params[:floor_area])
+      @properties = @properties.where("floor_area > ?", params[:floor_area])
     end
 
-    @data = { "properties" => @properties }
+    @markers = @properties.geocoded.map do |property|
+      {
+        lat: property.latitude,
+        lng: property.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { property: property }),
+
+        marker_html: render_to_string(partial: "marker", locals: { icon: nil }),
+
+        property_path: property_path(property)
+      }
+    end
+
+    @recommended_properties = Property.order("RANDOM()").take(10)
+
+    @data = { "properties" => @properties, "recommended_properties" => @recommended_properties  }
   end
 
   def search
+    @postcodes_for_search = Location.all_postcodes
     search_param = params[:postcode].present? ? params[:postcode] : "W10 4AD"
 
     postcode = Location.find_by(raw_postcode: search_param)
@@ -54,6 +88,18 @@ class PropertiesController < ApplicationController
     @recommended_properties = Property.order("RANDOM()").take(10)
 
     @data = { "properties" => @properties, "recommended_properties" => @recommended_properties }
+
+    @markers = @properties.geocoded.map do |property|
+      {
+        lat: property.latitude,
+        lng: property.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { property: property }),
+
+        marker_html: render_to_string(partial: "marker", locals: { icon: nil }),
+
+        property_path: property_path(property)
+      }
+    end
 
     render :index
   end

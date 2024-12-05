@@ -7,6 +7,11 @@
   margin: 10px;
 }
 
+.show-top{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
 .property-show-infos {
   padding-left: 16px;
   padding-right: 16px;
@@ -35,16 +40,22 @@
   display: flex;
   width: 100vw;
   .analytics-title {
-    background-color: rgb(31, 31, 31);
-    color: whitesmoke;
+    margin-top: 8px;
+    margin-bottom: 8px;
     text-align: center;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
+    font-size: 16px;
   }
   .show-analytics-card {
     .show-analytics-card-content {
       padding: 16px;
     };
+    .location-show-analytics-card-content {
+      padding: 16px;
+      display: flex;
+    };
+
     border-radius: 8px;
     font-size: 12px;
     width: 300px;
