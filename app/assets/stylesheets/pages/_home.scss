@@ -21,13 +21,14 @@
 }
 /* Styling the search container */
 .search-container {
+  width: 900px;
   align-items: center;
   gap: 10px;
   border: 1px solid #ccc;
   border-radius: 25px;
   padding: 5px 10px;
   background-color: #f9f9f9;
-  margin: 0 auto;
+  margin: 7px auto;
 }
 
 /* Styling the search input */
@@ -45,6 +46,15 @@
 .search {
   display: grid;
   grid-template-columns: 7fr 1fr;
+  height: 50px;
+}
+
+.ts-control {
+  height: 57px !important;
+  border: none !important;
+  margin-top: -4px !important;
+  margin-left: -6px !important;
+  border-radius: 18px !important;
 }
 
 /* Styling the search button */
@@ -66,4 +76,85 @@
 /* Ensure proper alignment */
 .search-container input::placeholder {
   color: #aaa;
+}
+
+.search-btn {
+  font-size: 19px;
+  width: 154px;
+  height: 49px;
+  margin-left: 17px;
+  margin-top: -3px;
+}
+
+.site-summary-section {
+  width: 75%;
+  margin: 46px auto;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  gap: 1em;
+  align-items: center;
+}
+
+.summary-card {
+  perspective: 1500px;
+  position: relative;
+  height: 400px;
+
+  &__side {
+    height: 400px;
+    width: 320px;
+    transition: all 1.0s ease;
+    border-radius: 3px;
+    font-size: 18px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    box-shadow: 0 10px 15px rgba($color: #000000, $alpha: .15);
+
+    &-front {
+      background-color: white;
+
+      p {
+        height: 100%;
+        color: black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+    }
+
+    &-back {
+      transform: rotateY(180deg);
+
+      &-1 {
+        background-image: linear-gradient(to right bottom, #a6f326, #0aa30d);
+      }
+
+      &-2 {
+        background-image: linear-gradient(to right bottom, #f9bc6a, #ad6b0e);
+      }
+
+      &-3 {
+        background-image: linear-gradient(to right bottom, #62b5f7, #01589a);
+      }
+
+      p {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  &:hover &__side-front{
+    transform: rotateY(180deg);
+  }
+
+  &:hover &__side-back{
+    transform: rotateY(0);
+  }
 }

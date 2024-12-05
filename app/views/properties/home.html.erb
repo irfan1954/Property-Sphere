@@ -12,19 +12,46 @@
           data: { class: 'search-bar', controller: "tom-select", tom_select_options_value: {},
           }
         %>
-        <%= f.submit :Search%>
+        <%= f.submit :Search, class:'search-btn'%>
       </div>
       <% end %>
     </div>
   </div>
 </div>
 
+<section class="site-summary-section">
+  <div class="summary-card">
+    <div class="summary-card__side summary-card__side-front">
+      <p>Search Properties</p>
+    </div>
+    <div class="summary-card__side summary-card__side-back summary-card__side-back-1">
+      <p class="summary-text">Easily search for your desired property by location using a postcode for efficient, hassle-free results on the Property Sphere platform.</p>
+    </div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-card__side summary-card__side-front">
+      <p>Filter Properties</p>
+    </div>
+    <div class="summary-card__side summary-card__side-back summary-card__side-back-2">
+      <p class="summary-text">Filter property to narrow down your search using your predefined filter parameters and choice options</p>
+    </div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-card__side summary-card__side-front">
+      <p>Properties Analytics</p>
+    </div>
+    <div class="summary-card__side summary-card__side-back summary-card__side-back-3">
+      <p class="summary-text">View Analytics on properties to further drive down your interest in the property and it's environment</p>
+    </div>
+  </div>
+</section>
+
 
 <section id="home-card" class="py-2">
   <div class="container">
     <h2 class="section-title text-center"> Properties </h2>
     <div class="border-bottom"></div>
-    <p class="lead text-center"> some of the most popular properties here...</p>
+    <p class="lead text-center mt-3"> some of the most popular properties here...</p>
     <div class="references" style='width: 88dvw;'>
       <div style="display: flex; overflow-x: scroll;">
         <% @properties.each do |property| %>
