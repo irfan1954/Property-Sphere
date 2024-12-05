@@ -6,18 +6,18 @@
         <div class="search-display-text">
           <p> Your search for <%= params[:postcode] %> yielded <%= pluralize(@properties.length, "result") %> </p>
         </div>
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <ul class="nav nav-tabs views-tab" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+              <div class="nav-link active views" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
                 <span><i class="fa-solid fa-list"></i></span>
                 <span>List view</span>
-              </button>
+              </div>
             </li>
             <li class="nav-item" role="presentation">
-              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+              <div class="nav-link views" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
                 <span><i class="fa-solid fa-location-dot"></i></span>
                 <span>Map view</span>
-              </button>
+              </div>
             </li>
           </ul>
       </div>
