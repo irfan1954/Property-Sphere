@@ -1,16 +1,5 @@
 <%= form_with(url: properties_path, method: :get, local: true, class: "filter-form") do |f|   %>
   <div class="categories">
-    <div class="search-container">
-      <div class="search">
-        <%= f.select :postcode,
-          options_for_select(@postcodes_for_search),
-          { include_blank: params[:postcode] },
-          data: { class: 'search-bar', controller: "tom-select", tom_select_options_value: {},
-          }
-        %>
-      </div>
-    </div>
-
     <div class="category-title">
       <span><i class="fa-solid fa-chart-simple"></i></span>
       <span><h5>Your filters</h5></span>
@@ -81,7 +70,7 @@
         <p>medium</p>
         <p>high</p>
       </div>
-      <div class="d-flex justify-content-center mt-16">
+      <div class="d-flex justify-content-center">
         <%= f.submit "Apply filters"%>
       </div>
     </div>
