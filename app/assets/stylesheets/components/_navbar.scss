@@ -2,6 +2,10 @@
   justify-content: space-between;
   background: $primary-blue;
   height: 9vh;
+  .dropdown {
+    align-self: center;
+    font-size: 24px;
+  }
 }
 
 .nav-item{
@@ -11,6 +15,9 @@
   margin-right: 10px;
   a {
     text-decoration: none;
+  }
+  span {
+    color: black;
   }
 
 }
