@@ -164,11 +164,12 @@
                 <hr>
                 <div class="d-flex justify-content-between">
                   <% if @property.location.crime && @property.location.crime < 1000%>
-                    <p>Low crime</p>
+                    <span><p>Low crime</p></span>
+                    <span><p><%= @property.location.crime.to_i %> total crimes in 2023</p></span>
                   <% else %>
-                    <p>Medium crime</p>
+                    <span><p>Medium crime</p></span>
+                    <span><p><%= @property.location.crime.to_i %> total crimes in 2023</p></span>
                   <% end %>
-                    <p><%= @property.location.crime.to_i %> total crimes in 2023</p>
                 </div>
                 <p class="text-center lh-sm"><strong>People</strong></p>
                 <hr>
