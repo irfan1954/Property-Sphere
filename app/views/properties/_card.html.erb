@@ -17,7 +17,7 @@
 
         <div class="icon d-flex">
           <i class="fa-regular fa-paper-plane"></i>
-          <%= button_to saved_properties_path, class:"button-none", remote: true, method: :post, params: { property_id: property.id } do %>
+          <%= button_to property_saved_properties_path(property), class:"button-none", remote: true, method: :post do %>
             <i class="fa-regular fa-heart" ></i>
           <% end %>
         </div>

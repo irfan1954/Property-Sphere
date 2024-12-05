@@ -16,7 +16,7 @@ Rails.application.routes.draw do
       get :search
     end
     post :contact, on: :member
-    resources :saved_properties, only: %i[create destroy]
+    resources :saved_properties, only: %i[create update destroy]
   end
 
   resources :saved_properties, only: %i[index destroy create update]

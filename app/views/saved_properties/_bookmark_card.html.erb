@@ -1,12 +1,11 @@
 <div class="bookmark-card">
-
   <div class="status-bar <%= bookmark.contacted? ? 'contacted' : 'not-contacted' %>">
     <p class="status-text"> <%= bookmark.contacted? ? 'Contacted' : 'Not contacted' %> </p>
   </div>
 
   <div class="delete-icon">
     <%= link_to saved_property_path(bookmark.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this from your bookmarks?" }, class:"button-none"  do %>
-      <i class="fa-regular fa-trash-can" style="color: #ff0000;"></i>
+      <i class="fa-sharp-duotone fa-solid fa-xmark"></i>
     <% end %>
   </div>
 
@@ -43,7 +42,7 @@
 
     <div class="card-content">
       <%= link_to property_path(bookmark.property) do %>
-        <h2 class="bookmark-address"><%= bookmark.property.address %></h2>
+        <h2 class="bookmark-address"><%= "#{bookmark.property.address}, #{bookmark.property.location.postcode}" %></h2>
       <% end %>
       <hr>
       <div class="main-info">
@@ -62,25 +61,44 @@
           <div data-comment-form-target="display">
             <p data-comment-form-target="comment"><%= bookmark.comment || '' %></p>
             <% if bookmark.comment.present? %>
-              <button type="button" data-action="click->comment-form#edit" class="edit-button">Edit</button>
+              <button type="button" data-action="click->comment-form#edit" class="button-edit">Add note</button>
             <% end %>
           </div>
 
           <!-- Comment Form Section -->
-          <div data-comment-form-target="form" class="<%= 'hidden' if bookmark.comment.present? %>">
-            <%= simple_form_for bookmark, url: saved_property_path(bookmark), method: :patch, remote: true do |f| %>
-              <%= f.input_field :comment, placeholder: "What's on your mind...", class: "comment-field", data: { comment_form_target: "textarea" } %>
-              <%= f.button :submit, '📝 Save comment', class: "comment-button", data: { action: "click->comment-form#save" } %>
+          <div data-comment-form-target="formWrapper" class="<%= 'hidden' if bookmark.comment.present? %>">
+            <%= simple_form_for bookmark, url: saved_property_path(bookmark), method: :patch, remote: true, data: {comment_form_target: "form"} do |f| %>
+              <%= f.input_field :comment, placeholder: "Add a note...", class: "comment-field", data: { comment_form_target: "textarea" } %>
+              <%= f.button :submit, 'Save note', class: "button-edit", data: { action: "click->comment-form#save" } %>
             <% end %>
           </div>
         </div>
 
-        <div class="contact-section d-flex">
-          <%= link_to property_path(bookmark.property), class: "button-none" do %>
-            <i class="fa-regular fa-paper-plane"></i>
-            <p>Contact</p>
-          <% end %>
+
+        <div class="contact-section button-contact" data-bs-toggle="modal" data-bs-target="#contact_<%= bookmark.id %>">
+              <p class="mb-0">Contact</p>
         </div>
+
+
+      <div class="modal fade" id="contact_<%= bookmark.id %>" tabindex="-1" aria-labelledby="contact_<%= bookmark.id %>Label" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="contact_<%= bookmark.id %>Label">Contact Agent for <%= bookmark.property.address %></h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for bookmark do |form| %>
+                <div class="form-group">
+                  <%= form.input :message, as: :text %>
+                  <%= form.input :contacted, as: :hidden, input_html: {value: true} %>
+                </div>
+                <%= form.submit "Submit", class: "btn btn-primary btn-contact-form" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 </div>

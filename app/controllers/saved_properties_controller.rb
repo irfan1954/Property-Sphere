@@ -4,40 +4,39 @@ class SavedPropertiesController < ApplicationController
   end
 
   def create
-    @saved_property = SavedProperty.new
-    @saved_property.user_id = current_user.id
     @property = Property.find(params[:property_id])
+    # @saved_property = SavedProperty.find_or_initialize_by(user_id: current_user.id, property_id: @property.id)
+    if params[:saved_property].present?
+      @saved_property = SavedProperty.new(comment_params)
+    else
+      @saved_property = SavedProperty.new
+    end
     @saved_property.property = @property
+    @saved_property.user = current_user
     if @saved_property.save
       flash[:notice] = 'Added to wishlist'
       redirect_to request.referrer
     else
-      flash[:alert] = 'There was an error'
+      flash[:alert] = @saved_property.errors.messages[:property_id].join
       redirect_to request.referrer
+      return
     end
-  end
-
-  def agent_create
-    @saved_property = SavedProperty.new(saved_properties_params)
-    @saved_property.user_id = current_user.id
-    if @saved_property.save
-      flash[:notice] = 'Added to wishlist'
-
-      AgentMailer.with(user: current_user).send_email(@saved_property, saved_properties_param[:message])
-
-      format.html { redirect_to saved_properties_path, notice: "Email was sent successfully" }
-
-    else
-      flash[:alert] = 'There was an error'
-    end
+    # else
+    #   # If the record exists, update the `contacted` status
+    #   @saved_property.save
+    #   redirect_to request.referrer
+    #   flash[:notice] = 'Message sent'
+    # end
+    # AgentMailer.with(user: current_user).send_email(@saved_property, saved_properties_params[:message])
+    # format.html { redirect_to saved_properties_path, notice: "Email was sent successfully" }
   end
 
   def update
     @saved_property = SavedProperty.find(params[:id])
-    if @saved_property.update(comment_param)
+    if @saved_property.update(comment_params)
       respond_to do |format|
-        format.turbo_stream # For Turbo updates
-        format.html { redirect_to bookmarks_path, notice: "Comment updated successfully." }
+        format.json # For Turbo updates
+        format.html { redirect_to saved_properties_path, notice: "Agent Contacted successfully." }
       end
     else
       respond_to do |format|
@@ -48,16 +47,16 @@ class SavedPropertiesController < ApplicationController
 
   def destroy
     @saved_property = SavedProperty.find(params[:id])
-    redirect_to saved_properties_path, notice: "Bookmark deleted." if @saved_property.destroy
+    redirect_to saved_properties_path, notice: "Bookmark removed" if @saved_property.destroy
   end
 
   private
 
-  def saved_properties_param
-    params.require(:saved_property).permit(:property_id, :message, :comment)
+  def saved_properties_params
+    params.require(:saved_property).permit(:property_id, :message)
   end
 
-  def comment_param
-    params.require(:saved_property).permit(:comment)
+  def comment_params
+    params.require(:saved_property).permit(:comment, :message, :contacted)
   end
 end
