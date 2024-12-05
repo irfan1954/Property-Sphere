@@ -76,12 +76,12 @@
         color: black;
       }
 
-      .filter-columns {
-        width: 300px;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 19px;
-      }
+      // .filter-columns {
+      //   width: 300px;
+      //   display: flex;
+      //   justify-content: space-between;
+      //   margin-bottom: 19px;
+      // }
 
       .min-price {
         width: 100px;
@@ -114,4 +114,10 @@
       overflow-y: scroll;
     }
   }
+}
+
+.views-tab {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
 }

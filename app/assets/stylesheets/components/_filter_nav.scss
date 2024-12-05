@@ -9,14 +9,13 @@ p {
   .filter-dropdown {
     display: flex;
     margin-bottom: 8px;
-    width: 300px;
     margin-left: 8px;
     margin-right: 8px;
     box-shadow: 0 1px 2px rgba(96, 96, 96, 0.2);
     border-radius: 16px;
     height: 24px;
     select {
-      width: 70%;
+      width: 100%;
       border-top-right-radius: 16px;
       border-bottom-right-radius: 16px;
       background-color: rgba(197, 197, 197, 0.1);
@@ -31,14 +30,18 @@ p {
       margin-right: 4px;
       font-size: 16px;
     };
-    .filter-columns {
-      display: flex;
-      justify-content: space-between;
-      width: 300px;
-    }
     label{
       font-size: 12px
     }
+  }
+  .filter-columns {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 19px;
+  }
+
+  .filter-columns .filter-dropdown {
+    width: 100%;
   }
 }
 
@@ -59,8 +62,6 @@ input {
   margin-top: 24px;
   .priorty-dropdown {
     display: flex;
-    margin-bottom: 8px;
-    width: 300px;
     margin-left: 8px;
     margin-right: 8px;
     box-shadow: 0 1px 2px rgba(96, 96, 96, 0.2);
