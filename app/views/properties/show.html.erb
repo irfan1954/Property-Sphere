@@ -163,7 +163,7 @@
                 <p class="text-center lh-sm"><strong>Safety</strong></p>
                 <hr>
                 <div class="d-flex justify-content-between">
-                  <% if @property.location.crime < 1000%>
+                  <% if @property.location.crime && @property.location.crime < 1000%>
                     <p>Low crime</p>
                   <% else %>
                     <p>Medium crime</p>
