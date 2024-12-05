@@ -12,24 +12,32 @@ class SavedPropertiesController < ApplicationController
       flash[:notice] = 'Added to wishlist'
       redirect_to request.referrer
     else
-      flash[:alert] = 'There was an error'
+      flash[:alert] = 'Already in your wishlist'
       redirect_to request.referrer
     end
   end
 
   def agent_create
-    @saved_property = SavedProperty.new(saved_properties_params)
-    @saved_property.user_id = current_user.id
-    if @saved_property.save
-      flash[:notice] = 'Added to wishlist'
+    @property = Property.find(params[:property_id])
+    # Check if the property already exists for the current user
+    @saved_property = SavedProperty.find_or_initialize_by(user_id: current_user.id, property_id: @property.id)
 
-      AgentMailer.with(user: current_user).send_email(@saved_property, saved_properties_param[:message])
-
-      format.html { redirect_to saved_properties_path, notice: "Email was sent successfully" }
-
+    if @saved_property.new_record?
+      # If it's a new record, assign the additional attributes and save
+      @saved_property.assign_attributes(saved_properties_param)
+      if @saved_property.save
+        flash[:notice] = 'Added to wishlist'
+      else
+        flash[:alert] = 'There was an error saving the property'
+        return
+      end
     else
-      flash[:alert] = 'There was an error'
+      # If the record exists, update the `contacted` status
+      @saved_property.contacted = true
+      @saved_property.save
     end
+    # AgentMailer.with(user: current_user).send_email(@saved_property, saved_properties_params[:message])
+    format.html { redirect_to saved_properties_path, notice: "Email was sent successfully" }
   end
 
   def update

@@ -6,7 +6,7 @@
 
   <div class="delete-icon">
     <%= link_to saved_property_path(bookmark.id), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this from your bookmarks?" }, class:"button-none"  do %>
-      <i class="fa-regular fa-trash-can" style="color: #ff0000;"></i>
+      <i class="fa-sharp-duotone fa-solid fa-xmark"></i>
     <% end %>
   </div>
 
@@ -69,16 +69,16 @@
           <!-- Comment Form Section -->
           <div data-comment-form-target="formWrapper" class="<%= 'hidden' if bookmark.comment.present? %>">
             <%= simple_form_for bookmark, url: saved_property_path(bookmark), method: :patch, remote: true, data: {comment_form_target: "form"} do |f| %>
-              <%= f.input_field :comment, placeholder: "What's on your mind...", class: "comment-field", data: { comment_form_target: "textarea" } %>
+              <%= f.input_field :comment, placeholder: "Add a note...", class: "comment-field", data: { comment_form_target: "textarea" } %>
               <%= f.button :submit, 'Save note', class: "button-edit", data: { action: "click->comment-form#save" } %>
             <% end %>
           </div>
         </div>
 
-        <div class="contact-section d-flex">
+        <div class="contact-section contact-button">
           <%= link_to property_path(bookmark.property), class: "button-none" do %>
-            <i class="fa-regular fa-paper-plane"></i>
-            <p>Contact</p>
+              <i class="fa-regular fa-paper-plane"></i>
+              <p>Contact</p>
           <% end %>
         </div>
 

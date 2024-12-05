@@ -1,6 +1,6 @@
 .bookmarks-index-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); // 3 columns per row
+  grid-template-columns: repeat(4, 1fr); // 3 columns per row
   gap: 20px; // Spacing between cards
   justify-items: center;
   flex: 1;
@@ -38,10 +38,12 @@
   .delete-icon {
     position: absolute;
     top: 5px;
-    left: 5px;
+    left: 7px;
+    color: white;
 
-    .hover{
-      background-color: white;
+    &:hover{
+      color:red;
+      cursor: grab;
     }
   }
 
@@ -108,5 +110,11 @@
       }
 
     }
+
+    .contact-section{
+      display: flex;
+      justify-content: center;
+    }
   }
+
 }
