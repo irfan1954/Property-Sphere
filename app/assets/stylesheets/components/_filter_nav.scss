@@ -16,7 +16,7 @@ p {
     border-radius: 16px;
     height: 24px;
     select {
-      width: 70%;
+      width: 100%;
       border-top-right-radius: 16px;
       border-bottom-right-radius: 16px;
       background-color: rgba(197, 197, 197, 0.1);
@@ -59,7 +59,7 @@ input {
   margin-top: 24px;
   .priorty-dropdown {
     display: flex;
-    margin-bottom: 8px;
+    margin-bottom: 24px;
     width: 300px;
     margin-left: 8px;
     margin-right: 8px;
