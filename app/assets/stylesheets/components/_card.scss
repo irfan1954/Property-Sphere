@@ -163,6 +163,17 @@
     display: flex;
     font-size: 8px;
     border-radius: 25px;
+
+    p {
+      font-size: 12px;
+      border: none;
+      border-radius: 25px;
+      background-color: $secondary-color;
+      color: white;
+      padding-left: 27px;
+      padding-right: 28px;
+      margin-bottom: 2px;
+    }
   }
 
 }

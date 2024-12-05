@@ -1,61 +1,60 @@
-Address,Postcode
-"12 Corney Reach Way, London",W4 2TU
-"Flat 7, Duchess Of Bedford House, Duchess Of Bedfords Walk, London",W8 7QL
-"3 Old Oak Road, London",W3 7HN
-"4 Oak Dene, London",W13 8AW
-"1 Hillgate Place, London",W8 7SL
-"Upper Maisonette, 212 Kensington Park Road, London",W11 1NR
-"83 Great Titchfield Street, London",W1W 6RH
-"56 Boileau Road, London",W5 3AJ
-"10A St Peters Square, London",W6 9AB
-"38 Foley Street, London",W1W 7TW
-"146B Goldhawk Road, London",W12 8HH
-"8A Trebeck Street, London",W1J 7LY
-"Flat A, 113 Baker Street, London",W1U 6RS
-"First Floor Flat, 102 Great Portland Street, London",W1W 6PD
-"Penthouse 9, Portman Mansions, Chiltern Street, London",W1U 5AH
-"Flat 58, 21 Seymour Street, London",W1H 7JR
-"7 Stanley Crescent, London",W11 2NB
-"Second Floor Flat, 330 Westbourne Park Road, London",W11 1EQ
-"Flat 20, Addisland Court, Holland Villas Road, London",W14 8DA
-"21 Wesley Square, London",W11 1TP
-"Flat 5, Aston House, Portobello Court, London",W11 2DN
-"34A Arundel Gardens, London",W11 2LB
-"Flat 3, 24 Market Place, London",W1W 8ER
-"Flat 7, 1 - 3 Brewer Street, London",W1F 0RD
-"Flat 12, Central Park Lodge, 54 - 58 Bolsover Street, London",W1W 5NQ
-"2 Manet Gardens, London",W3 7AY
-"Flat 401, 20 Palace Court, London",W2 4HU
-"Flat 3, 14 Lansdowne Road, London",W11 3LW
-"49 The Ridgeway, London",W3 8LW
-"Flat 1, Thackeray House, Thackeray Street, London",W8 5HA
-"126 - 134 Baker Street, London",W1U 6SH
-"14 Lonsdale Road, London",W11 2DE
-"32A Kensington Hall Gardens, London",W14 9LS
-"46 Goldhawk Road, London",W12 8DH
-"28 Eldon Road, London",W8 5PT
-"7 - 9 Charlotte Street, London",W1T 1RG
-"25A Fairholme Road, London",W14 9JZ
-"Flat 1, 18 Montagu Square, London",W1H 2LE
-"7 Cuckoo Avenue, London",W7 1BP
-"Apartment 85, 11 Sheldon Square, London",W2 6DQ
-"Second Floor Flat, 43 Comeragh Road, London",W14 9HT
-"Boston House, 36 - 38 Fitzroy Square, London",W1T 6EY
-"68 Cleveland Road, Ealing",W13 8AJ
-"172A Southfield Road, London",W4 5LD
-"44 Woodmans Mews, London",W12 0HX
-"Flat 1, 18 - 19 Salisbury Place, London",W1H 1WA
-"3 Laurel Gardens, London",W7 3JG
-"36 Shepherd Market, London",W1J 7QR
-"27 West Lodge Avenue, London",W3 9SE
-"28 Princes Gardens, London",W5 1SD
-"19 Deans Close, London",W4 3LX
-"110 Marylebone High Street, London",W1U 4RY
-"41 Fitzroy House Dickens Yard, Longfield Avenue, London",W5 2JG
-"12 Woodstock Street, London",W1C 2AF
-"89 Salisbury Road, London",W13 9TT
-"Flat 55, Beaumaris Tower, Park Road North, London",W3 8RS
-"18 Pembridge Place, London",W2 4XB
-"Lower Ground Floor Storeroom, 26 - 27 Conduit Street, London",W1S 2XZ
-"27 Raymond Avenue, London",W13 9UY
-"51 - 52 New Bond Street, London",W1S 1DQ
+Address,Postcode,Descriptions
+"12 Corney Reach Way, London",W4 2TU,"Modern apartment features one bathroom and a sleek, contemporary design. Conveniently close to supermarkets, hospitals, and shopping malls, it offers urban living at its finest. A cozy balcony overlooks a shared garden, adding a touch of greenery. Perfect for couples or singles, it`s a stylish and practical choice."
+"Flat 7, Duchess Of Bedford House, Duchess Of Bedfords Walk, London",W8 7QL,"Family-Friendly townhouse with two bathrooms and spacious interiors designed for family living. Located minutes from schools, hospitals, and shopping centers, everything is within easy reach. A private garden provides space for kids or pets to play. This property combines practicality and comfort for modern family life."
+"3 Old Oak Road, London",W3 7HN,"Charming house includes two bathrooms and a bright open-plan living area. Close to shopping malls, grocery stores, and healthcare facilities, it`s ideal for convenient living. The large private garden offers space for gardening or outdoor dining. It`s a tranquil retreat with urban accessibility."
+"4 Oak Dene, London",W13 8AW,"Compact City apartment offers a single bathroom and a functional layout. Just steps from supermarkets, hospitals, and transport hubs, it`s perfect for those on the go. The property has access to a shared garden, adding a green touch to urban life. Great for first-time buyers or singles."
+"1 Hillgate Place, London",W8 7SL,"Luxury Penthouse apartment features two bathrooms and high-end finishes. Located near shopping malls and hospitals, it offers unparalleled convenience. A rooftop garden provides panoramic views and private outdoor space. Ideal for those seeking luxury and location in one package."
+"Upper Maisonette, 212 Kensington Park Road, London",W11 1NR,"Cozy house with one bathroom and a charming garden area. Situated close to local supermarkets and healthcare facilities, it`s ideal for downsizing or starting fresh. The property`s bright interiors and outdoor space make it inviting. It`s a peaceful home with modern amenities nearby."
+"83 Great Titchfield Street, London",W1W 6RH,"Stylish flat includes one bathroom and a well-designed interior. Located just minutes from shops, hospitals, and transit options, it offers excellent connectivity. A small balcony overlooks a communal garden, adding charm. Perfect for professionals or small families."
+"56 Boileau Road, London",W5 3AJ,"Spacious Suburban Home coming with huge of living space, this two-bathroom home is designed for family comfort. Close to top schools, supermarkets, and medical centers, it`s an ideal location. The lush private garden is perfect for outdoor relaxation. This home combines space, style, and convenience."
+"38 Foley Street, London",W1W 7TW,"This lovely home features two bathrooms and a cozy garden. Located within easy reach of supermarkets, hospitals, and schools, it`s perfect for families. The property`s charm and functional layout make it a standout choice. A balance of privacy and convenience awaits here."
+"146B Goldhawk Road, London",W12 8HH,"Charming house offers two bathrooms and spacious interiors. Located near shopping malls, hospitals, and supermarkets, convenience is a given. The large private garden is perfect for outdoor gatherings or family activities. A cozy yet modern home designed for a growing family."
+"8A Trebeck Street, London",W1J 7LY,"Contemporary apartment featuring one bathroom and an open-concept design. It`s ideally positioned close to supermarkets, hospitals, and public transport. The shared garden adds a splash of greenery to the urban setting. Great for young professionals or couples seeking a central location."
+"113 Baker Street, London",W1U 6RS,"Bright duplex house includes two bathrooms and a stylish interior layout. Proximity to shopping malls, hospitals, and schools ensures everyday convenience. The private garden is perfect for unwinding after a long day. A blend of modern design and family-friendly features."
+"102 Great Portland Street, London",W1W 6PD,"Compact Suburban apartment with one bathroom and functional spaces. Located close to supermarkets, healthcare, and local parks, everything is nearby. The shared garden provides additional space for outdoor relaxation. A perfect starter home or investment property."
+"Portman Mansions, Chiltern Street, London",W1U 5AH,"Spacious penthouse features two bathrooms and luxurious living areas. Situated minutes from essential services and shopping hubs, it`s both practical and stylish. The expansive garden is ideal for family fun or entertaining guests. A serene retreat in a convenient location."
+"21 Seymour Street, London",W1H 7JR,"Cozy apartment offering one bathroom and a charming private garden. Supermarkets, hospitals, and malls are just a short distance away. The bright and airy interior complements the outdoor living space. Ideal for those seeking comfort and convenience."
+"7 Stanley Crescent, London",W11 2NB,"Stylish Townhouse with Terrace comes with two bathrooms and a modern layout. Conveniently located near shopping malls, hospitals, and transit options. The terrace and private garden add valuable outdoor space. Great for families or those who love entertaining."
+"330 Westbourne Park Road, London",W11 1EQ,Elegant Urban loft with one sleek bathroom and contemporary finishes. Its prime location near supermarkets and healthcare facilities ensures easy living. The property includes access to a communal garden for added relaxation. Perfect for singles or couples seeking a modern urban lifestyle.
+"Addisland Court, Holland Villas Road, London",W14 8DA,"Bright cottage offers two bathrooms and a cozy interior. Nestled near shopping malls and medical services, it`s an ideal location. The large garden provides plenty of space for outdoor activities. A charming home with a mix of comfort and style."
+"21 Wesley Square, London",W11 1TP,"Luxurious penthouse featuring two bathrooms and panoramic views. Located close to all major amenities, it ensures a life of convenience and luxury. The private rooftop garden is perfect for entertaining or relaxation. An exceptional property in a prime location."
+"Flat 5, Aston House, Portobello Court, London",W11 2DN,"Compact house includes one bathroom and smart use of space. Located near supermarkets and hospitals, it`s ideal for busy professionals. The shared garden offers a touch of nature in the city. Affordable and functional urban living."
+"34A Arundel Gardens, London",W11 2LB,"Apartment with Balcony offers one bathroom and a private balcony. Conveniently close to shopping malls and healthcare facilities, it ensures stress-free living. The shared garden provides additional relaxation space. A stylish option for couples or small families."
+"Flat 3, 24 Market Place, London",W1W 8ER,"Expansive Family home comes with two bathrooms and spacious interiors. Located minutes from schools, hospitals, and supermarkets, it`s perfect for families. A large garden offers endless possibilities for outdoor fun. Comfortable living with all conveniences nearby."
+"Flat 7, 3 Brewer Street, London",W1F 0RD,Contemporary Suburban apartment featuring one bathroom and a modern design. Proximity to shopping centers and medical services ensures daily ease. The shared garden adds a touch of green to the property. Ideal for young professionals or investors.
+"Flat 12, Central Park Lodge, 54 - 58 Bolsover Street, London",W1W 5NQ,"Charming townhouse with Garden includes two bathrooms and a private garden. Located near schools, shopping malls, and hospitals, it`s a practical choice. The modern design is complemented by bright interiors. Perfect for families or those who love hosting."
+"2 Manet Gardens, London",W3 7AY,"Bright Apartment offers one bathroom and an open-plan layout. Just steps from supermarkets and public transport, it`s incredibly convenient. The shared garden provides a relaxing escape from city life. Perfect for singles seeking affordability and style."
+"Flat 401, 20 Palace Court, London",W2 4HU,"Elegant flat featuring two bathrooms and sleek interiors. Located close to all amenities, including hospitals and malls, it`s well-connected. The private balcony overlooks a lush shared garden. A perfect mix of modern design and practicality."
+"Flat 3, 14 Lansdowne Road, London",W11 3LW,"Cozy Family cottage comes with two bathrooms and warm, inviting spaces. Located near shopping centers and healthcare facilities, it`s ideal for families. The garden offers ample space for outdoor activities. A charming blend of rustic and modern living."
+"49 The Ridgeway, London",W3 8LW,"Urban apartment with one bathroom and contemporary interiors. Close to hospitals, supermarkets, and transit hubs, it`s perfect for city dwellers. Access to a communal garden adds a peaceful retreat. Ideal for professionals or singles."
+"Flat 1, Thackeray House, Thackeray Street, London",W8 5HA,"Luxury house features two bathrooms and opulent living spaces. Situated near shopping malls and schools, it offers unparalleled convenience. The expansive garden is perfect for entertaining or relaxing. A luxurious family home in a prime location."
+"126 - 134 Baker Street, London",W1U 6SH,"Modern house with two bathrooms and stylish interiors. Conveniently close to supermarkets, schools, and medical centers. The private terrace and garden offer outdoor living options. A great choice for families or professionals."
+"14 Lonsdale Road, London",W11 2DE,"Compact Suburban house offers one bathroom and cozy interiors. Located near shopping hubs and hospitals, it`s perfect for small families or retirees. The private garden provides additional charm. An affordable and functional choice."
+"32A Kensington Hall Gardens, London",W14 9LS,Spacious Apartment with Garden Access featuring two bathrooms and modern layouts. It`s close to major amenities like malls and healthcare centers. The shared garden enhances its appeal. Ideal for families or professionals.
+"46 Goldhawk Road, London",W12 8DH,Bright townhouse with two bathrooms and a welcoming layout. Located close to schools and hospitals for ultimate convenience. The private garden adds value for families. Stylish living with functional design.
+"28 Eldon Road, London",W8 5PT,"Charming Garden house includes one bathroom and access to a shared garden. Located near shopping malls and transport links, it`s highly practical. Perfect for singles or couples looking for an affordable home. A small space with big potential."
+"9 Charlotte Street, London",W1T 1RG,"Contemporary bungalow features two bathrooms and a well-lit open layout. Located close to supermarkets, hospitals, and schools, it`s highly convenient. The private garden offers a peaceful retreat for family gatherings. A perfect mix of comfort and modern living."
+"25A Fairholme Road, London",W14 9JZ,"Compact Urban home with one bathroom and minimalist design. Situated near shopping malls, hospitals, and public transport, it`s ideal for city life. The shared garden adds a refreshing outdoor touch. Perfect for professionals or students."
+"Flat 1, 18 Montagu Square, London",W1H 2LE,"Spacious Family townhouse boasts two bathrooms and family-friendly interiors. Located within walking distance to hospitals, schools, and supermarkets. The private garden offers a great space for kids to play. A well-connected home with a welcoming ambiance."
+"7 Cuckoo Avenue, London",W7 1BP,"Elegant apartment featuring one bathroom and a sleek, modern design. Positioned near shopping hubs and healthcare facilities, it offers ultimate convenience. The shared garden adds greenery to the urban lifestyle. Ideal for singles or young couples."
+"Apartment 85, 11 Sheldon Square, London",W2 6DQ,"Stylish Garden duplex includes two bathrooms and a spacious design. Close to hospitals, schools, and shopping centers, it`s a practical choice. The private garden provides a serene outdoor space. A great option for families or professionals."
+"Second Floor Flat, 43 Comeragh Road, London",W14 9HT,"Luxury Penthouse offering two bathrooms and high-end finishes. Located near shopping malls, hospitals, and transport links for convenience. The rooftop garden is perfect for entertaining or relaxing. A premium property for those who seek modern elegance."
+"Boston House, 36 - 38 Fitzroy Square, London",W1T 6EY,"Charming Suburban Home comes with two bathrooms and cozy interiors. Close to supermarkets, healthcare facilities, and schools, it`s family-friendly. The private garden offers space for outdoor fun. A peaceful property with practical amenities."
+"68 Cleveland Road, Ealing",W13 8AJ,"Modern City Loft with one bathroom and an open-plan layout. Conveniently located near malls, hospitals, and public transport. The shared garden provides a green escape. Ideal for young professionals seeking style and connectivity."
+"172A Southfield Road, London",W4 5LD,"Compact cottage features two bathrooms and a charming design. Close to local shops, hospitals, and schools, it`s a perfect family home. The private garden adds extra appeal for outdoor living. A cozy space with functional amenities."
+"44 Woodmans Mews, London",W12 0HX,"Spacious villa with two bathrooms and elegant interiors. Situated near supermarkets, schools, and healthcare facilities, it`s ideal for large families. The expansive garden is perfect for hosting gatherings. A luxurious and well-connected property."
+"19 Salisbury Place, London",W1H 1WA,"Chic flat offers two bathrooms and modern interiors. Located near shopping malls, hospitals, and schools, it`s highly convenient. The shared garden enhances the property`s charm. Ideal for small families or professionals."
+"3 Laurel Gardens, London",W7 3JG,Cozy Suburban townhouse featuring two bathrooms and inviting living spaces. Close to essential amenities like malls and healthcare centers. The private garden offers a great space for relaxation. A practical and welcoming home.
+"36 Shepherd Market, London",W1J 7QR,"Bright apartment includes one bathroom and a functional layout. Conveniently located near supermarkets, hospitals, and transport hubs. The shared garden provides a tranquil escape from city life. Perfect for singles or couples."
+"27 West Lodge Avenue, London",W3 9SE,"Expansive bungalow with two bathrooms and spacious interiors. Situated near shopping centers, schools, and hospitals, it`s perfect for families. The large garden is ideal for outdoor activities. A charming blend of comfort and space."
+"28 Princes Gardens, London",W5 1SD,"Stylish Garden home offers one bathroom and a thoughtfully designed interior. Located close to shopping malls, hospitals, and public transport, it`s highly practical. The shared garden adds a touch of green to the property. Perfect for those starting out or downsizing."
+"19 Deans Close, London",W4 3LX,"Charming Suburban Home comes with two bathrooms and cozy interiors. Close to supermarkets, healthcare facilities, and schools, it`s family-friendly. The private garden offers space for outdoor fun. A peaceful property with practical amenities."
+"110 Marylebone High Street, London",W1U 4RY,"Modern City Loft with one bathroom and an open-plan layout. Conveniently located near malls, hospitals, and public transport. The shared garden provides a green escape. Ideal for young professionals seeking style and connectivity."
+"41 Fitzroy House Dickens Yard, Longfield Avenue, London",W5 2JG,"Compact cottage features two bathrooms and a charming design. Close to local shops, hospitals, and schools, it`s a perfect family home. The private garden adds extra appeal for outdoor living. A cozy space with functional amenities."
+"12 Woodstock Street, London",W1C 2AF,"Spacious villa with two bathrooms and elegant interiors. Situated near supermarkets, schools, and healthcare facilities, it`s ideal for large families. The expansive garden is perfect for hosting gatherings. A luxurious and well-connected property."
+"89 Salisbury Road, London",W13 9TT,"Chic flat offers two bathrooms and modern interiors. Located near shopping malls, hospitals, and schools, it`s highly convenient. The shared garden enhances the property`s charm. Ideal for small families or professionals."
+"Flat 55, Beaumaris Tower, Park Road North, London",W3 8RS,Cozy Suburban townhouse featuring two bathrooms and inviting living spaces. Close to essential amenities like malls and healthcare centers. The private garden offers a great space for relaxation. A practical and welcoming home.
+"18 Pembridge Place, London",W2 4XB,"Bright apartment includes one bathroom and a functional layout. Conveniently located near supermarkets, hospitals, and transport hubs. The shared garden provides a tranquil escape from city life. Perfect for singles or couples."
+"Lower Ground Floor Storeroom, 26 - 27 Conduit Street, London",W1S 2XZ,"Expansive bungalow with two bathrooms and spacious interiors. Situated near shopping centers, schools, and hospitals, it`s perfect for families. The large garden is ideal for outdoor activities. A charming blend of comfort and space."
+"27 Raymond Avenue, London",W13 9UY,"Stylish Garden home offers one bathroom and a thoughtfully designed interior. Located close to shopping malls, hospitals, and public transport, it`s highly practical. The shared garden adds a touch of green to the property. Perfect for those starting out or downsizing."
+"52 New Bond Street, London",W1S 1DQ,"Charming house includes two bathrooms and a bright open-plan living area. Close to shopping malls, grocery stores, and healthcare facilities, it`s ideal for convenient living. The large private garden offers space for gardening or outdoor dining. It`s a tranquil retreat with urban accessibility."

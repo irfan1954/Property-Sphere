@@ -28,11 +28,6 @@ puts "Cleaning properties DB"
 Property.destroy_all
 puts "Seeding properties DB"
 
-descriptions = []
-CSV.foreach("lib/files/descriptions.csv", headers: true) do |row|
-  descriptions << row["description"]
-end
-
 CSV.foreach("lib/files/addresses.csv", headers: true) do |address|
   types = ["flat","house", "terraced house", "semi-detached house"]
 
@@ -94,9 +89,12 @@ CSV.foreach("lib/files/addresses.csv", headers: true) do |address|
     image_urls.sample
   end
 
+  p address
+  loca = Location.find_by(raw_postcode: address["Postcode"])
+  p loca
   address_hash = {
-    address: address["﻿Address"],
-    description: descriptions.sample,
+    address: address["Address"],
+    description: address["Descriptions"],
     bedrooms: rand(1..5),
     bathrooms: rand(1..3),
     garden: ["true", "false"].sample,
@@ -104,8 +102,8 @@ CSV.foreach("lib/files/addresses.csv", headers: true) do |address|
     council_tax: ["A", "B", "C", "D", "E"].sample,
     property_type: types.sample,
     floor_area: rand(45.0...120.0),
-    location_id: Location.find_by(postcode: address["Postcode"].delete(" ")).id,
-    price: rand(400..999)+000,
+    location_id: Location.find_by(raw_postcode: address["Postcode"]).id,
+    price: "#{rand(400..999)}000".to_i,
     freehold: ["freehold", "leasehold"].sample
   }
   Property.create!(address_hash)
