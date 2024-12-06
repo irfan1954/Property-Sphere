@@ -46,10 +46,10 @@
 
 .fa-heart {
   font-size: 10px;
-  background-color: #bab6b6;
+  background-color: white;
   padding: 10px;
   border-radius: 10px;
-  color: white;
+  color: black;
 }
 
 .fa-paper-plane {
@@ -263,7 +263,10 @@ span h3 {
 }
 
 .card-heart {
+  font-size: 17px;
   position: absolute;
   top: -13px;
-  left: 2px;
+  right: 200px;
+  background-color: #bab6b6 !important;
+  color: white;
 }

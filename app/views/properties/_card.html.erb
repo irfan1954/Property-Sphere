@@ -14,15 +14,6 @@
             <% end %>
           </div>
         <% end %>
-<<<<<<< Updated upstream
-        <div class="icon">
-          <%= button_to property_saved_properties_path(property), class:"button-none", remote: true, method: :post do %>
-            <i class="fa-regular fa-heart" ></i>
-          <% end %>
-        </div>
-=======
-
->>>>>>> Stashed changes
       </div>
       <div data-controller="image-count" data-image-count-total-image-value=<%=property.image_urls.count.to_s %>>
         <button class="carousel-control-prev" type="button" data-action="click->image-count#subtract" data-bs-target="#carouselExample<%= property.id %>" data-bs-slide="prev">
@@ -93,7 +84,7 @@
 
       <div class="icon">
           <%= button_to property_saved_properties_path(property), class:"button-none", remote: true, method: :post do %>
-            <i class="fa-regular fa-heart card-heart" ></i>
+            <i class="fa-solid fa-heart card-heart" ></i>
           <% end %>
         </div>
     </div>
