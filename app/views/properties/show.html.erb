@@ -1,5 +1,6 @@
-<%= link_to "Search results", properties_path, class:"button-seach-results" %>
-
+<div class="search-result">
+  <%= link_to "Search results", properties_path %>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -24,7 +25,7 @@
   </div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-2">
   <div class="show-top">
     <div class="property-img">
       <div id="carouselExample<%= @property.id %>" class="carousel slide slider">
@@ -54,9 +55,9 @@
       </div>
     </div>
     <div>
-      <h4 class="mt-3">Description</h4>
+      <h4>Description</h4>
       <p><%= @property.description %></p>
-      <button type="button" class="btn button-contact mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button" class="btn button-contact mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Contact Agent
       </button>
 
@@ -65,7 +66,7 @@
 
 
   <div>
-    <h2 class="item"><%= @property.address %></h2>
+    <h2 class="item mt-3"><%= @property.address %></h2>
     <p>Guide Price</p>
     <h4>£<%= number_with_delimiter(@property.price, :delimiter => ',') %></h3>
   </div>
