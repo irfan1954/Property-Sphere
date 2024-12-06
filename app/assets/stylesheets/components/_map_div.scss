@@ -87,3 +87,7 @@
     border-radius: 16px;
   }
 }
+
+.mapboxgl-canvas {
+  object-fit: cover;
+}
