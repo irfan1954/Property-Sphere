@@ -42,6 +42,10 @@
   width: 100%;
   justify-content: stretch;
 
+  hr{
+    margin: 20px;
+  }
+
   .analytics-title {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -52,12 +56,12 @@
   }
 
   .show-analytics-left-div {
-    width: 40%;
+    width: 33%;
     height: 100%;
   }
 
   .show-analytics-right-div{
-    width: 60%;
+    width: 67%;
 
     .show-map-container{
       margin: 8px;
