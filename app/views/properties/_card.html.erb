@@ -86,6 +86,12 @@
           </div>
         <% end %>
       </div>
+
+      <div class="icon">
+          <%= button_to property_saved_properties_path(property), class:"button-none", remote: true, method: :post do %>
+            <i class="fa-solid fa-heart card-heart" ></i>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

@@ -24,9 +24,26 @@
   color: white;
   border-radius: 8px;
   padding: 4px;
+  width: 80%;
+  margin-top: 10px;
+  margin-left: 20px;
+  cursor: grab;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+
+  &:hover{
+    background-color: #e6e6fa; /* Light lavender */
+    color: #32414c;
+  }
+}
+
+.button-seach-results{
+  background-color: $primary-blue;
+  color: white;
+  border-radius: 6px;
+  padding: 16px;
   width: 100%;
   margin-top: 10px;
-  cursor: grab;
   transition: background-color 0.3s ease, color 0.3s ease;
   text-align: center;
 

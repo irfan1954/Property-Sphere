@@ -1,5 +1,6 @@
-<%= link_to "Search results", properties_path %>
-
+<div class="search-result">
+  <%= link_to "Search results", properties_path %>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -24,7 +25,7 @@
   </div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-2">
   <div class="show-top">
     <div class="property-img">
       <div id="carouselExample<%= @property.id %>" class="carousel slide slider">
@@ -54,9 +55,9 @@
       </div>
     </div>
     <div>
-      <h4 class="mt-3">Description</h4>
+      <h4>Description</h4>
       <p><%= @property.description %></p>
-      <button type="button" class="btn btn-contact" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button" class="btn button-contact mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Contact Agent
       </button>
 
@@ -65,7 +66,7 @@
 
 
   <div>
-    <h2 class="item"><%= @property.address %></h2>
+    <h2 class="item mt-3"><%= @property.address %></h2>
     <p>Guide Price</p>
     <h4>£<%= number_with_delimiter(@property.price, :delimiter => ',') %></h3>
   </div>
@@ -148,7 +149,6 @@
                     <h5 class="text-center">% yield</h5>
                     <% @property_yield > @properties_average_yield ? color = "#32e420" : color = "#f7600e" %>
                     <%= column_chart({"Property" => @property_yield, "Average" => @properties_average_yield}, colors: ["#{color}", "#666"], label: "%")%>
-                    <p> <strong>Total rent:</strong>  £<%= number_with_delimiter((@total_rent), :delimiter => ',')%></p>
                   </div>
 
             </div>
@@ -168,35 +168,37 @@
               <div class="visualisation">
                 <div  class="dashboard-text">
                   <p class="text-center lh-sm"><strong>Safety</strong></p>
-                  <hr>
+
                   <div class="d-flex justify-content-between">
                     <% if @property.location.crime && @property.location.crime < 1000%>
                       <span><p>Crime</p></span>
                       <span><p><%= @property.location.crime.to_i %> total crimes in 2023</p></span>
                     <% end %>
                   </div>
+                           <hr>
                   <p class="text-center lh-sm"><strong>People</strong></p>
-                  <hr>
+
                   <div class="d-flex justify-content-between">
                     <p>Majority demographic</p>
                     <%= @demo[@property.location.demographic.to_s] %>
                   </div>
 
+                  <hr>
                   <p class="text-center lh-sm"><strong>Value</strong></p>
-                                <hr>
+
                    <div class="d-flex justify-content-between">
                       <p>Sqm value</p>
                       <p>£<%= number_with_delimiter(@house_sqm_price) %> per sqm</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                      <p>Area average rent value</p>
-                      <p>£<%= number_with_delimiter((@property.location.rent_price/12), :delimiter => ',') %> per month</p>
+                      <p>Expected rent:</p>
+                      <p>  £<%= number_with_delimiter((@total_rent), :delimiter => ',')%></p>
                     </div>
                     <div class="d-flex justify-content-between">
                       <p>Area average purchase value</p>
                       <p>£<%= number_with_delimiter((@property.location.purchase_price), :delimiter => ',') %></p>
                     </div>
-                  <hr>
+
 
                 </div>
               </div>
@@ -209,18 +211,18 @@
               <span>Location</span>
               <hr>
             </div>
-            <div class="location-show-analytics-card-content">
+            <div class="show-analytics-card-content">
               <div class="visualisation">
                 <div class="dashboard-text">
                   <p class="text-center lh-sm"><strong>Supermarket</strong></p>
-                  <hr>
                   <div class="d-flex justify-content-between">
                     <p>Supermarket </p>
                     <%= @closest_supmarket.name%>
                     (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_supmarket.lat,@closest_supmarket.long])).round(2), "km") %>)
                   </div>
+                           <hr>
                   <p class="text-center lh-sm"><strong>Medical</strong></p>
-                  <hr>
+
                   <div class="d-flex justify-content-between">
                     <p>Hospital</p>
                     <%= @closest_hospital.name%>
@@ -231,8 +233,9 @@
                     <%= @closest_pharmacy.name%>
                     (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_pharmacy.lat,@closest_pharmacy.long])).round(2), "km") %>)
                   </div>
+                           <hr>
                   <p class="text-center lh-sm"><strong>Schools</strong></p>
-                  <hr>
+
                   <div class="d-flex justify-content-between">
                     <p>Primary</p>
                     <%= @closest_primary.name%>

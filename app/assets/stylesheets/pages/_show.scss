@@ -4,7 +4,30 @@
   padding: 10px;
   border-top: 1px solid rgb(172, 167, 167);
   border-bottom: 1px solid rgb(172, 167, 167);
-  margin: 10px;
+  margin: 10px 60px 10px 0;
+}
+
+.search-result {
+  height: 25px;
+  width: 126px;
+  font-size: 15px;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  margin-top: 15px;
+  margin-left: 70px;
+  background-color: white;
+  border: 1px solid $secondary-color;
+  border-radius: 7px;
+
+  &:hover {
+    background-color: $secondary-color;
+    color: white;
+    cursor: pointer;
+  }
+
+  a {
+    color: black;
+    padding-left: 14px;
+  }
 }
 
 .show-top {
@@ -13,8 +36,7 @@
 }
 
 .property-show-infos {
-  padding-left: 16px;
-  padding-right: 16px;
+  width: 95vw;
   margin-bottom: 16px;
 }
 
@@ -38,9 +60,12 @@
 
 .analytics-dashboard {
   display: flex;
-  // padding: 10px;
-  width: 100%;
-  justify-content: stretch;
+  width: 92%;
+  margin: 0 20px;
+
+  hr{
+    margin: 20px;
+  }
 
   .analytics-title {
     margin-top: 8px;
@@ -52,12 +77,12 @@
   }
 
   .show-analytics-left-div {
-    width: 40%;
+    width: 33%;
     height: 100%;
   }
 
   .show-analytics-right-div{
-    width: 60%;
+    width: 67%;
 
     .show-map-container{
       margin: 8px;
@@ -101,12 +126,14 @@
 }
 
 .slider-imagery {
-  width: 700px !important;
-  height: 300px !important;
+  width: 800px !important;
+  height: 400px !important;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .slider {
-  width: 700px !important;
+  width: 800px !important;
 }
 
 .inner-carousel {
