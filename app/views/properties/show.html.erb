@@ -1,4 +1,4 @@
-<%= link_to "Search results", properties_path %>
+<%= link_to "Search results", properties_path, class:"button-seach-results" %>
 
 
 <!-- Modal -->
@@ -148,7 +148,6 @@
                     <h5 class="text-center">% yield</h5>
                     <% @property_yield > @properties_average_yield ? color = "#32e420" : color = "#f7600e" %>
                     <%= column_chart({"Property" => @property_yield, "Average" => @properties_average_yield}, colors: ["#{color}", "#666"], label: "%")%>
-                    <p> <strong>Total rent:</strong>  £<%= number_with_delimiter((@total_rent), :delimiter => ',')%></p>
                   </div>
 
             </div>
@@ -168,35 +167,37 @@
               <div class="visualisation">
                 <div  class="dashboard-text">
                   <p class="text-center lh-sm"><strong>Safety</strong></p>
-                  <hr>
+
                   <div class="d-flex justify-content-between">
                     <% if @property.location.crime && @property.location.crime < 1000%>
                       <span><p>Crime</p></span>
                       <span><p><%= @property.location.crime.to_i %> total crimes in 2023</p></span>
                     <% end %>
                   </div>
+                           <hr>
                   <p class="text-center lh-sm"><strong>People</strong></p>
-                  <hr>
+
                   <div class="d-flex justify-content-between">
                     <p>Majority demographic</p>
                     <%= @demo[@property.location.demographic.to_s] %>
                   </div>
 
+                  <hr>
                   <p class="text-center lh-sm"><strong>Value</strong></p>
-                                <hr>
+
                    <div class="d-flex justify-content-between">
                       <p>Sqm value</p>
                       <p>£<%= number_with_delimiter(@house_sqm_price) %> per sqm</p>
                     </div>
                     <div class="d-flex justify-content-between">
-                      <p>Area average rent value</p>
-                      <p>£<%= number_with_delimiter((@property.location.rent_price/12), :delimiter => ',') %> per month</p>
+                      <p>Expected rent:</p>
+                      <p>  £<%= number_with_delimiter((@total_rent), :delimiter => ',')%></p>
                     </div>
                     <div class="d-flex justify-content-between">
                       <p>Area average purchase value</p>
                       <p>£<%= number_with_delimiter((@property.location.purchase_price), :delimiter => ',') %></p>
                     </div>
-                  <hr>
+
 
                 </div>
               </div>
@@ -213,14 +214,14 @@
               <div class="visualisation">
                 <div class="dashboard-text">
                   <p class="text-center lh-sm"><strong>Supermarket</strong></p>
-                  <hr>
                   <div class="d-flex justify-content-between">
                     <p>Supermarket </p>
                     <%= @closest_supmarket.name%>
                     (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_supmarket.lat,@closest_supmarket.long])).round(2), "km") %>)
                   </div>
+                           <hr>
                   <p class="text-center lh-sm"><strong>Medical</strong></p>
-                  <hr>
+
                   <div class="d-flex justify-content-between">
                     <p>Hospital</p>
                     <%= @closest_hospital.name%>
@@ -231,8 +232,9 @@
                     <%= @closest_pharmacy.name%>
                     (<%= pluralize((Geocoder::Calculations.distance_between([@property.latitude,@property.longitude], [@closest_pharmacy.lat,@closest_pharmacy.long])).round(2), "km") %>)
                   </div>
+                           <hr>
                   <p class="text-center lh-sm"><strong>Schools</strong></p>
-                  <hr>
+
                   <div class="d-flex justify-content-between">
                     <p>Primary</p>
                     <%= @closest_primary.name%>
