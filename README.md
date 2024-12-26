@@ -1,3 +1,8 @@
+see project from here
+
+https://property-sphere-f0c399e44756.herokuapp.com/
+
+
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
 To get schema up to date follow step-by-step:
